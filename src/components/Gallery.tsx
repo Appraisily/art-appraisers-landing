@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 
 function Gallery() {
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  // Estado removido ya que no se utiliza
+  // const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   // ... rest of the component code ...
 
