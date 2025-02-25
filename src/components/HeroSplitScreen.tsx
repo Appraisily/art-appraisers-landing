@@ -137,7 +137,7 @@ export default function HeroSplitScreen() {
             <img
               src={getImageUrl(paintings[currentPainting].image)}
               alt="Art appraisal example"
-              fetchpriority="high"
+              fetchPriority="high"
               className={`h-full w-full object-cover transition-opacity duration-500 ${
                 isTransitioning ? 'opacity-0' : 'opacity-100'
               }`}
