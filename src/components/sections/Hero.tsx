@@ -52,8 +52,12 @@ export default function Hero() {
               </div>
               
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">
-                Expert Art Appraisers You Can Trust
+                Professional Art Appraisals Trusted by Collectors & Institutions
               </h1>
+              
+              <p className="mt-3 sm:mt-4 text-xl sm:text-2xl text-blue-200 font-light">
+                Comprehensive USPAP-compliant reports with detailed analysis, market comparisons, and precise valuations
+              </p>
               
               {/* Expert Faces */}
               <div className="mt-6 sm:mt-8 flex -space-x-3 sm:-space-x-4">
@@ -79,10 +83,6 @@ export default function Hero() {
                   +10
                 </div>
               </div>
-              
-              <p className="mt-3 sm:mt-4 text-blue-200 text-xs sm:text-sm">
-                Join thousands who trust our certified experts for professional art appraisals
-              </p>
               
               <div className="mt-5 sm:mt-8 flex flex-col gap-3 sm:gap-6">
                 <div className="flex items-center gap-2 sm:gap-3">
