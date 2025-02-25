@@ -44,6 +44,8 @@
 [build.processing.js]
   bundle = true
   minify = true
+[build.processing.html]
+  pretty_urls = true
 [build.processing.images]
   compress = true
 
@@ -57,14 +59,10 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 [[headers]]
-  for = "/*.png"
+  for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 [[headers]]
-  for = "/*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-[[headers]]
-  for = "/*.svg"
+  for = "/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
