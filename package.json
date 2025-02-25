@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "critters": "^0.0.23",
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.287.0",
     "next": "^13.5.4",

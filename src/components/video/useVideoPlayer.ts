@@ -57,7 +57,7 @@ export function useVideoPlayer(isMobile: boolean) {
         nextVideo.src = getVideoUrl(videos[nextNextIndex], isMobile);
         nextVideo.load();
       }).catch(error => {
-        handleError(`Failed to play next video: ${error?.message || 'Unknown error'}`);
+        handleError(`Failed to play next video: ${error instanceof Error ? error.message : 'Unknown error'}`);
       });
     }
   };
@@ -74,18 +74,22 @@ export function useVideoPlayer(isMobile: boolean) {
       muted: video.muted,
       volume: video.volume,
       playbackRate: video.playbackRate,
-      buffered: Array.from(video.buffered).map(i => ({
+      buffered: Array.from({ length: video.buffered.length }, (_, i) => ({
         start: video.buffered.start(i),
         end: video.buffered.end(i)
       }))
     });
   };
 
-  const handleError = (error: string) => {
-    logDebug(error, '#f44336', null, true);
+  const handleError = (error: string | Event) => {
+    const errorMessage = typeof error === 'string' 
+      ? error 
+      : 'Video playback error';
+    
+    logDebug(errorMessage, '#f44336', null, true);
     setVideoState(prev => ({
       ...prev,
-      errors: [...prev.errors, error]
+      errors: [...prev.errors, errorMessage]
     }));
   };
 
@@ -112,7 +116,10 @@ export function useVideoPlayer(isMobile: boolean) {
         logDebug('Video state updated', '#4CAF50', { ...videoState });
       }
     } catch (error) {
-      handleError(`Playback error: ${error?.message || 'Unknown error'}`);
+      const errorMessage = error instanceof Error 
+        ? error.message 
+        : 'Unknown error';
+      handleError(`Playback error: ${errorMessage}`);
     }
   };
 
@@ -146,11 +153,11 @@ export function useVideoPlayer(isMobile: boolean) {
 
     // Clear existing event listeners
     video.removeEventListener('ended', handleVideoEnd);
-    video.removeEventListener('error', handleError);
+    video.removeEventListener('error', handleError as EventListener);
 
     // Add event listeners
     video.addEventListener('ended', handleVideoEnd);
-    video.addEventListener('error', () => handleError('Video playback error'));
+    video.addEventListener('error', handleError as EventListener);
     video.addEventListener('loadedmetadata', () => {
       logDebug('Video metadata loaded', '#2196F3', {
         duration: video.duration,
@@ -194,7 +201,7 @@ export function useVideoPlayer(isMobile: boolean) {
         clearInterval(debugTimeoutRef.current);
       }
       video.removeEventListener('ended', handleVideoEnd);
-      video.removeEventListener('error', handleError);
+      video.removeEventListener('error', handleError as EventListener);
       video.pause();
       video.src = '';
       video.load();
