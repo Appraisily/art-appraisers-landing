@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Ruler, TrendingUp, Award, Download, FileText, X, ExternalLink } from 'lucide-react';
+import { Ruler, TrendingUp, Award, Download, FileText, X } from 'lucide-react';
 
 const PDFViewer = ({ onClose }: { onClose: () => void }) => (
   <div className="fixed inset-0 z-50 bg-black/75 p-4 flex items-center justify-center">

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Scale, Shield, FileCheck, Search, DollarSign, History, FileText, Clock, Camera, Award, X, Play, Receipt, FileSpreadsheet, Landmark } from 'lucide-react';
+import { Scale, Shield, FileCheck, Search, DollarSign, History, FileText, Clock, Award, X, Play, Receipt, FileSpreadsheet, Landmark } from 'lucide-react';
 
 interface VideoModalProps {
   isOpen: boolean;
