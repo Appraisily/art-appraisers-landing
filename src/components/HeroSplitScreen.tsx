@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { Camera, ArrowRight, Shield, Star } from 'lucide-react';
 import Logo from './Logo';

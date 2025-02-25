@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Ruler, TrendingUp, Award, Download, FileText, X, ExternalLink } from 'lucide-react';
 

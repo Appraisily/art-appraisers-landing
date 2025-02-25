@@ -1,5 +1,6 @@
+"use client";
+
 import React, { useState } from 'react';
-import { ExternalLink, DollarSign, ArrowRight, AlertCircle } from 'lucide-react';
 
 function Gallery() {
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
