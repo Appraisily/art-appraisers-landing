@@ -10,7 +10,7 @@ const features = [
   {
     icon: TrendingUp,
     title: 'Real Market Comparisons',
-    description: 'Reports include 10+ recent auction results to validate your artwork's value with concrete market evidence'
+    description: 'Reports include 10+ recent auction results to validate your artwork\'s value with concrete market evidence'
   },
   {
     icon: FileCheck,

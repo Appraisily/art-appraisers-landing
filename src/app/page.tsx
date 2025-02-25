@@ -1,9 +1,9 @@
 import React from 'react';
-import HeroSection from '@/components/HeroSection';
-import ServicesSection from '@/components/ServicesSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import Footer from '@/components/Footer';
-import Preloader from '@/components/Preloader';
+import HeroSection from '../components/HeroSection';
+import ServicesSection from '../components/ServicesSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import Footer from '../components/Footer';
+import Preloader from '../components/Preloader';
 
 export default function Home() {
   return (
