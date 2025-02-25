@@ -1,5 +1,6 @@
+"use client";
+
 import React, { useState } from 'react';
-import { Award, Star, Shield, X } from 'lucide-react';
 
 function Appraisers() {
   const [popover, setPopover] = useState<{

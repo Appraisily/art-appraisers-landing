@@ -1,8 +1,10 @@
+"use client";
+
 import React from 'react';
 import { 
   Award, 
   ShieldCheck, 
-  Handshake, 
+  Shield, 
   HeartHandshake, 
   Landmark, 
   Scale, 
@@ -38,7 +40,7 @@ const services = [
   {
     name: 'Resale Appraisals',
     description: 'Market analysis and valuations to help you determine optimal pricing for art sales in the current market.',
-    icon: Handshake,
+    icon: Shield,
     color: 'from-emerald-500 to-emerald-600',
   },
   {
