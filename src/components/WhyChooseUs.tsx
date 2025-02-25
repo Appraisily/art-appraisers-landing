@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Camera, FileCheck, LockKeyhole, Star, Award, Globe2, Search, TrendingUp, ImagePlus, Clock } from 'lucide-react';
+import { Users, FileCheck, Award, Globe2, Search, TrendingUp, Clock } from 'lucide-react';
 
 const features = [
   {
