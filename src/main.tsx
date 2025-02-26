@@ -2,9 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import DevNav from './components/DevNav';
 
-import PaintingAppraisal from './pages/PaintingAppraisal';
 import ArtAppraiser from './pages/ArtAppraiser';
 
 const App = () => {
@@ -12,11 +10,9 @@ const App = () => {
     <BrowserRouter>
       <div className="min-h-screen bg-white">
         <Routes>
-          <Route path="/" element={<Navigate to="/painting-value" replace />} />
-          <Route path="/painting-value" element={<PaintingAppraisal />} />
+          <Route path="/" element={<Navigate to="/art-appraiser" replace />} />
           <Route path="/art-appraiser" element={<ArtAppraiser />} />
         </Routes>
-        <DevNav />
       </div>
     </BrowserRouter>
   );

@@ -26,8 +26,8 @@ export default defineConfig({
           'vendor': ['react', 'react-dom', 'react-router-dom'],
           'icons': ['lucide-react'],
           'critical': [
-            './src/components/HeroSplitScreen.tsx',
-            './src/components/Logo.tsx'
+            './src/components/Logo.tsx',
+            './src/components/sections/Hero.tsx'
           ],
           'deferred': [
             './src/components/TrustFooter.tsx',
