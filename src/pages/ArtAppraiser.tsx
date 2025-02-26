@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import Hero from '../components/sections/Hero';
+import LeadCapture from '../components/LeadCapture';
+import TrustBar from '../components/TrustBar';
 import Features from '../components/sections/Features';
 import Process from '../components/sections/Process';
+import ValueProposition from '../components/ValueProposition';
 import RecentAppraisals from '../components/sections/RecentAppraisals';
 import SuccessStories from '../components/sections/SuccessStories';
 import WhyChooseUs from '../components/WhyChooseUs';
@@ -24,8 +27,11 @@ export default function ArtAppraiser() {
   return (
     <div className="bg-white">
       <Hero />
+      <LeadCapture />
+      <TrustBar />
       <Features />
       <Process />
+      <ValueProposition />
       <RecentAppraisals />
       <SuccessStories />
       <WhyChooseUs />

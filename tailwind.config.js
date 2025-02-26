@@ -12,6 +12,15 @@ export default {
       backgroundColor: {
         'white-contrast': 'rgba(255, 255, 255, 0.25)',
         'dark-contrast': 'rgba(0, 0, 0, 0.75)'
+      },
+      animation: {
+        'pulse-subtle': 'pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+      },
+      keyframes: {
+        'pulse-subtle': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.03)' }
+        }
       }
     },
   },
