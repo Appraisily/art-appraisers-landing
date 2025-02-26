@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from 'react';
 import { Camera, ArrowRight, Shield, Star } from 'lucide-react';
 import Logo from './Logo';
@@ -137,7 +135,7 @@ export default function HeroSplitScreen() {
             <img
               src={getImageUrl(paintings[currentPainting].image)}
               alt="Art appraisal example"
-              fetchPriority="high"
+              fetchpriority="high"
               className={`h-full w-full object-cover transition-opacity duration-500 ${
                 isTransitioning ? 'opacity-0' : 'opacity-100'
               }`}

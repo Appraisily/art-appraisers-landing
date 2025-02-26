@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useRef, useEffect } from 'react';
 
 const getVideoUrl = (url: string, isMobile: boolean) => {
@@ -163,7 +161,7 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ fallbackImage }) => {
           }`}
           loading="eager"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
           width="1920"
           height="1080"
         />

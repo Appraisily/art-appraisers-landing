@@ -1,7 +1,5 @@
-"use client";
-
 import React, { useState, useEffect } from 'react';
-import { Award, Star, CheckCircle2 } from 'lucide-react';
+import { Award, Star, Clock, CheckCircle2 } from 'lucide-react';
 
 interface Testimonial {
   name: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, CreditCard, Lock, DollarSign, FileText, Camera, Search, Award, FileCheck, ArrowRight } from 'lucide-react';
+import { Shield, CreditCard, Lock, DollarSign, CheckCircle2, FileText, Camera, Search, Award, FileCheck, Wallet, ArrowRight } from 'lucide-react';
 
 export default function Pricing() {
   const features = [

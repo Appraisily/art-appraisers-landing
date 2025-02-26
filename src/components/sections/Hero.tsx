@@ -43,107 +43,107 @@ export default function Hero() {
       </div>
 
       <div className="relative">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:py-32 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content Section */}
             <div>
-              <div className="mb-4 sm:mb-8 inline-flex items-center gap-2 rounded-xl bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 border border-white/20">
+              <div className="mb-8 inline-flex items-center gap-2 rounded-xl bg-white/10 backdrop-blur-sm px-4 py-2 border border-white/20">
                 <Logo variant="light" size="md" />
               </div>
               
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">
-                Professional Art Appraisals Trusted by Collectors & Institutions
+              <h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 sm:text-6xl">
+                Expert Art Appraisers You Can Trust
               </h1>
               
-              <p className="mt-3 sm:mt-4 text-xl sm:text-2xl text-blue-200 font-light">
-                Comprehensive USPAP-compliant reports with detailed analysis, market comparisons, and precise valuations
-              </p>
-              
               {/* Expert Faces */}
-              <div className="mt-6 sm:mt-8 flex -space-x-3 sm:-space-x-4">
+              <div className="mt-8 flex -space-x-4">
                 {experts.map((expert, index) => (
                   <div key={expert.name} className="relative group">
                     <img
                       src={expert.image}
                       alt={expert.name}
-                      className="h-12 w-12 sm:h-16 sm:w-16 rounded-full border-2 border-white object-cover"
+                      className="h-16 w-16 rounded-full border-2 border-white object-cover"
                       loading={index === 0 ? "eager" : "lazy"}
                     />
-                    <div className="absolute -bottom-1 -right-1 rounded-full bg-primary border-2 border-white p-0.5 sm:p-1">
+                    <div className="absolute -bottom-1 -right-1 rounded-full bg-primary border-2 border-white p-1">
                       {React.createElement(expert.stats[0].icon, {
-                        className: "h-3 w-3 sm:h-4 sm:w-4 text-white"
+                        className: "h-4 w-4 text-white"
                       })}
                     </div>
-                    <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900/90 text-white text-xs rounded-md py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-10">
+                    <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900/90 text-white text-xs rounded-md py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
                       {expert.name}
                     </div>
                   </div>
                 ))}
-                <div className="flex items-center justify-center h-12 w-12 sm:h-16 sm:w-16 rounded-full border-2 border-dashed border-white/50 bg-white/10 backdrop-blur-sm text-white text-xs sm:text-sm font-medium">
+                <div className="flex items-center justify-center h-16 w-16 rounded-full border-2 border-dashed border-white/50 bg-white/10 backdrop-blur-sm text-white text-sm font-medium">
                   +10
                 </div>
               </div>
               
-              <div className="mt-5 sm:mt-8 flex flex-col gap-3 sm:gap-6">
-                <div className="flex items-center gap-2 sm:gap-3">
+              <p className="mt-4 text-blue-200 text-sm">
+                Join thousands who trust our certified experts for professional art appraisals
+              </p>
+              
+              <div className="mt-8 flex flex-col gap-6">
+                <div className="flex items-center gap-3">
                   <div className="flex-shrink-0">
-                    <div className="rounded-full bg-primary/10 p-1.5 sm:p-2">
-                      <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-blue-300" />
+                    <div className="rounded-full bg-primary/10 p-2">
+                      <Shield className="h-5 w-5 text-blue-300" />
                     </div>
                   </div>
-                  <p className="text-base sm:text-lg text-blue-100">
+                  <p className="text-lg text-blue-100">
                     USPAP-certified experts with 15+ years of experience
                   </p>
                 </div>
                 
-                <div className="flex items-center gap-2 sm:gap-3">
+                <div className="flex items-center gap-3">
                   <div className="flex-shrink-0">
-                    <div className="rounded-full bg-primary/10 p-1.5 sm:p-2">
-                      <Award className="h-4 w-4 sm:h-5 sm:w-5 text-blue-300" />
+                    <div className="rounded-full bg-primary/10 p-2">
+                      <Award className="h-5 w-5 text-blue-300" />
                     </div>
                   </div>
-                  <p className="text-base sm:text-lg text-blue-100">
+                  <p className="text-lg text-blue-100">
                     Trusted by leading institutions worldwide
                   </p>
                 </div>
                 
-                <div className="flex items-center gap-2 sm:gap-3">
+                <div className="flex items-center gap-3">
                   <div className="flex-shrink-0">
-                    <div className="rounded-full bg-primary/10 p-1.5 sm:p-2">
-                      <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-blue-300" />
+                    <div className="rounded-full bg-primary/10 p-2">
+                      <Clock className="h-5 w-5 text-blue-300" />
                     </div>
                   </div>
-                  <p className="text-base sm:text-lg text-blue-100">
+                  <p className="text-lg text-blue-100">
                     Fast 24-48 hour professional appraisals
                   </p>
                 </div>
               </div>
 
-              <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="mt-12 flex flex-col sm:flex-row gap-4">
                 <a
                   href="https://appraisily.com/start"
                   id="start-appraisal-nav"
-                  className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-blue-600 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg hover:from-primary/90 hover:to-blue-600/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200"
+                  className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:from-primary/90 hover:to-blue-600/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200"
                 >
                   <span className="relative">
                     Start Your Appraisal
                     <span className="absolute -bottom-1 left-0 w-full h-px bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
                   </span>
-                  <Award className="h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform duration-200" />
+                  <Award className="h-5 w-5 group-hover:rotate-12 transition-transform duration-200" />
                 </a>
                 
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 backdrop-blur-sm px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 transition-all duration-200 border border-white/20"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-semibold text-white hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 transition-all duration-200 border border-white/20"
                 >
                   View Services
-                  <Award className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" />
+                  <Award className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </a>
               </div>
             </div>
 
-            {/* Stats Card - Hidden on small screens, shown on medium and up */}
-            <div className="relative hidden md:block">
+            {/* Stats Card */}
+            <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-blue-600/10 rounded-2xl blur-3xl" />
               <div className="relative overflow-hidden rounded-2xl bg-white/[0.075] backdrop-blur-sm border border-white/10">
                 <div className="p-8">
@@ -185,28 +185,6 @@ export default function Hero() {
                       <div className="mt-2 text-sm text-blue-200">Avg. Turnaround</div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Mobile Stats - Visible only on small screens */}
-            <div className="relative block md:hidden mt-6">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="text-center p-4 rounded-xl bg-white/[0.075] backdrop-blur-sm border border-white/10">
-                  <div className="text-2xl font-bold text-white">15K+</div>
-                  <div className="mt-1 text-xs text-blue-200">Artworks Appraised</div>
-                </div>
-                <div className="text-center p-4 rounded-xl bg-white/[0.075] backdrop-blur-sm border border-white/10">
-                  <div className="text-2xl font-bold text-white">98%</div>
-                  <div className="mt-1 text-xs text-blue-200">Client Satisfaction</div>
-                </div>
-                <div className="text-center p-4 rounded-xl bg-white/[0.075] backdrop-blur-sm border border-white/10">
-                  <div className="text-2xl font-bold text-white">50+</div>
-                  <div className="mt-1 text-xs text-blue-200">Countries Served</div>
-                </div>
-                <div className="text-center p-4 rounded-xl bg-white/[0.075] backdrop-blur-sm border border-white/10">
-                  <div className="text-2xl font-bold text-white">24h</div>
-                  <div className="mt-1 text-xs text-blue-200">Avg. Turnaround</div>
                 </div>
               </div>
             </div>

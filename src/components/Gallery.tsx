@@ -1,10 +1,8 @@
-"use client";
-
-import React from 'react';
+import React, { useState } from 'react';
+import { ExternalLink, DollarSign, ArrowRight, AlertCircle } from 'lucide-react';
 
 function Gallery() {
-  // Estado removido ya que no se utiliza
-  // const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   // ... rest of the component code ...
 

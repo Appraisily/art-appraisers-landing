@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from 'react';
 import { VideoBackgroundProps } from './types';
 import { useVideoPlayer } from './useVideoPlayer';
@@ -46,7 +44,7 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ fallbackImage }) => {
           }`}
           loading="eager"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
           width="1920"
           height="1080"
         />

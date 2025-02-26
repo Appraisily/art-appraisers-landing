@@ -1,36 +1,36 @@
 import React from 'react';
-import { Users, FileCheck, Award, Globe2, Search, TrendingUp, Clock } from 'lucide-react';
+import { Users, Camera, FileCheck, LockKeyhole, Star, Award, Globe2 } from 'lucide-react';
 
 const features = [
   {
-    icon: Search,
-    title: 'AI-Powered Image Analysis',
-    description: 'Our Google Vision technology identifies similar artworks and authenticates your piece through advanced visual comparison'
+    icon: Users,
+    title: 'Expert Appraisers',
+    description: 'Our team consists of certified professionals with decades of combined experience'
   },
   {
-    icon: TrendingUp,
-    title: 'Real Market Comparisons',
-    description: 'Reports include 10+ recent auction results to validate your artwork\'s value with concrete market evidence'
+    icon: Camera,
+    title: 'Digital Process',
+    description: 'Easy online submission with our state-of-the-art digital platform'
   },
   {
     icon: FileCheck,
-    title: 'ISA-Compliant Documentation',
-    description: 'Comprehensive reports that meet International Society of Appraisers standards for insurance, tax, and estate planning'
+    title: 'Detailed Reports',
+    description: 'Comprehensive documentation including market analysis and authentication'
   },
   {
-    icon: Clock,
-    title: 'Fast 24-48 Hour Turnaround',
-    description: 'Receive your professional appraisal quickly without compromising on quality or thoroughness'
+    icon: LockKeyhole,
+    title: 'Secure & Confidential',
+    description: 'Your information is protected with enterprise-grade security'
   },
   {
-    icon: Users,
-    title: 'Expert Authentication',
-    description: 'Professional signature verification and provenance research by certified appraisers with 15+ years of experience'
+    icon: Star,
+    title: 'Quality Service',
+    description: '5-star rated service with thousands of satisfied clients'
   },
   {
     icon: Award,
-    title: 'Multi-Purpose Valuation',
-    description: 'One report serves multiple needs: insurance coverage, estate planning, charitable donations, and resale decisions'
+    title: 'Certified Results',
+    description: 'USPAP-compliant appraisals accepted by all major institutions'
   }
 ];
 
@@ -40,10 +40,10 @@ const WhyChooseUs: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            What Makes Our Appraisals Superior
+            Why Choose Our Service
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Our comprehensive appraisal reports provide everything you need for insurance, tax, estate planning, and informed sales decisions
+            Experience the difference with our professional appraisal service
           </p>
         </div>
 

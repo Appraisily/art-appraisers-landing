@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add smooth scrolling behavior */
-html {
-  scroll-behavior: smooth;
-}
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -20,11 +15,4 @@ html {
 
 .animate-fade-in {
   animation: fade-in 0.2s ease-out forwards;
-}
-
-/* Mobile-specific adjustments */
-@media (max-width: 640px) {
-  .text-shadow-sm {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  }
 }

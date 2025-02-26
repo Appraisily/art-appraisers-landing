@@ -1,61 +1,28 @@
-# Art Appraisers Landing Page
+# Art Appraisal Landing Pages
 
-A professional landing page for art appraisal services, built with Next.js and optimized for performance.
+A modern React application showcasing two landing pages for art appraisal services.
 
-## Features
+## Live URLs
 
-- Modern, responsive design with mobile and desktop optimizations
-- Smooth animations and transitions using Framer Motion
-- Optimized image loading for better performance
-- Preloader for smoother page initialization
-- SEO-friendly structure
+- Painting Value Check: [https://creative-squirrel-688c9c.netlify.app/painting-value](https://creative-squirrel-688c9c.netlify.app/painting-value)
+- Art Appraiser: [https://creative-squirrel-688c9c.netlify.app/art-appraiser](https://creative-squirrel-688c9c.netlify.app/art-appraiser)
 
 ## Tech Stack
 
-- **Next.js**: React framework for production
-- **TailwindCSS**: Utility-first CSS framework
-- **Framer Motion**: Animation library
-- **Lucide React**: Lightweight icon library
+- React 18 with TypeScript
+- Vite for build tooling
+- TailwindCSS for styling
+- Lucide React for icons
+- React Router for navigation
 
-## Deployment to Netlify
+## Features
 
-### Automatic Deployment (Recommended)
-
-1. Fork or clone this repository to your GitHub account
-2. Log in to [Netlify](https://www.netlify.com/)
-3. Click "New site from Git" 
-4. Select GitHub and choose your repository
-5. Configure build settings:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-6. Click "Deploy site"
-7. (Optional) Configure a custom domain in the Netlify site settings
-
-### Manual Deployment
-
-1. Install dependencies: `npm install`
-2. Build the project: `npm run build`
-3. Deploy using Netlify CLI:
-   ```bash
-   # Install Netlify CLI if not already installed
-   npm install -g netlify-cli
-   
-   # Log in to your Netlify account
-   netlify login
-   
-   # Deploy the site
-   netlify deploy --prod
-   ```
-
-## Performance Optimizations
-
-This site includes several optimizations for smooth loading and performance:
-
-- Image preloading for key visuals
-- Lazy loading for non-critical images
-- Smooth animations with staggered loading
-- Optimized asset caching through Netlify config
-- Preloader component for initial page load
+- Responsive design optimized for all devices
+- Performance optimized with code splitting and lazy loading
+- Beautiful animations and transitions
+- SEO friendly with proper meta tags
+- Optimized image loading with ImageKit.io
+- Google Tag Manager integration
 
 ## Development
 
@@ -69,12 +36,42 @@ npm run dev
 # Build for production
 npm run build
 
-# Start production server
-npm run start
+# Preview production build
+npm run preview
 ```
 
-## Customization
+## Project Structure
 
-- Update images in the `/public/images/` directory
-- Modify content in each component
-- Adjust color scheme in the TailwindCSS config
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+│   ├── PaintingAppraisal.tsx   # Painting value check page
+│   └── ArtAppraiser.tsx        # Art appraiser page
+├── main.tsx       # Application entry point
+└── index.css      # Global styles
+```
+
+## Performance Optimizations
+
+- Code splitting with dynamic imports
+- Image optimization with ImageKit.io
+- Critical CSS inlining
+- Resource hints (preconnect, dns-prefetch)
+- Lazy loading of non-critical components
+- Efficient bundle chunking strategy
+
+## Deployment
+
+The application is deployed on Netlify with automatic deployments from the main branch. The build configuration is defined in `netlify.toml` with:
+
+- Custom cache headers
+- Security headers
+- Asset optimization
+- Proper redirects for SPA routing
+
+## Browser Support
+
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Responsive design works on all screen sizes
+- Progressive enhancement for older browsers

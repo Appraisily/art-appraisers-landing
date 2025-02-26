@@ -1,47 +1,57 @@
 import React from 'react';
-import { Award } from 'lucide-react';
 
 interface LogoProps {
-  variant?: 'light' | 'dark';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: 'default' | 'light' | 'dark';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
 }
 
-export default function Logo({ variant = 'light', size = 'md' }: LogoProps) {
-  // Size mapping
-  const sizeClasses = {
-    sm: 'text-lg',
-    md: 'text-xl',
-    lg: 'text-2xl',
-  };
-  
-  // Icon size mapping
-  const iconSizes = {
-    sm: 18,
-    md: 22,
-    lg: 24,
-  };
-  
-  // Color variants
-  const colorClasses = {
-    light: 'text-white',
-    dark: 'text-gray-900',
-  };
-  
-  // Accent color is consistent across variants
-  const accentColor = 'text-primary';
-  
+const sizes = {
+  xs: {
+    img: 'h-5 w-5',
+    text: 'text-base',
+    spacing: 'gap-1'
+  },
+  sm: {
+    img: 'h-6 w-6',
+    text: 'text-lg',
+    spacing: 'gap-1'
+  },
+  md: {
+    img: 'h-8 w-8',
+    text: 'text-xl',
+    spacing: 'gap-2'
+  },
+  lg: {
+    img: 'h-10 w-10',
+    text: 'text-2xl',
+    spacing: 'gap-3'
+  }
+};
+
+const textColors = {
+  default: 'text-gray-900',
+  light: 'text-white',
+  dark: 'text-gray-900'
+};
+
+const Logo: React.FC<LogoProps> = ({ variant = 'default', size = 'md' }) => {
+  const selectedSize = sizes[size];
+
   return (
-    <div className="flex items-center gap-2">
-      <div className="relative">
-        <Award 
-          size={iconSizes[size]} 
-          className={`${accentColor}`} 
-          strokeWidth={2.5}
-        />
-      </div>
-      <div className={`font-bold ${sizeClasses[size]} ${colorClasses[variant]} leading-none`}>
-        Apprais<span className={accentColor}>ily</span>
-      </div>
+    <div className={`inline-flex items-center ${selectedSize.spacing} group`}>
+      <img
+        src="https://ik.imagekit.io/appraisily/WebPage/logo_new.png?tr=w-64,h-64"
+        alt="Appraisily"
+        className={`${selectedSize.img} object-contain transition-transform duration-300 group-hover:scale-105`}
+        width="64"
+        height="64"
+        loading="eager"
+      />
+      <span className={`font-semibold ${selectedSize.text} ${textColors[variant]}`}>
+        Appraisily
+      </span>
     </div>
   );
-}
+};
+
+export default Logo;

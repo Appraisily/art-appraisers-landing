@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, ArrowUp } from 'lucide-react';
+import { ArrowRight, Award, Shield, Star, Clock, Sparkles, ArrowUp } from 'lucide-react';
 import VideoBackground from './video/VideoBackground';
 import Logo from './Logo';
 import TrustBar from './TrustBar';
