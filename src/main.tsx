@@ -7,7 +7,7 @@ import ArtAppraiser from './pages/ArtAppraiser';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/landing'>
       <div className="min-h-screen bg-white">
         <Routes>
           <Route path="/" element={<Navigate to="/art-appraiser" replace />} />
