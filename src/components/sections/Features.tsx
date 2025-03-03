@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Award, Shield, FileCheck, Clock } from 'lucide-react';
 
 const features = [
@@ -25,20 +25,43 @@ const features = [
 ];
 
 export default function Features() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  // Fallback para navegadores que no soportan autoreproducción o videos
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!videoLoaded) {
+        const videoElement = document.getElementById('features-background-video');
+        if (videoElement) {
+          videoElement.style.display = 'none';
+        }
+      }
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [videoLoaded]);
+
   return (
     <div className="relative bg-gray-900 py-24 sm:py-32 overflow-hidden">
-      {/* Video Background */}
+      {/* Video Background con Fallback */}
       <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-900/80 to-gray-900" />
         <video
+          id="features-background-video"
           autoPlay
           loop
           muted
           playsInline
+          onCanPlay={() => setVideoLoaded(true)}
+          onError={() => setVideoLoaded(false)}
           className="h-full w-full object-cover opacity-30"
+          poster="https://ik.imagekit.io/appraisily/WebPage/video_poster.jpg?tr=w-1920,h-1080,q-50"
         >
           <source src="https://ik.imagekit.io/appraisily/Videos/hero4.mp4?updatedAt=1731840454419" type="video/mp4" />
+          <source src="https://ik.imagekit.io/appraisily/Videos/hero4.webm" type="video/webm" />
+          {/* Fallback para navegadores que no soportan video */}
+          Tu navegador no soporta videos HTML5.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -53,11 +76,11 @@ export default function Features() {
         </div>
 
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:max-w-none">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm p-4 sm:p-8 border border-white/20 hover:bg-white/20 transition-all duration-200"
+                className="relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm p-6 sm:p-8 border border-white/20 hover:bg-white/20 transition-all duration-200 shadow-lg"
               >
                 <div className="relative">
                   <div className="flex items-center gap-3">
