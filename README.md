@@ -1,11 +1,10 @@
-# Art Appraisal Landing Pages
+# Art Appraisers Landing Page
 
-A modern React application showcasing two landing pages for art appraisal services.
+A modern React application showcasing a professional landing page for art appraisal services, optimized for SEO and performance.
 
-## Live URLs
+## Overview
 
-- Painting Value Check: [https://creative-squirrel-688c9c.netlify.app/painting-value](https://creative-squirrel-688c9c.netlify.app/painting-value)
-- Art Appraiser: [https://creative-squirrel-688c9c.netlify.app/art-appraiser](https://creative-squirrel-688c9c.netlify.app/art-appraiser)
+This repository contains a standalone landing page designed for art appraisal services. It's configured for deployment as a subdomain on Netlify, with automated sitemap generation for SEO optimization.
 
 ## Tech Stack
 
@@ -20,7 +19,8 @@ A modern React application showcasing two landing pages for art appraisal servic
 - Responsive design optimized for all devices
 - Performance optimized with code splitting and lazy loading
 - Beautiful animations and transitions
-- SEO friendly with proper meta tags
+- SEO friendly with proper meta tags and structured data
+- Automated sitemap generation for Google indexing
 - Optimized image loading with ImageKit.io
 - Google Tag Manager integration
 
@@ -36,6 +36,15 @@ npm run dev
 # Build for production
 npm run build
 
+# Build with SEO schema markup injection
+npm run build:seo
+
+# Build with sitemap generation
+npm run build:sitemap
+
+# Complete build with schemas and sitemap
+npm run build:full
+
 # Preview production build
 npm run preview
 ```
@@ -43,14 +52,37 @@ npm run preview
 ## Project Structure
 
 ```
-src/
-├── components/     # Reusable UI components
-├── pages/         # Page components
-│   ├── PaintingAppraisal.tsx   # Painting value check page
-│   └── ArtAppraiser.tsx        # Art appraiser page
-├── main.tsx       # Application entry point
-└── index.css      # Global styles
+├── dist/           # Production build output
+├── public/         # Static assets
+├── scripts/        # Build automation scripts
+│   └── generate-sitemap.js   # Sitemap generator
+├── src/
+│   ├── components/ # Reusable UI components 
+│   ├── pages/      # Page components
+│   │   └── ArtAppraiser.tsx  # Main art appraiser page
+│   ├── hooks/      # Custom React hooks
+│   ├── config/     # Application configuration
+│   ├── schemas/    # Structured data schema definitions
+│   ├── main.tsx    # Application entry point
+│   └── index.css   # Global styles
+├── netlify.toml    # Netlify deployment configuration
+└── vite.config.ts  # Vite build configuration
 ```
+
+## SEO Optimizations
+
+### Structured Data
+The application includes structured data (JSON-LD) for rich search results including:
+- Service information
+- Organization details
+- Professional services offered
+- Pricing information
+
+### Sitemap Generation
+Automatic sitemap generation is included in the build process:
+- Creates a standards-compliant sitemap.xml
+- Updates the lastmod date automatically
+- Configurable via environment variables
 
 ## Performance Optimizations
 
@@ -61,14 +93,39 @@ src/
 - Lazy loading of non-critical components
 - Efficient bundle chunking strategy
 
-## Deployment
+## Netlify Deployment
 
-The application is deployed on Netlify with automatic deployments from the main branch. The build configuration is defined in `netlify.toml` with:
+### Subdomain Setup
 
-- Custom cache headers
-- Security headers
-- Asset optimization
-- Proper redirects for SPA routing
+This repository is configured for deployment as a subdomain on Netlify. To deploy:
+
+1. Connect your GitHub repository to Netlify
+2. Configure the following settings:
+   - Build command: `npm run build:full`
+   - Publish directory: `dist`
+
+3. Set up environment variables:
+   - `SITE_DOMAIN`: Your custom subdomain (e.g., https://art-appraisers.yourdomain.com)
+
+4. Add your custom domain in the Netlify site settings
+
+### Sitemap Configuration
+
+The sitemap is generated at build time and will be available at `https://your-subdomain.com/sitemap.xml`.
+
+To combine sitemaps from multiple subdomains, create a sitemap index on your main domain:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://art-appraisers.yourdomain.com/sitemap.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://other-service.yourdomain.com/sitemap.xml</loc>
+  </sitemap>
+</sitemapindex>
+```
 
 ## Browser Support
 
