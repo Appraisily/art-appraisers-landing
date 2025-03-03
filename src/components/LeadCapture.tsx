@@ -1,13 +1,59 @@
-import React, { useState } from 'react';
-import { ArrowRight, AlertCircle, CheckCircle2, FileQuestion, Clock } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, AlertCircle, CheckCircle2, FileQuestion, Clock, Mail, X } from 'lucide-react';
 
 export default function LeadCapture() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [emailValid, setEmailValid] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [touched, setTouched] = useState(false);
+
+  // Validación de email en tiempo real
+  useEffect(() => {
+    if (!email) {
+      setEmailError('');
+      setEmailValid(false);
+      return;
+    }
+    
+    // Solo validar si el usuario ha interactuado con el campo
+    if (!touched) return;
+    
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    if (!emailRegex.test(email)) {
+      if (email.indexOf('@') === -1) {
+        setEmailError('Falta el símbolo @');
+      } else if (email.indexOf('.') === -1) {
+        setEmailError('Falta un dominio válido (.com, .es, etc.)');
+      } else {
+        setEmailError('Dirección de email inválida');
+      }
+      setEmailValid(false);
+    } else {
+      setEmailError('');
+      setEmailValid(true);
+    }
+  }, [email, touched]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validar antes de enviar
+    if (!email) {
+      setEmailError('El email es obligatorio');
+      setTouched(true);
+      return;
+    }
+    
+    if (!emailValid) {
+      // Si hay error, resaltar pero no enviar
+      setTouched(true);
+      return;
+    }
+    
     setLoading(true);
     
     // Simulación de envío (en producción, conectar con API real)
@@ -141,15 +187,62 @@ export default function LeadCapture() {
                     <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                       Email <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      placeholder="tu@email.com"
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors text-sm sm:text-base"
-                    />
+                    <div className={`relative ${emailError && touched ? 'animate-shake' : ''}`}>
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <Mail size={16} className={`${emailError && touched ? 'text-red-500' : emailValid ? 'text-green-500' : 'text-gray-400'}`} />
+                      </div>
+                      
+                      {email && touched && (
+                        <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                          {emailValid ? (
+                            <CheckCircle2 size={16} className="text-green-500" />
+                          ) : (
+                            <X size={16} className="text-red-500" />
+                          )}
+                        </div>
+                      )}
+                      
+                      <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        onFocus={() => setFocused(true)}
+                        onBlur={() => {
+                          setFocused(false);
+                          setTouched(true);
+                        }}
+                        required
+                        placeholder="tu@email.com"
+                        className={`w-full pl-10 pr-10 py-2 sm:py-3 rounded-lg border ${
+                          emailError && touched
+                            ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                            : emailValid
+                            ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
+                            : 'border-gray-300 focus:ring-primary focus:border-primary'
+                        } transition-colors text-sm sm:text-base`}
+                        aria-invalid={emailError ? 'true' : 'false'}
+                        aria-describedby={emailError ? 'email-error' : undefined}
+                      />
+                    </div>
+                    
+                    {emailError && touched && (
+                      <p className="mt-1 text-xs text-red-600" id="email-error">
+                        {emailError}
+                      </p>
+                    )}
+                    
+                    {email && !emailError && touched && (
+                      <p className="mt-1 text-xs text-green-600">
+                        Email válido
+                      </p>
+                    )}
+                    
+                    {focused && !touched && email && (
+                      <p className="mt-1 text-xs text-gray-500">
+                        Introduce un email válido para recibir la mini-evaluación
+                      </p>
+                    )}
                   </div>
                   
                   <div>
@@ -170,10 +263,20 @@ export default function LeadCapture() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-blue-600 px-4 sm:px-6 py-2.5 sm:py-3 text-white font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-200 disabled:opacity-70 text-sm sm:text-base"
+                    className={`w-full flex items-center justify-center gap-2 rounded-xl ${
+                      emailValid 
+                        ? 'bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90' 
+                        : 'bg-gray-400 cursor-not-allowed'
+                    } px-4 sm:px-6 py-2.5 sm:py-3 text-white font-medium transition-all duration-200 disabled:opacity-70 text-sm sm:text-base`}
                   >
                     {loading ? (
-                      <>Procesando...</>
+                      <div className="flex items-center gap-2">
+                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Procesando...
+                      </div>
                     ) : (
                       <>
                         Solicitar mini-tasación GRATUITA
@@ -201,7 +304,7 @@ export default function LeadCapture() {
                   ¡Solicitud recibida!
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-600 mb-6">
-                  Gracias por contactarnos. Nuestros expertos en tasación revisarán tu obra y te enviarán una mini-evaluación a tu correo electrónico en las próximas <strong>24-48 horas</strong>.
+                  Gracias por contactarnos. Nuestros expertos en tasación revisarán tu obra y te enviarán una mini-evaluación a tu correo electrónico <strong className="text-primary">{email}</strong> en las próximas <strong>24-48 horas</strong>.
                 </p>
                 <div className="bg-blue-50 p-3 sm:p-4 rounded-lg border border-blue-100 text-left">
                   <p className="text-xs sm:text-sm text-gray-700 mb-2">
@@ -215,6 +318,9 @@ export default function LeadCapture() {
                   onClick={() => {
                     setSubmitted(false);
                     setEmail('');
+                    setEmailValid(false);
+                    setEmailError('');
+                    setTouched(false);
                   }}
                   className="mt-6 text-primary text-xs sm:text-sm font-medium hover:underline flex items-center gap-1 mx-auto"
                 >
