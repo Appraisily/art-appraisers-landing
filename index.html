@@ -1,51 +1,144 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <!-- Preload Critical Resources -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="rgb(37 99 235)">
+    
+    <!-- SEO y Meta Tags -->
+    <title>Tasación de Arte Profesional | Servicios de Valoración de Obras</title>
+    <meta name="description" content="Servicios profesionales de tasación de arte y antigüedades. Valoración de obras realizada por expertos certificados en 24-48 horas. Informes compatibles con IRS y seguros.">
+    <meta name="author" content="Art Appraisers">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Tasación de Arte Profesional | Servicios de Valoración de Obras">
+    <meta property="og:description" content="Servicios profesionales de tasación de arte y antigüedades. Valoración de obras realizada por expertos certificados en 24-48 horas.">
+    <meta property="og:image" content="https://ik.imagekit.io/appraisily/WebPage/og_image.jpg?tr=w-1200,h-630,q-70">
+    <meta property="og:url" content="https://appraisily.com/landing/art-appraiser">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://appraisily.com/landing/art-appraiser">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="https://ik.imagekit.io/appraisily/WebPage/logo_new.png?tr=w-32,h-32" />
+    <link rel="apple-touch-icon" href="https://ik.imagekit.io/appraisily/WebPage/logo_new.png?tr=w-180,h-180" />
+    
+    <!-- Resource Hints -->
     <link rel="preconnect" href="https://ik.imagekit.io" crossorigin>
     <link rel="dns-prefetch" href="https://ik.imagekit.io">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Preload Critical Hero Image -->
+    <!-- Preload Critical Resources -->
     <link 
       rel="preload" 
       as="image" 
-      href="https://ik.imagekit.io/appraisily/WebPage/gallery2.jpg?tr=w-800,h-600,q-60,f-auto"
+      href="https://ik.imagekit.io/appraisily/Appraisers/andres.png?tr=w-400,h-400,q-75"
       fetchpriority="high"
     >
     
-    <!-- Preload Logo -->
     <link 
       rel="preload" 
       as="image" 
       href="https://ik.imagekit.io/appraisily/WebPage/logo_new.png?tr=w-64,h-64"
       fetchpriority="high"
     >
-    <!-- Preload Critical Resources -->
-    <link rel="preconnect" href="https://ik.imagekit.io" crossorigin>
-    <link rel="dns-prefetch" href="https://ik.imagekit.io">
     
-    <!-- Preload Critical Hero Image -->
     <link 
       rel="preload" 
-      as="image" 
-      href="https://ik.imagekit.io/appraisily/WebPage/hero_background.jpg?tr=w-1920,h-1080,q-50,bl-30,pr-true,f-jpg"
-      imagesrcset="
-        https://ik.imagekit.io/appraisily/WebPage/hero_background.jpg?tr=w-640,h-960,q-60,bl-30,f-jpg 640w,
-        https://ik.imagekit.io/appraisily/WebPage/hero_background.jpg?tr=w-1024,h-768,q-60,bl-30,f-jpg 1024w,
-        https://ik.imagekit.io/appraisily/WebPage/hero_background.jpg?tr=w-1920,h-1080,q-50,bl-30,pr-true,f-jpg 1920w
-      "
-      imagesizes="100vw"
-      fetchpriority="high"
+      as="style" 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     >
     
-    <!-- Preload Logo -->
-    <link 
-      rel="preload" 
-      as="image" 
-      href="https://ik.imagekit.io/appraisily/WebPage/logo_new.png?tr=w-64,h-64"
-      fetchpriority="high"
-    >
+    <!-- Inline Critical CSS -->
+    <style>
+      /* CSS crítico para evitar FOUC (Flash of Unstyled Content) */
+      :root {
+        --color-primary: rgb(37 99 235);
+        --color-background: #ffffff;
+        --color-text: #333333;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      html, body {
+        height: 100%;
+      }
+      
+      body {
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--color-background);
+        color: var(--color-text);
+        line-height: 1.5;
+      }
+      
+      #root {
+        height: 100%;
+      }
+      
+      .loading-screen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #f9fafb;
+      }
+      
+      .loading-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      
+      .loading-logo {
+        width: 64px;
+        height: 64px;
+        border-radius: 9999px;
+        background: linear-gradient(to right, rgb(37 99 235), rgb(59 130 246));
+        margin-bottom: 16px;
+      }
+      
+      .loading-bar {
+        width: 80px;
+        height: 2px;
+        background-color: #e5e7eb;
+        border-radius: 9999px;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .loading-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 30%;
+        background-color: rgb(59 130 246);
+        animation: loading 1.5s ease-in-out infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+      
+      @keyframes loading {
+        0% {
+          left: -30%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    </style>
     
     <!-- Google Tag Manager -->
     <script>
@@ -57,65 +150,33 @@
       })(window,document,'script','dataLayer','GTM-PSLHDGM');
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- Critical Resource Hints -->
-    <link rel="preconnect" href="https://ik.imagekit.io" crossorigin>
-    <link rel="dns-prefetch" href="https://ik.imagekit.io">
-    
-    <!-- Inline Critical CSS -->
-    <style>
-      .bg-white{background-color:#fff}
-      .min-h-screen{min-height:100vh}
-      .absolute{position:absolute}
-      .inset-0{inset:0}
-      .object-cover{object-fit:cover}
-      .h-full{height:100%}
-      .w-full{width:100%}
-      .opacity-100{opacity:1}
-      .opacity-0{opacity:0}
-      .transition-opacity{transition-property:opacity}
-      .duration-1000{transition-duration:1s}
-    </style>
-    
-    <!-- Preload Critical Hero Image -->
-    <link 
-      rel="preload" 
-      as="image" 
-      href="https://ik.imagekit.io/appraisily/WebPage/hero_background.jpg?tr=w-1920,h-1080,q-50,bl-30,pr-true,f-jpg"
-      imagesrcset="
-        https://ik.imagekit.io/appraisily/WebPage/hero_background.jpg?tr=w-640,h-960,q-60,bl-30,f-jpg 640w,
-        https://ik.imagekit.io/appraisily/WebPage/hero_background.jpg?tr=w-1024,h-768,q-60,bl-30,f-jpg 1024w,
-        https://ik.imagekit.io/appraisily/WebPage/hero_background.jpg?tr=w-1920,h-1080,q-50,bl-30,pr-true,f-jpg 1920w
-      "
-      imagesizes="100vw"
-      fetchpriority="high"
-    >
-    
-    <!-- Preload Logo -->
-    <link 
-      rel="preload" 
-      as="image" 
-      href="https://ik.imagekit.io/appraisily/WebPage/logo_new.png?tr=w-64,h-64"
-      fetchpriority="high"
-    >
-    
-    <link rel="icon" type="image/png" href="https://ik.imagekit.io/appraisily/WebPage/logo_new.png?tr=w-32,h-32" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Get instant AI art value estimates and professional appraisals. Expert evaluation of paintings, prints, and artwork. Fast, accurate, and trusted results.">
-    <link rel="preload" href="/assets/index-B3Nq56wS.css" as="style">
-    <link rel="modulepreload" href="/assets/react-minimal-CW6gaLFN.js">
-    <link rel="modulepreload" href="/assets/critical-BHlxe8pp.js">
-    <title>Expert Art Appraisals | Professional Valuation Services</title>
-    <meta name="description" content="Professional art and antique appraisal services starting at $59. Get your artwork valued by certified experts within 24-48 hours. IRS & Insurance compliant reports.">
-    <meta name="theme-color" content="rgb(37 99 235)">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSLHDGM"
+    <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-PSLHDGM"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <div id="root"></div>
+    
+    <!-- Contenido inicial para mejorar LCP -->
+    <div id="root">
+      <div class="loading-screen" aria-label="Cargando la aplicación">
+        <div class="loading-content">
+          <div class="loading-logo" role="img" aria-label="Logo de Art Appraisers"></div>
+          <div class="loading-bar">
+            <div class="loading-progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Mensaje para navegadores sin JavaScript -->
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: system-ui, sans-serif;">
+        <h1>Se requiere JavaScript</h1>
+        <p>Esta aplicación requiere JavaScript para funcionar correctamente. Por favor, habilite JavaScript en su navegador.</p>
+      </div>
+    </noscript>
   </body>
 </html>
