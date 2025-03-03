@@ -13,6 +13,7 @@ export default defineConfig({
     }),
     splitVendorChunkPlugin()
   ],
+  base: './',
   build: {
     cssCodeSplit: false,
     target: 'esnext',

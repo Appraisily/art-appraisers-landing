@@ -46,7 +46,7 @@ const RouteObserver = () => {
 const App = () => {
   return (
     <HelmetProvider>
-      <BrowserRouter basename='/landing'>
+      <BrowserRouter basename=''>
         <RouteObserver />
         <div className="min-h-screen bg-white">
           <Routes>
@@ -67,7 +67,7 @@ const App = () => {
                     <h1 className="text-4xl font-bold text-gray-900">404</h1>
                     <p className="mt-2 text-lg text-gray-600">Página no encontrada</p>
                     <a 
-                      href="/landing/art-appraiser" 
+                      href="/art-appraiser" 
                       className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
                     >
                       Volver a inicio

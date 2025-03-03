@@ -1,3 +1,9 @@
+# Handle direct access to routes
+/landing/art-appraiser/* /index.html 200
+/landing/* /index.html 200
+/landing /index.html 200
 /art-appraiser/* /index.html 200
 /painting-value/* /index.html 200
+
+# SPA Redirects - All routes to index.html
 /* /index.html 200
