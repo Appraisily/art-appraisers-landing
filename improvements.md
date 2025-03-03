@@ -24,13 +24,13 @@
 
 ## Mejoras Funcionales (Media Prioridad)
 
-5. ⏳ **Formulario de Lead Capture** - SIGUIENTE A IMPLEMENTAR
-   - ⬜ Implementar validación de correo electrónico en tiempo real
+5. ✅ **Formulario de Lead Capture**
+   - ✅ Implementar validación de correo electrónico en tiempo real
    - ⬜ Añadir integración directa con CRM o Email Marketing (Mailchimp, HubSpot)
    - ⬜ Implementar sistema de pasos/wizard para formularios largos
    - ✅ Añadir retroalimentación visual durante la carga (mejores indicadores)
 
-6. ⬜ **Optimización de Conversión**
+6. ⏳ **Optimización de Conversión** - SIGUIENTE A IMPLEMENTAR
    - ⬜ Implementar A/B testing para diferentes versiones del CTA
    - ⬜ Añadir testimonios reales con fotos y nombres (social proof)
    - ⬜ Incluir contadores de tiempo real o limitaciones temporales genuinas
@@ -96,10 +96,11 @@
 ## Próximos Pasos Recomendados
 
 1. ✅ Implementar los primeros 4 puntos críticos - COMPLETADO
-2. ⏳ Continuar con la implementación de mejoras funcionales (puntos 5-8) - EN PROGRESO
-   - SIGUIENTE: Mejorar el formulario de Lead Capture con validación en tiempo real
-3. ⬜ Planificar las optimizaciones técnicas (puntos 9-12) para el siguiente ciclo
-4. ⬜ Considerar las mejoras visuales y de contenido (puntos 13-15) como parte de una actualización mayor
+2. ✅ Mejorar el formulario de Lead Capture con validación en tiempo real - COMPLETADO
+3. ⏳ Continuar con la implementación de mejoras funcionales (puntos 6-8)
+   - SIGUIENTE: Optimización de Conversión con testimonios reales y mejoras en la propuesta de valor
+4. ⬜ Planificar las optimizaciones técnicas (puntos 9-12) para el siguiente ciclo
+5. ⬜ Considerar las mejoras visuales y de contenido (puntos 13-15) como parte de una actualización mayor
 
 ## Métrica de Éxito
 

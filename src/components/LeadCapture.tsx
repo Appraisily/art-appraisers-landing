@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, AlertCircle, CheckCircle2, FileQuestion, Clock, Mail, X } from 'lucide-react';
+import { ArrowRight, AlertCircle, CheckCircle2, FileQuestion, Clock, Mail, X, Upload } from 'lucide-react';
 
 export default function LeadCapture() {
   const [email, setEmail] = useState('');
@@ -9,6 +9,8 @@ export default function LeadCapture() {
   const [emailValid, setEmailValid] = useState(false);
   const [focused, setFocused] = useState(false);
   const [touched, setTouched] = useState(false);
+  const [fileSelected, setFileSelected] = useState(false);
+  const [fileName, setFileName] = useState('');
 
   // Validación de email en tiempo real
   useEffect(() => {
@@ -64,6 +66,16 @@ export default function LeadCapture() {
     }, 1000);
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFileSelected(true);
+      setFileName(e.target.files[0].name);
+    } else {
+      setFileSelected(false);
+      setFileName('');
+    }
+  };
+
   const problems = [
     {
       title: "¿No sabes cuánto vale tu obra de arte?",
@@ -88,7 +100,7 @@ export default function LeadCapture() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12">
         <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-start">
           {/* Problema-Solución */}
-          <div>
+          <div className="order-2 md:order-1">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
               <span className="text-primary border-b-2 border-primary pb-1">URGENTE:</span> Las valoraciones de arte fluctúan constantemente
             </h2>
@@ -98,7 +110,7 @@ export default function LeadCapture() {
             
             <div className="space-y-4 sm:space-y-6">
               {problems.map((problem, index) => (
-                <div key={index} className="flex gap-3 sm:gap-4 bg-white/60 p-3 sm:p-4 rounded-lg border border-blue-100 shadow-sm">
+                <div key={index} className="flex gap-3 sm:gap-4 bg-white/60 p-3 sm:p-4 rounded-lg border border-blue-100 shadow-sm hover:bg-white/80 transition-colors">
                   <div className="flex-shrink-0 mt-1">
                     <div className="rounded-full bg-primary/10 p-1.5 sm:p-2">
                       <AlertCircle size={18} className="text-primary" />
@@ -119,7 +131,7 @@ export default function LeadCapture() {
               ))}
             </div>
             
-            <div className="mt-6 sm:mt-8 flex gap-3 sm:gap-4 items-center bg-gradient-to-r from-green-50 to-blue-50 p-3 sm:p-4 rounded-lg border border-green-100">
+            <div className="mt-6 sm:mt-8 flex gap-3 sm:gap-4 items-center bg-gradient-to-r from-green-50 to-blue-50 p-3 sm:p-4 rounded-lg border border-green-100 hover:shadow-md transition-shadow">
               <div className="flex-shrink-0">
                 <div className="rounded-full bg-green-100 p-1.5 sm:p-2">
                   <CheckCircle2 size={18} className="text-green-600" />
@@ -135,7 +147,7 @@ export default function LeadCapture() {
           </div>
           
           {/* Formulario de captura */}
-          <div className="bg-white rounded-2xl shadow-xl p-5 sm:p-8 border border-gray-100 relative">
+          <div className="order-1 md:order-2 bg-white rounded-2xl shadow-xl p-5 sm:p-8 border border-gray-100 relative">
             {/* Sello de urgencia */}
             <div className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse flex items-center gap-1 whitespace-nowrap z-10">
               <Clock size={14} />
@@ -220,7 +232,7 @@ export default function LeadCapture() {
                             : emailValid
                             ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
                             : 'border-gray-300 focus:ring-primary focus:border-primary'
-                        } transition-colors text-sm sm:text-base`}
+                        } transition-colors text-sm sm:text-base focus:outline-none focus:ring-2`}
                         aria-invalid={emailError ? 'true' : 'false'}
                         aria-describedby={emailError ? 'email-error' : undefined}
                       />
@@ -249,12 +261,25 @@ export default function LeadCapture() {
                     <label htmlFor="artwork-photo" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                       Foto de la obra (opcional)
                     </label>
-                    <input
-                      type="file"
-                      id="artwork-photo"
-                      accept="image/*"
-                      className="w-full p-2 text-xs sm:text-sm text-gray-600 bg-gray-50 rounded-lg border border-gray-300"
-                    />
+                    <div className="relative">
+                      <div className={`flex items-center justify-center w-full p-2 text-xs sm:text-sm text-gray-600 bg-gray-50 rounded-lg border ${fileSelected ? 'border-green-300' : 'border-gray-300'} cursor-pointer hover:bg-gray-100 transition-colors`}>
+                        <input
+                          type="file"
+                          id="artwork-photo"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={handleFileChange}
+                        />
+                        <label htmlFor="artwork-photo" className="flex items-center justify-center gap-2 cursor-pointer py-2 w-full">
+                          <Upload size={16} className={fileSelected ? 'text-green-500' : 'text-gray-400'} />
+                          {fileSelected ? (
+                            <span className="truncate max-w-[200px]">{fileName}</span>
+                          ) : (
+                            <span>Selecciona un archivo o arrastra aquí</span>
+                          )}
+                        </label>
+                      </div>
+                    </div>
                     <p className="mt-1 text-3xs sm:text-xs text-gray-500">
                       Formatos aceptados: JPG, PNG. Máximo 5 MB.
                     </p>
@@ -267,7 +292,7 @@ export default function LeadCapture() {
                       emailValid 
                         ? 'bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90' 
                         : 'bg-gray-400 cursor-not-allowed'
-                    } px-4 sm:px-6 py-2.5 sm:py-3 text-white font-medium transition-all duration-200 disabled:opacity-70 text-sm sm:text-base`}
+                    } px-4 sm:px-6 py-2.5 sm:py-3 text-white font-medium transition-all duration-200 disabled:opacity-70 text-sm sm:text-base shadow-md hover:shadow-lg`}
                   >
                     {loading ? (
                       <div className="flex items-center gap-2">
@@ -321,6 +346,8 @@ export default function LeadCapture() {
                     setEmailValid(false);
                     setEmailError('');
                     setTouched(false);
+                    setFileSelected(false);
+                    setFileName('');
                   }}
                   className="mt-6 text-primary text-xs sm:text-sm font-medium hover:underline flex items-center gap-1 mx-auto"
                 >

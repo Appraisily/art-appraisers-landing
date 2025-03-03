@@ -156,7 +156,7 @@ export default function Hero() {
                 <a
                   href="https://appraisily.com/start"
                   id="start-appraisal-nav"
-                  className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:from-primary/90 hover:to-blue-600/90 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 animate-pulse-subtle scale-105 ring-2 ring-blue-300/50"
+                  className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-blue-600 px-6 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg hover:from-primary/90 hover:to-blue-600/90 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 animate-pulse-subtle scale-105 ring-2 ring-blue-300/50 hover:shadow-xl"
                   aria-label="Obtener mi tasación - Comienza el proceso de valoración de arte"
                 >
                   <span className="relative">
@@ -164,7 +164,7 @@ export default function Hero() {
                     <span className="absolute -bottom-1 left-0 w-full h-px bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200" aria-hidden="true" />
                   </span>
                   <svg 
-                    className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" 
+                    className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" 
                     viewBox="0 0 20 20" 
                     fill="currentColor"
                     aria-hidden="true"
@@ -175,12 +175,12 @@ export default function Hero() {
                 
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-semibold text-white hover:bg-white/20 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 transition-all duration-200 border border-white/20"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 backdrop-blur-sm px-6 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg font-semibold text-white hover:bg-white/20 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 transition-all duration-200 border border-white/20 hover:border-white/30"
                   aria-label="Ver nuestros servicios de tasación de arte"
                 >
-                  View Services
+                  Ver Servicios
                   <Award 
-                    className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" 
+                    className="h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform duration-200" 
                     aria-hidden="true" 
                   />
                 </a>
