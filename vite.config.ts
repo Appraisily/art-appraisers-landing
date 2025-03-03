@@ -23,15 +23,23 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor': ['react', 'react-dom', 'react-router-dom'],
-          'icons': ['lucide-react'],
-          'critical': [
-            './src/components/Logo.tsx',
-            './src/components/sections/Hero.tsx'
+          vendor: [
+            'react', 
+            'react-dom', 
+            'react-router-dom',
+            'react-helmet-async'
           ],
-          'deferred': [
-            './src/components/TrustFooter.tsx',
-            './src/components/ExpertProfile.tsx'
+          icons: [
+            'lucide-react'
+          ],
+          critical: [
+            './src/components/sections/Hero.tsx',
+            './src/components/TrustBar.tsx', 
+            './src/components/LeadCapture.tsx'
+          ],
+          deferred: [
+            './src/components/LazyComponent.tsx',
+            './src/components/LazyImage.tsx'
           ]
         }
       }
@@ -39,12 +47,14 @@ export default defineConfig({
     assetsInlineLimit: 0
   },
   optimizeDeps: {
-    include: ['react', 'react-dom/client', 'lucide-react', 'react-router-dom'],
-    exclude: []
+    include: ['react', 'react-dom', 'react-router-dom', 'lucide-react']
   },
   server: {
-    headers: {
-      'Cache-Control': 'public, max-age=31536000'
-    }
+    open: true,
+    port: 5173
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    'process.env.VITE_APP_BASE_URL': JSON.stringify(process.env.VITE_APP_BASE_URL || 'https://appraisily.com')
   }
 });

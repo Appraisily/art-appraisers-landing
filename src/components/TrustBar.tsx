@@ -1,25 +1,26 @@
 import React from 'react';
 import { Award, Shield, Check, Users, Star, FileCheck } from 'lucide-react';
+import LazyImage from './LazyImage';
 
 const associations = [
   {
     name: 'International Society of Appraisers (ISA)',
-    logo: 'https://ik.imagekit.io/appraisily/Associations/isa_logo.png',
+    logo: 'https://ik.imagekit.io/appraisily/Associations/isa_logo.png?tr=w-120,h-80,q-70',
     alt: 'ISA Logo'
   },
   {
     name: 'American Appraisers Association (AAA)',
-    logo: 'https://ik.imagekit.io/appraisily/Associations/aaa_logo.png',
+    logo: 'https://ik.imagekit.io/appraisily/Associations/aaa_logo.png?tr=w-120,h-80,q-70',
     alt: 'AAA Logo'
   },
   {
     name: 'Appraisers Association of America',
-    logo: 'https://ik.imagekit.io/appraisily/Associations/appraisers_association.png',
+    logo: 'https://ik.imagekit.io/appraisily/Associations/appraisers_association.png?tr=w-120,h-80,q-70',
     alt: 'Appraisers Association Logo'
   },
   {
     name: 'Art Dealers Association',
-    logo: 'https://ik.imagekit.io/appraisily/Associations/art_dealers.png',
+    logo: 'https://ik.imagekit.io/appraisily/Associations/art_dealers.png?tr=w-120,h-80,q-70',
     alt: 'Art Dealers Association Logo'
   }
 ];
@@ -91,11 +92,15 @@ export default function TrustBar() {
           <div className="flex flex-wrap justify-center items-center gap-8">
             {associations.map((association, index) => (
               <div key={index} className="flex items-center">
-                <img 
+                <LazyImage 
                   src={association.logo} 
                   alt={association.alt} 
-                  className="h-12 sm:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300" 
+                  className="h-12 sm:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300"
                   title={association.name}
+                  placeholderColor="#f9fafb"
+                  blurAmount={3}
+                  width={120}
+                  height={80}
                 />
               </div>
             ))}
