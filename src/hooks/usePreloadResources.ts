@@ -15,7 +15,7 @@ interface ResourceToPreload {
  * @param resources - Array de recursos a precargar
  * @param dependencies - Dependencias para controlar cuando se ejecuta la precarga
  */
-export default function usePreloadResources(
+export function usePreloadResources(
   resources: ResourceToPreload[],
   dependencies: any[] = []
 ) {
