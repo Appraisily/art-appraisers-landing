@@ -12,7 +12,7 @@ export default function LeadCapture() {
   const [fileSelected, setFileSelected] = useState(false);
   const [fileName, setFileName] = useState('');
 
-  // Validación de email en tiempo real
+  // Real-time email validation
   useEffect(() => {
     if (!email) {
       setEmailError('');
@@ -20,18 +20,18 @@ export default function LeadCapture() {
       return;
     }
     
-    // Solo validar si el usuario ha interactuado con el campo
+    // Only validate if user has interacted with the field
     if (!touched) return;
     
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     
     if (!emailRegex.test(email)) {
       if (email.indexOf('@') === -1) {
-        setEmailError('Falta el símbolo @');
+        setEmailError('Missing @ symbol');
       } else if (email.indexOf('.') === -1) {
-        setEmailError('Falta un dominio válido (.com, .es, etc.)');
+        setEmailError('Missing valid domain (.com, .org, etc.)');
       } else {
-        setEmailError('Dirección de email inválida');
+        setEmailError('Invalid email address');
       }
       setEmailValid(false);
     } else {
@@ -43,26 +43,26 @@ export default function LeadCapture() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validar antes de enviar
+    // Validate before sending
     if (!email) {
-      setEmailError('El email es obligatorio');
+      setEmailError('Email is required');
       setTouched(true);
       return;
     }
     
     if (!emailValid) {
-      // Si hay error, resaltar pero no enviar
+      // If there's an error, highlight but don't send
       setTouched(true);
       return;
     }
     
     setLoading(true);
     
-    // Simulación de envío (en producción, conectar con API real)
+    // Submission simulation (in production, connect to a real API)
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-      // Aquí iría el código para enviar el email a un CRM o sistema de email marketing
+      // Here would be the code to send email to a CRM or email marketing system
     }, 1000);
   };
 
@@ -78,19 +78,19 @@ export default function LeadCapture() {
 
   const problems = [
     {
-      title: "¿No sabes cuánto vale tu obra de arte?",
-      description: "Muchos coleccionistas no conocen el valor de mercado actual de sus piezas, lo que puede llevar a ventas por debajo del precio justo o pólizas de seguro inadecuadas.",
-      highlight: "tasación actualizada"
+      title: "Don't know what your artwork is worth?",
+      description: "Many collectors are unaware of the current market value of their pieces, which can lead to sales below fair price or inadequate insurance policies.",
+      highlight: "updated appraisal"
     },
     {
-      title: "¿Necesitas documentación para seguros o herencias?",
-      description: "Sin un informe USPAP compliant, es difícil asegurar correctamente tu colección o gestionar aspectos legales en donaciones o sucesiones.",
-      highlight: "documentación profesional"
+      title: "Need documentation for insurance or inheritance?",
+      description: "Without a USPAP compliant report, it's difficult to properly insure your collection or manage legal aspects in donations or successions.",
+      highlight: "professional documentation"
     },
     {
-      title: "¿Dudas de la autenticidad o procedencia?",
-      description: "El mercado está lleno de atribuciones dudosas y falsificaciones. Un análisis experto de procedencia y autenticidad puede incrementar significativamente el valor.",
-      highlight: "verificación experta"
+      title: "Doubts about authenticity or provenance?",
+      description: "The market is full of dubious attributions and forgeries. An expert analysis of provenance and authenticity can significantly increase value.",
+      highlight: "expert verification"
     }
   ];
 
@@ -99,13 +99,13 @@ export default function LeadCapture() {
       <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_0.5px,transparent_0.5px)] opacity-10 [background-size:16px_16px]" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12">
         <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-start">
-          {/* Problema-Solución */}
+          {/* Problem-Solution */}
           <div className="order-2 md:order-1">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-              <span className="text-primary border-b-2 border-primary pb-1">URGENTE:</span> Las valoraciones de arte fluctúan constantemente
+              <span className="text-primary border-b-2 border-primary pb-1">URGENT:</span> Art valuations fluctuate constantly
             </h2>
             <p className="text-gray-700 mb-6">
-              <strong>El mercado del arte es notablemente volátil</strong>. ¿Sabías que el valor de tu obra podría haber cambiado hasta un <span className="bg-yellow-100 px-1 font-medium">30% en el último año</span>? No arriesgues con valoraciones desactualizadas.
+              <strong>The art market is notably volatile</strong>. Did you know that the value of your artwork could have changed by up to <span className="bg-yellow-100 px-1 font-medium">30% in the last year</span>? Don't risk outdated valuations.
             </p>
             
             <div className="space-y-4 sm:space-y-6">
@@ -138,20 +138,20 @@ export default function LeadCapture() {
                 </div>
               </div>
               <div>
-                <h3 className="font-medium text-gray-900 text-sm sm:text-base">Nuestra metodología de tasación</h3>
+                <h3 className="font-medium text-gray-900 text-sm sm:text-base">Our appraisal methodology</h3>
                 <p className="mt-1 text-xs sm:text-sm text-gray-600">
-                  Nuestros <strong>peritos certificados USPAP</strong> evalúan tus obras aplicando <span className="italic">connoisseurship</span> y análisis de mercado comparativo. Proporcionamos informes <strong>Fair Market Value (FMV)</strong> e <strong>Insurance Value</strong> respaldados por décadas de expertise.
+                  Our <strong>USPAP certified appraisers</strong> evaluate your works using <span className="italic">connoisseurship</span> and comparative market analysis. We provide <strong>Fair Market Value (FMV)</strong> and <strong>Insurance Value</strong> reports backed by decades of expertise.
                 </p>
               </div>
             </div>
           </div>
           
-          {/* Formulario de captura */}
+          {/* Capture form */}
           <div className="order-1 md:order-2 bg-white rounded-2xl shadow-xl p-5 sm:p-8 border border-gray-100 relative">
-            {/* Sello de urgencia */}
+            {/* Urgency badge */}
             <div className="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse flex items-center gap-1 whitespace-nowrap z-10">
               <Clock size={14} />
-              VENTANA LIMITADA
+              LIMITED TIME
             </div>
             
             {!submitted ? (
@@ -163,7 +163,7 @@ export default function LeadCapture() {
                     </div>
                   </div>
                   <h3 className="text-lg sm:text-xl font-medium text-gray-900">
-                    Recibe una <span className="text-primary font-bold">mini-evaluación gratuita</span>
+                    Get a <span className="text-primary font-bold">free mini-evaluation</span>
                   </h3>
                 </div>
                 
@@ -172,25 +172,25 @@ export default function LeadCapture() {
                     <div className="flex-shrink-0 mt-1 rounded-full bg-green-100 p-0.5 sm:p-1">
                       <CheckCircle2 size={10} className="text-green-600 sm:w-3 sm:h-3" />
                     </div>
-                    <span className="text-xs sm:text-sm"><strong>Valoración preliminar</strong> basada en datos de mercado</span>
+                    <span className="text-xs sm:text-sm"><strong>Preliminary valuation</strong> based on market data</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <div className="flex-shrink-0 mt-1 rounded-full bg-green-100 p-0.5 sm:p-1">
                       <CheckCircle2 size={10} className="text-green-600 sm:w-3 sm:h-3" />
                     </div>
-                    <span className="text-xs sm:text-sm">Opinión sobre <strong>autenticidad y atribución</strong></span>
+                    <span className="text-xs sm:text-sm">Opinion on <strong>authenticity and attribution</strong></span>
                   </li>
                   <li className="flex items-start gap-2">
                     <div className="flex-shrink-0 mt-1 rounded-full bg-green-100 p-0.5 sm:p-1">
                       <CheckCircle2 size={10} className="text-green-600 sm:w-3 sm:h-3" />
                     </div>
-                    <span className="text-xs sm:text-sm">Respuesta en <strong>24-48 horas</strong> por tasadores certificados</span>
+                    <span className="text-xs sm:text-sm">Response within <strong>24-48 hours</strong> from certified appraisers</span>
                   </li>
                 </ul>
                 
                 <div className="bg-blue-50 p-2 sm:p-3 rounded-lg mb-4 sm:mb-6 border-l-4 border-primary">
                   <p className="text-xs sm:text-sm text-gray-700">
-                    <strong>¡URGENTE!</strong> El mercado del arte está cambiando rápidamente. Asegura el valor actual de tu obra antes de que las fluctuaciones de mercado afecten su valoración.
+                    <strong>URGENT!</strong> The art market is changing rapidly. Secure the current value of your artwork before market fluctuations affect its valuation.
                   </p>
                 </div>
                 
@@ -225,7 +225,7 @@ export default function LeadCapture() {
                           setTouched(true);
                         }}
                         required
-                        placeholder="tu@email.com"
+                        placeholder="your@email.com"
                         className={`w-full pl-10 pr-10 py-2 sm:py-3 rounded-lg border ${
                           emailError && touched
                             ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
@@ -246,20 +246,20 @@ export default function LeadCapture() {
                     
                     {email && !emailError && touched && (
                       <p className="mt-1 text-xs text-green-600">
-                        Email válido
+                        Valid email
                       </p>
                     )}
                     
                     {focused && !touched && email && (
                       <p className="mt-1 text-xs text-gray-500">
-                        Introduce un email válido para recibir la mini-evaluación
+                        Enter a valid email to receive your mini-evaluation
                       </p>
                     )}
                   </div>
                   
                   <div>
                     <label htmlFor="artwork-photo" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
-                      Foto de la obra (opcional)
+                      Artwork photo (optional)
                     </label>
                     <div className="relative">
                       <div className={`flex items-center justify-center w-full p-2 text-xs sm:text-sm text-gray-600 bg-gray-50 rounded-lg border ${fileSelected ? 'border-green-300' : 'border-gray-300'} cursor-pointer hover:bg-gray-100 transition-colors`}>
@@ -275,13 +275,13 @@ export default function LeadCapture() {
                           {fileSelected ? (
                             <span className="truncate max-w-[200px]">{fileName}</span>
                           ) : (
-                            <span>Selecciona un archivo o arrastra aquí</span>
+                            <span>Select a file or drag it here</span>
                           )}
                         </label>
                       </div>
                     </div>
                     <p className="mt-1 text-3xs sm:text-xs text-gray-500">
-                      Formatos aceptados: JPG, PNG. Máximo 5 MB.
+                      Accepted formats: JPG, PNG. Maximum 5 MB.
                     </p>
                   </div>
                   
@@ -300,11 +300,11 @@ export default function LeadCapture() {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Procesando...
+                        Processing...
                       </div>
                     ) : (
                       <>
-                        Solicitar mini-tasación GRATUITA
+                        Request FREE Mini-Appraisal
                         <ArrowRight size={16} className="sm:h-[18px] sm:w-[18px]" />
                       </>
                     )}
@@ -315,7 +315,7 @@ export default function LeadCapture() {
                   <svg className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                   </svg>
-                  <span>Información 100% confidencial - Nunca compartiremos tus datos</span>
+                  <span>100% confidential information - We'll never share your data</span>
                 </div>
               </>
             ) : (
@@ -326,17 +326,17 @@ export default function LeadCapture() {
                   </div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2">
-                  ¡Solicitud recibida!
+                  Request received!
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-600 mb-6">
-                  Gracias por contactarnos. Nuestros expertos en tasación revisarán tu obra y te enviarán una mini-evaluación a tu correo electrónico <strong className="text-primary">{email}</strong> en las próximas <strong>24-48 horas</strong>.
+                  Thank you for contacting us. Our appraisal experts will review your artwork and send a mini-evaluation to your email <strong className="text-primary">{email}</strong> within the next <strong>24-48 hours</strong>.
                 </p>
                 <div className="bg-blue-50 p-3 sm:p-4 rounded-lg border border-blue-100 text-left">
                   <p className="text-xs sm:text-sm text-gray-700 mb-2">
-                    <strong>SIGUIENTE PASO:</strong>
+                    <strong>NEXT STEP:</strong>
                   </p>
                   <p className="text-3xs sm:text-xs text-gray-600">
-                    Revisa tu bandeja de entrada. Te hemos enviado un email con información sobre cómo preparar tu obra para una tasación completa, así como detalles sobre nuestro proceso de evaluación profesional.
+                    Check your inbox. We've sent you an email with information on how to prepare your artwork for a complete appraisal, as well as details about our professional evaluation process.
                   </p>
                 </div>
                 <button
@@ -352,7 +352,7 @@ export default function LeadCapture() {
                   className="mt-6 text-primary text-xs sm:text-sm font-medium hover:underline flex items-center gap-1 mx-auto"
                 >
                   <ArrowRight size={12} className="transform rotate-180 sm:h-4 sm:w-4" />
-                  Enviar otra solicitud
+                  Send another request
                 </button>
               </div>
             )}
