@@ -1,14 +1,14 @@
-// URL base de la aplicación
+// Base URL of the application
 export const BASE_URL = 'https://appraisily.com';
 
-// Ruta base de las imágenes
+// Base path for images
 export const IMG_BASE = 'https://ik.imagekit.io/appraisily/WebPage';
 
-// Datos básicos del sitio
+// Basic site information
 export const DEFAULT_SITE_NAME = 'Appraisily';
 export const DEFAULT_DESCRIPTION = 'Professional art appraisal services for insurance, donations, estate planning and more. Get accurate valuations from certified experts.';
 
-// Información estructurada de la organización (JSON-LD)
+// Organization structured data (JSON-LD)
 export const ORGANIZATION_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -28,22 +28,21 @@ export const ORGANIZATION_SCHEMA = {
   }
 };
 
-// Importamos los esquemas estructurados desde nuestro nuevo archivo
+// Import structured data schemas from our schema file
 import { getArtAppraiserSchema } from '../schemas';
 
-// Página de tasadores de arte (ArtAppraiser)
+// Art Appraiser page
 export const ART_APPRAISER_SEO = {
-  title: 'Expertos en Tasación de Arte | Valoración Profesional de Obras',
-  description: 'Obtén tasaciones precisas de tu arte con nuestros expertos certificados. Informes profesionales para seguros, donaciones y herencias. Más de 15.000 obras evaluadas.',
-  keywords: 'tasación de arte, valoración de obras, tasador profesional, arte, autenticación, precio de mercado, certificado de autenticidad, valor de mercado arte',
-  canonical: '/art-appraiser',
+  title: 'Professional Art Appraisers | Expert Artwork Valuation',
+  description: 'Get accurate appraisals for your artwork from our certified experts. Professional reports for insurance, donations, and estates. Over 15,000 pieces evaluated.',
+  keywords: 'art appraisal, artwork valuation, professional appraiser, art, authentication, market price, certificate of authenticity, art market value',
+  canonical: '/',
   ogType: 'website',
   ogImage: `${IMG_BASE}/art_appraiser_og.jpg`,
-  ogUrl: '/art-appraiser',
+  ogUrl: '/',
   langAlternates: [
-    { lang: 'en', url: '/art-appraiser' },
-    { lang: 'es', url: '/es/tasador-arte' }
+    { lang: 'en', url: '/' }
   ],
-  // Utilizamos ahora el array de esquemas completo
+  // Using the complete schema array
   structuredData: getArtAppraiserSchema()
 }; 

@@ -15,10 +15,10 @@ interface SEOProps {
   children?: React.ReactNode;
 }
 
-// URL base de la aplicación
+// Base URL of the application
 const BASE_URL = 'https://appraisily.com';
 
-// Ruta base de las imágenes
+// Base path for images
 const IMG_BASE = 'https://ik.imagekit.io/appraisily/WebPage';
 
 export default function SEO({
@@ -34,20 +34,20 @@ export default function SEO({
   langAlternates = [],
   children
 }: SEOProps) {
-  // Asegurar que el título tenga el nombre del sitio
+  // Ensure the title includes the site name
   const formattedTitle = title.includes('Appraisily') ? title : `${title} | Appraisily`;
   
-  // Construir URL canónica
+  // Build canonical URL
   const canonicalUrl = canonical 
     ? `${BASE_URL}${canonical.startsWith('/') ? '' : '/'}${canonical}` 
     : undefined;
   
-  // Construir URL para Open Graph
+  // Build URL for Open Graph
   const ogFullUrl = ogUrl 
     ? `${BASE_URL}${ogUrl.startsWith('/') ? '' : '/'}${ogUrl}` 
     : canonicalUrl;
 
-  // Convertir structuredData a array si no lo es
+  // Convert structuredData to array if it's not already
   const structuredDataArray = structuredData 
     ? Array.isArray(structuredData) 
       ? structuredData 
@@ -56,7 +56,7 @@ export default function SEO({
 
   return (
     <Helmet>
-      {/* Metadatos básicos */}
+      {/* Basic metadata */}
       <title>{formattedTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
@@ -85,7 +85,7 @@ export default function SEO({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
       
-      {/* Alternativas de idioma */}
+      {/* Language alternatives */}
       {langAlternates.map(({ lang, url }) => (
         <link 
           key={lang} 
@@ -95,14 +95,14 @@ export default function SEO({
         />
       ))}
       
-      {/* JSON-LD Structured Data - Múltiples schemas */}
+      {/* JSON-LD Structured Data - Multiple schemas */}
       {structuredDataArray.map((data, index) => (
         <script key={`structured-data-${index}`} type="application/ld+json">
           {JSON.stringify(data)}
         </script>
       ))}
       
-      {/* Contenido adicional si existe */}
+      {/* Additional content if it exists */}
       {children}
     </Helmet>
   );

@@ -6,37 +6,37 @@ import { HelmetProvider } from 'react-helmet-async';
 import { preloadResources } from './hooks/usePreloadResources';
 import { globalResources, artAppraiserResources, combineResources } from './config/preload.config';
 
-// Importación lazy para la página ArtAppraiser
+// Lazy import for the ArtAppraiser page
 const ArtAppraiser = React.lazy(() => import('./pages/ArtAppraiser'));
 
-// Componente de carga para Suspense
+// Loading component for Suspense
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-gray-50">
     <div className="animate-pulse space-y-4 flex flex-col items-center">
       <div className="h-12 w-12 rounded-full bg-gradient-to-r from-blue-600 to-blue-800"></div>
       <div className="h-2 w-24 bg-gray-300 rounded"></div>
-      <p className="text-sm text-gray-500">Cargando...</p>
+      <p className="text-sm text-gray-500">Loading...</p>
     </div>
   </div>
 );
 
-// Componente para gestionar analíticas y recursos
+// Component for analytics and resource management
 const RouteObserver = () => {
   const location = useLocation();
   
   useEffect(() => {
-    // Precargar recursos específicos según la ruta
+    // Preload specific resources based on route
     if (location.pathname === '/' || location.pathname === '/art-appraiser') {
       preloadResources(combineResources(globalResources, artAppraiserResources));
     } else {
       preloadResources(globalResources);
     }
     
-    // Analíticas de página (ejemplo)
+    // Page analytics (example)
     const currentPath = location.pathname;
-    console.log(`Página vista: ${currentPath}`);
+    console.log(`Page viewed: ${currentPath}`);
     
-    // Aquí podríamos integrar con Google Analytics, etc.
+    // Here we could integrate with Google Analytics, etc.
     
   }, [location.pathname]);
   
@@ -68,12 +68,12 @@ const App = () => {
                 <div className="min-h-screen flex items-center justify-center bg-gray-50">
                   <div className="text-center">
                     <h1 className="text-4xl font-bold text-gray-900">404</h1>
-                    <p className="mt-2 text-lg text-gray-600">Página no encontrada</p>
+                    <p className="mt-2 text-lg text-gray-600">Page not found</p>
                     <a 
                       href="/" 
                       className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
                     >
-                      Volver a inicio
+                      Back to Home
                     </a>
                   </div>
                 </div>
@@ -86,10 +86,10 @@ const App = () => {
   );
 };
 
-// Precargar recursos globales inmediatamente
+// Preload global resources immediately
 preloadResources(globalResources);
 
-// Desactivar el log en producción
+// Disable logging in production
 if (process.env.NODE_ENV === 'production') {
   console.log = () => {};
   console.warn = () => {};

@@ -121,10 +121,10 @@ export const createAppraisalServiceSchema = () => ({
       },
       author: {
         '@type': 'Person',
-        name: 'María García'
+        name: 'Mary Garcia'
       },
       datePublished: '2023-06-15',
-      reviewBody: 'Su tasación me ayudó a vender mi colección por un 40% más de lo que esperaba. Profesionales excepcionales.'
+      reviewBody: 'Their appraisal helped me sell my collection for 40% more than I expected. Exceptional professionals.'
     },
     {
       '@type': 'Review',
@@ -135,10 +135,10 @@ export const createAppraisalServiceSchema = () => ({
       },
       author: {
         '@type': 'Person',
-        name: 'Javier Rodríguez'
+        name: 'James Rodriguez'
       },
       datePublished: '2023-08-22',
-      reviewBody: 'Descubrí que tenía una obra mucho más valiosa de lo que pensaba. El informe fue detallado y muy profesional.'
+      reviewBody: 'I discovered that I had a much more valuable artwork than I thought. The report was detailed and very professional.'
     }
   ],
   aggregateRating: {
@@ -156,34 +156,34 @@ export const createFAQSchema = () => ({
   mainEntity: [
     {
       '@type': 'Question',
-      name: '¿Cuánto cuesta una tasación profesional de arte?',
+      name: 'How much does a professional art appraisal cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Nuestros servicios de tasación comienzan desde €59 para evaluaciones básicas y pueden llegar hasta €299 para informes completos con certificación para seguros e impuestos. El precio depende del tipo de informe, número de obras y urgencia.'
+        text: 'Our appraisal services start from €59 for basic evaluations and can go up to €299 for complete reports with insurance and tax certification. The price depends on the type of report, number of artworks, and urgency.'
       }
     },
     {
       '@type': 'Question',
-      name: '¿Cuánto tiempo toma recibir una tasación de arte?',
+      name: 'How long does it take to receive an art appraisal?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'El tiempo estándar de entrega es de 48-72 horas para informes básicos. Para tasaciones completas con investigación exhaustiva, el tiempo puede ser de 5-7 días hábiles. Ofrecemos servicios urgentes con entrega en 24 horas con un costo adicional.'
+        text: 'The standard delivery time is 48-72 hours for basic reports. For comprehensive appraisals with thorough research, the time can be 5-7 business days. We offer urgent services with 24-hour delivery at an additional cost.'
       }
     },
     {
       '@type': 'Question',
-      name: '¿Qué información necesito proporcionar para tasar mi obra de arte?',
+      name: 'What information do I need to provide to appraise my artwork?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Necesitamos fotografías de alta calidad de la obra (frente, reverso, firma, detalles), medidas, técnica, cualquier documentación existente (certificados previos, facturas de compra, procedencia) y, si es posible, información sobre el artista y fecha de creación.'
+        text: 'We need high-quality photographs of the artwork (front, back, signature, details), measurements, technique, any existing documentation (previous certificates, purchase invoices, provenance), and, if possible, information about the artist and date of creation.'
       }
     },
     {
       '@type': 'Question',
-      name: '¿Sus tasaciones son válidas para seguros e impuestos?',
+      name: 'Are your appraisals valid for insurance and taxes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sí, nuestros informes completos cumplen con los estándares USPAP (Uniform Standards of Professional Appraisal Practice) y son aceptados por compañías de seguros, entidades fiscales y autoridades legales para trámites oficiales.'
+        text: 'Yes, our complete reports comply with USPAP (Uniform Standards of Professional Appraisal Practice) standards and are accepted by insurance companies, tax authorities, and legal entities for official procedures.'
       }
     }
   ]
@@ -193,8 +193,8 @@ export const createFAQSchema = () => ({
 export const createAppraisalProcessSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  name: 'Cómo obtener una tasación profesional de arte',
-  description: 'Guía paso a paso para conseguir una valoración precisa y profesional de tus obras de arte.',
+  name: 'How to Get a Professional Art Appraisal',
+  description: 'Step-by-step guide to obtaining an accurate and professional valuation of your artwork.',
   totalTime: 'P3D',
   estimatedCost: {
     '@type': 'MonetaryAmount',
@@ -205,36 +205,36 @@ export const createAppraisalProcessSchema = () => ({
   step: [
     {
       '@type': 'HowToStep',
-      name: 'Envío de información',
-      text: 'Completa nuestro formulario online con detalles sobre tu obra y sube fotografías de alta calidad.',
+      name: 'Submit Information',
+      text: 'Complete our online form with details about your artwork and upload high-quality photographs.',
       image: `${IMG_BASE}/process_step1.jpg`,
       url: `${BASE_URL}/art-appraiser#step1`
     },
     {
       '@type': 'HowToStep',
-      name: 'Análisis preliminar',
-      text: 'Nuestros expertos realizarán un primer análisis para determinar el tipo de tasación necesaria.',
+      name: 'Preliminary Analysis',
+      text: 'Our experts will conduct an initial analysis to determine the type of appraisal needed.',
       image: `${IMG_BASE}/process_step2.jpg`,
       url: `${BASE_URL}/art-appraiser#step2`
     },
     {
       '@type': 'HowToStep',
-      name: 'Investigación y valoración',
-      text: 'Realizamos un estudio detallado del mercado, comparables, procedencia y autenticidad.',
+      name: 'Research and Valuation',
+      text: 'We conduct a detailed market study, comparables, provenance, and authenticity research.',
       image: `${IMG_BASE}/process_step3.jpg`,
       url: `${BASE_URL}/art-appraiser#step3`
     },
     {
       '@type': 'HowToStep',
-      name: 'Elaboración del informe',
-      text: 'Creamos un informe profesional con todos los detalles de la valoración y certificación.',
+      name: 'Report Creation',
+      text: 'We create a professional report with all the valuation details and certification.',
       image: `${IMG_BASE}/process_step4.jpg`,
       url: `${BASE_URL}/art-appraiser#step4`
     },
     {
       '@type': 'HowToStep',
-      name: 'Entrega y asesoramiento',
-      text: 'Recibes tu informe de tasación y asesoramiento personalizado sobre cómo proceder.',
+      name: 'Delivery and Consultation',
+      text: 'You receive your appraisal report and personalized advice on how to proceed.',
       image: `${IMG_BASE}/process_step5.jpg`,
       url: `${BASE_URL}/art-appraiser#step5`
     }

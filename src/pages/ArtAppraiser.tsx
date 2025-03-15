@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
-// Componente SEO
+// SEO Component
 import SEO from '../components/SEO';
 import { ART_APPRAISER_SEO } from '../config/seo.config';
 
-// Componentes críticos por encima del pliegue (eager loading)
+// Critical components above the fold (eager loading)
 import Hero from '../components/sections/Hero';
 import LeadCapture from '../components/LeadCapture';
 import TrustBar from '../components/TrustBar';
 import Features from '../components/sections/Features';
 import LazyComponent from '../components/LazyComponent';
 
-// Importaciones regulares para componentes por debajo del pliegue
-// Usamos importaciones regulares ya que LazyComponent manejará la visibilidad
+// Regular imports for components below the fold
+// We use regular imports since LazyComponent will handle visibility
 import Process from '../components/sections/Process';
 import ValueProposition from '../components/ValueProposition';
 import RecentAppraisals from '../components/sections/RecentAppraisals';
@@ -21,6 +21,13 @@ import Services from '../components/Services';
 import Experts from '../components/Experts';
 import TrustFooter from '../components/TrustFooter';
 
+// Add type declaration for window.dataLayer
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}
+
 export default function ArtAppraiser() {
   useEffect(() => {
     // Push page view to GTM
@@ -28,15 +35,16 @@ export default function ArtAppraiser() {
       event: 'pageview',
       page: {
         title: ART_APPRAISER_SEO.title,
-        path: '/art-appraiser'
+        description: ART_APPRAISER_SEO.description,
+        path: window.location.pathname
       }
     });
     
-    // Prefetch componentes críticos cuando la página está inactiva
-    // Esto mejora la percepción de velocidad para componentes que pronto serán visibles
+    // Prefetch components when the page is inactive
+    // This improves perception of speed for components that will soon be visible
     if ('requestIdleCallback' in window) {
       window.requestIdleCallback(() => {
-        // Importación dinámica para prefetch durante tiempo de inactividad
+        // Dynamic import for prefetching during idle time
         import('../components/sections/Process');
         import('../components/ValueProposition');
       }, { timeout: 2000 });
@@ -45,59 +53,49 @@ export default function ArtAppraiser() {
 
   return (
     <>
-      {/* Componente SEO con metadatos optimizados */}
-      <SEO
-        title={ART_APPRAISER_SEO.title}
-        description={ART_APPRAISER_SEO.description}
-        canonical={ART_APPRAISER_SEO.canonical}
-        ogType={ART_APPRAISER_SEO.ogType}
-        ogImage={ART_APPRAISER_SEO.ogImage}
-        ogUrl={ART_APPRAISER_SEO.ogUrl}
-        structuredData={ART_APPRAISER_SEO.structuredData}
-        keywords={ART_APPRAISER_SEO.keywords}
-        langAlternates={ART_APPRAISER_SEO.langAlternates}
-      />
-    
-      <div className="bg-white">
-        {/* Componentes críticos por encima del pliegue (eager loading) */}
+      {/* SEO Head */}
+      <SEO {...ART_APPRAISER_SEO} />
+      
+      {/* Critical Components - Loaded Eagerly */}
+      <main className="relative">
         <Hero />
-        <LeadCapture />
         <TrustBar />
+        <LeadCapture />
         <Features />
         
-        {/* Componentes por debajo del pliegue cargados con LazyComponent */}
-        <LazyComponent rootMargin="200px">
+        {/* Below-the-fold Components with Lazy Loading */}
+        <LazyComponent threshold={0.1} rootMargin="100px">
           <Process />
         </LazyComponent>
         
-        <LazyComponent rootMargin="200px">
+        <LazyComponent threshold={0.1} rootMargin="100px">
           <ValueProposition />
         </LazyComponent>
         
-        <LazyComponent rootMargin="200px">
+        <LazyComponent threshold={0.1} rootMargin="100px">
           <RecentAppraisals />
         </LazyComponent>
         
-        <LazyComponent rootMargin="200px">
+        <LazyComponent threshold={0.1} rootMargin="100px">
           <SuccessStories />
         </LazyComponent>
         
-        <LazyComponent rootMargin="150px">
+        <LazyComponent threshold={0.1} rootMargin="100px">
           <WhyChooseUs />
         </LazyComponent>
         
-        <LazyComponent rootMargin="150px">
+        <LazyComponent threshold={0.1} rootMargin="100px">
           <Services />
         </LazyComponent>
         
-        <LazyComponent rootMargin="150px">
+        <LazyComponent threshold={0.1} rootMargin="100px">
           <Experts />
         </LazyComponent>
         
-        <LazyComponent rootMargin="100px">
+        <LazyComponent threshold={0.1} rootMargin="100px">
           <TrustFooter />
         </LazyComponent>
-      </div>
+      </main>
     </>
   );
 }
