@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, Star, Globe2 } from 'lucide-react';
+import LazyImage from './LazyImage';
 
 const experts = [
   {
@@ -51,6 +52,25 @@ export default function Experts() {
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Our team of certified professionals brings decades of combined experience in art and antique appraisal.
           </p>
+        </div>
+
+        {/* Hero Image Section */}
+        <div className="mt-12 mb-16">
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-xl">
+            <LazyImage
+              src="https://ik.imagekit.io/appraisily/WebPage/escene_appraiser.png?updatedAt=1741034482307"
+              alt="Professional Art Appraiser at Work"
+              className="w-full h-auto object-cover"
+              width={1456}
+              height={816}
+              placeholderColor="#f9fafb"
+              blurAmount={10}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <p className="text-lg font-medium">Expert appraisers providing detailed analysis of your valuable pieces</p>
+            </div>
+          </div>
         </div>
 
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">

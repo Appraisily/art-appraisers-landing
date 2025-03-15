@@ -5,31 +5,24 @@ import LazyImage from './LazyImage';
 const associations = [
   {
     name: 'International Society of Appraisers (ISA)',
-    logo: 'https://ik.imagekit.io/appraisily/Associations/isa_logo.png?tr=w-120,h-80,q-70',
+    logo: 'https://ik.imagekit.io/appraisily/WebPage/isa_logo.jpg?tr=w-180,h-120,q-100',
     alt: 'ISA Logo',
-    width: 120,
-    height: 80
+    width: 180,
+    height: 120
   },
   {
     name: 'American Appraisers Association (AAA)',
-    logo: 'https://ik.imagekit.io/appraisily/Associations/aaa_logo.png?tr=w-120,h-80,q-70',
+    logo: 'https://ik.imagekit.io/appraisily/WebPage/aaa_logo.png?tr=w-180,h-120,q-100',
     alt: 'AAA Logo',
-    width: 120,
-    height: 80
+    width: 180,
+    height: 120
   },
   {
     name: 'Appraisers Association of America',
-    logo: 'https://ik.imagekit.io/appraisily/Associations/appraisers_association.png?tr=w-120,h-80,q-70',
+    logo: 'https://ik.imagekit.io/appraisily/WebPage/appraisers_association.jpg?tr=w-180,h-120,q-100',
     alt: 'Appraisers Association Logo',
-    width: 120, 
-    height: 80
-  },
-  {
-    name: 'Art Dealers Association',
-    logo: 'https://ik.imagekit.io/appraisily/Associations/art_dealers.png?tr=w-120,h-80,q-70',
-    alt: 'Art Dealers Association Logo',
-    width: 120,
-    height: 80
+    width: 180,
+    height: 120
   }
 ];
 
@@ -97,19 +90,25 @@ export default function TrustBar() {
         {/* Professional Associations */}
         <div className="flex flex-col items-center">
           <h3 className="text-xs sm:text-sm font-medium text-gray-500 mb-4 sm:mb-6 text-center">CERTIFIED BY PROFESSIONAL ASSOCIATIONS</h3>
-          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
+          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-16">
             {associations.map((association, index) => (
-              <div key={index} className="flex items-center">
-                <LazyImage 
-                  src={association.logo} 
-                  alt={association.alt} 
-                  className="h-10 sm:h-12 md:h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300"
-                  title={association.name}
-                  placeholderColor="#f9fafb"
-                  blurAmount={3}
-                  width={association.width}
-                  height={association.height}
-                />
+              <div key={index} className="group relative flex items-center">
+                <div className="relative overflow-hidden rounded-lg bg-white p-4 shadow-md transition-all duration-300 group-hover:shadow-lg">
+                  <LazyImage 
+                    src={association.logo} 
+                    alt={association.alt} 
+                    className="h-12 sm:h-14 md:h-16 w-auto filter grayscale opacity-75 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                    title={association.name}
+                    placeholderColor="#ffffff"
+                    blurAmount={3}
+                    width={association.width}
+                    height={association.height}
+                  />
+                  <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-gray-200 group-hover:ring-primary/20 transition-colors duration-300" />
+                </div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 bg-white px-3 py-1 rounded-full text-xs font-medium text-gray-600 shadow-sm border border-gray-100 transition-all duration-300 group-hover:opacity-100 group-hover:-bottom-6 whitespace-nowrap">
+                  {association.name}
+                </div>
               </div>
             ))}
           </div>

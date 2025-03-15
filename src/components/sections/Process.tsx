@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Upload, Search, TrendingUp, FileText, Clock, ArrowRight } from 'lucide-react';
+import LazyImage from '../LazyImage';
 
 const steps = [
   {
@@ -9,7 +10,9 @@ const steps = [
     timeline: 'Immediate',
     iconClass: 'bg-blue-100',
     iconTextClass: 'text-blue-600',
-    badgeClass: 'bg-blue-50 text-blue-700'
+    badgeClass: 'bg-blue-50 text-blue-700',
+    image: 'https://ik.imagekit.io/appraisily/WebPage/lab_photo.png?updatedAt=1741034482319', // Placeholder until you provide the actual image
+    imageAlt: 'Submit your artwork for appraisal'
   },
   {
     title: 'Image Analysis',
@@ -18,7 +21,9 @@ const steps = [
     timeline: 'Minutes',
     iconClass: 'bg-indigo-100',
     iconTextClass: 'text-indigo-600',
-    badgeClass: 'bg-indigo-50 text-indigo-700'
+    badgeClass: 'bg-indigo-50 text-indigo-700',
+    image: 'https://ik.imagekit.io/appraisily/WebPage/lab_photo.png?updatedAt=1741034482319', // Placeholder until you provide the actual image
+    imageAlt: 'Advanced image analysis process'
   },
   {
     title: 'Market Valuation',
@@ -27,7 +32,9 @@ const steps = [
     timeline: '12 Hours',
     iconClass: 'bg-purple-100',
     iconTextClass: 'text-purple-600',
-    badgeClass: 'bg-purple-50 text-purple-700'
+    badgeClass: 'bg-purple-50 text-purple-700',
+    image: 'https://ik.imagekit.io/appraisily/WebPage/lab_photo.png?updatedAt=1741034482319', // Placeholder until you provide the actual image
+    imageAlt: 'Market valuation analysis'
   },
   {
     title: 'Receive Report',
@@ -36,11 +43,15 @@ const steps = [
     timeline: '24 Hours',
     iconClass: 'bg-green-100',
     iconTextClass: 'text-green-600',
-    badgeClass: 'bg-green-50 text-green-700'
+    badgeClass: 'bg-green-50 text-green-700',
+    image: 'https://ik.imagekit.io/appraisily/WebPage/lab_photo.png?updatedAt=1741034482319', // Placeholder until you provide the actual image
+    imageAlt: 'Final appraisal report'
   }
 ];
 
 export default function Process() {
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
     <div className="relative bg-gradient-to-b from-white to-blue-50 py-24 sm:py-32 overflow-hidden">
       {/* Background Pattern */}
@@ -61,81 +72,134 @@ export default function Process() {
             </p>
           </div>
 
-          {/* Desktop Timeline */}
-          <div className="hidden lg:block relative mt-16 mx-auto max-w-5xl">
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-200 via-indigo-200 to-purple-200 transform -translate-x-1/2 rounded-full" />
-            
-            <div className="space-y-16">
-              {steps.map((step, index) => (
-                <div key={step.title} className="relative group">
-                  {/* Center dot */}
-                  <div className="absolute top-12 left-1/2 w-6 h-6 rounded-full bg-white shadow-md border-2 border-primary transform -translate-x-1/2 z-10 
-                                group-hover:scale-110 transition-transform duration-300" />
-                  
-                  <div className={`relative flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                    <div className={`w-[calc(50%-2rem)] ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                      <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100
-                                    group-hover:transform group-hover:-translate-y-1 group-hover:border-primary/20">
-                        <div className="flex items-center gap-4">
-                          <div className="flex-shrink-0">
-                            <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${step.iconClass}`}>
-                              <step.icon className={`h-6 w-6 ${step.iconTextClass}`} />
+          {/* Main Content Grid */}
+          <div className="mt-16 lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-16">
+            {/* Left Side: Timeline */}
+            <div className="relative">
+              {/* Desktop Timeline */}
+              <div className="hidden lg:block relative">
+                <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-200 via-indigo-200 to-purple-200 rounded-full" />
+                
+                <div className="space-y-12">
+                  {steps.map((step, index) => (
+                    <div 
+                      key={step.title} 
+                      className="relative group"
+                      onMouseEnter={() => setActiveStep(index)}
+                    >
+                      {/* Left dot */}
+                      <div className={`absolute left-8 top-6 w-6 h-6 rounded-full bg-white shadow-md border-2 ${activeStep === index ? 'border-primary scale-110' : 'border-gray-300'} transform -translate-x-1/2 z-10 
+                                    transition-all duration-300`} />
+                      
+                      <div className="relative ml-16">
+                        <div className={`bg-white p-6 rounded-xl shadow-md transition-all duration-300 border ${
+                          activeStep === index 
+                            ? 'border-primary/20 shadow-lg -translate-y-1' 
+                            : 'border-gray-100 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20'
+                        }`}>
+                          <div className="flex items-center gap-4">
+                            <div className="flex-shrink-0">
+                              <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${step.iconClass}`}>
+                                <step.icon className={`h-6 w-6 ${step.iconTextClass}`} />
+                              </div>
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700">
+                                Step {index + 1}
+                              </span>
+                              <span className={`mt-1 inline-flex items-center rounded-full ${step.badgeClass} px-2.5 py-1 text-xs font-medium`}>
+                                {step.timeline}
+                              </span>
                             </div>
                           </div>
-                          <div className="flex flex-col">
-                            <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700">
-                              Step {index + 1}
-                            </span>
-                            <span className={`mt-1 inline-flex items-center rounded-full ${step.badgeClass} px-2.5 py-1 text-xs font-medium`}>
-                              {step.timeline}
-                            </span>
-                          </div>
+                          <h3 className="mt-4 text-xl font-semibold text-gray-900">{step.title}</h3>
+                          <p className="mt-2 text-gray-600">{step.description}</p>
                         </div>
-                        <h3 className="mt-4 text-xl font-semibold text-gray-900">{step.title}</h3>
-                        <p className="mt-2 text-gray-600">{step.description}</p>
                       </div>
                     </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile Process Steps */}
+              <div className="lg:hidden">
+                <div className="relative">
+                  {/* Vertical line for mobile */}
+                  <div className="absolute left-6 top-2 bottom-2 w-0.5 bg-gradient-to-b from-blue-300 via-indigo-300 to-purple-300" />
+                  
+                  <div className="space-y-8">
+                    {steps.map((step, index) => (
+                      <div 
+                        key={step.title} 
+                        className="relative pl-16 pr-2"
+                        onClick={() => setActiveStep(index)}
+                      >
+                        {/* Left dot with step-specific color */}
+                        <div className={`absolute left-4 top-6 w-4 h-4 rounded-full ${step.iconClass} border-2 ${
+                          activeStep === index 
+                            ? step.iconTextClass.replace('text-', 'border-')
+                            : 'border-gray-300'
+                        } transform -translate-x-1/2 z-10`} />
+                        
+                        <div className={`bg-white rounded-xl p-5 shadow-md transition-all duration-300 border ${
+                          activeStep === index 
+                            ? 'border-primary/20 shadow-lg' 
+                            : 'border-gray-100'
+                        }`}>
+                          <div className="flex items-start gap-4">
+                            <div className="flex-shrink-0">
+                              <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${step.iconClass}`}>
+                                <step.icon className={`h-5 w-5 ${step.iconTextClass}`} />
+                              </div>
+                            </div>
+                            <div>
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700">
+                                  Step {index + 1}
+                                </span>
+                                <span className={`inline-flex items-center rounded-full ${step.badgeClass} px-2.5 py-1 text-xs font-medium`}>
+                                  {step.timeline}
+                                </span>
+                              </div>
+                              <h3 className="mt-2 text-lg font-semibold text-gray-900">{step.title}</h3>
+                              <p className="mt-1 text-sm text-gray-600">{step.description}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
 
-          {/* Mobile Process Steps */}
-          <div className="lg:hidden mt-16">
-            <div className="relative">
-              {/* Vertical line for mobile */}
-              <div className="absolute left-6 top-2 bottom-2 w-0.5 bg-gradient-to-b from-blue-300 via-indigo-300 to-purple-300" />
-              
-              <div className="space-y-8">
-                {steps.map((step, index) => (
-                  <div key={step.title} className="relative pl-16 pr-2">
-                    {/* Left dot with step-specific color */}
-                    <div className={`absolute left-4 top-6 w-4 h-4 rounded-full ${step.iconClass} border-2 ${step.iconTextClass.replace('text-', 'border-')} transform -translate-x-1/2 z-10`} />
-                    
-                    <div className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
-                      <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0">
-                          <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${step.iconClass}`}>
-                            <step.icon className={`h-5 w-5 ${step.iconTextClass}`} />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700">
-                              Step {index + 1}
-                            </span>
-                            <span className={`inline-flex items-center rounded-full ${step.badgeClass} px-2.5 py-1 text-xs font-medium`}>
-                              {step.timeline}
-                            </span>
-                          </div>
-                          <h3 className="mt-2 text-lg font-semibold text-gray-900">{step.title}</h3>
-                          <p className="mt-1 text-sm text-gray-600">{step.description}</p>
-                        </div>
+            {/* Right Side: Step-specific Image */}
+            <div className="mt-12 lg:mt-0">
+              <div className="sticky top-8">
+                <div className="relative overflow-hidden rounded-2xl shadow-xl bg-gray-100">
+                  {steps.map((step, index) => (
+                    <div
+                      key={step.title}
+                      className={`absolute inset-0 transition-opacity duration-500 ${
+                        activeStep === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                      }`}
+                    >
+                      <LazyImage
+                        src={step.image}
+                        alt={step.imageAlt}
+                        className="w-full h-auto object-cover"
+                        width={1456}
+                        height={816}
+                        placeholderColor="#f9fafb"
+                        blurAmount={10}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <p className="text-lg font-medium">{step.imageAlt}</p>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
