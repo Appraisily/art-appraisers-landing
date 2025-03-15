@@ -32,13 +32,19 @@ const RouteObserver = () => {
       preloadResources(globalResources);
     }
     
-    // Page analytics (example)
-    const currentPath = location.pathname;
-    console.log(`Page viewed: ${currentPath}`);
+    // Push pageview to Google Tag Manager dataLayer
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'pageview',
+        page: {
+          path: location.pathname,
+          search: location.search,
+          title: document.title
+        }
+      });
+    }
     
-    // Here we could integrate with Google Analytics, etc.
-    
-  }, [location.pathname]);
+  }, [location.pathname, location.search]);
   
   return null;
 };
