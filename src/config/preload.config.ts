@@ -49,7 +49,7 @@ export const artAppraiserResources: PreloadResource[] = [
     importance: 'high'
   },
   {
-    url: 'https://ik.imagekit.io/appraisily/WebPage/video_poster.jpg?tr=w-1920,h-1080,q-50',
+    url: 'https://placehold.co/1920x1080/333/fff?text=Art+Appraisal+Video',
     type: 'image',
     importance: 'high'
   },

@@ -37,15 +37,17 @@
 [build.processing.images]
   compress = true
 
-# Cache control
+# Cache control for different file types
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]

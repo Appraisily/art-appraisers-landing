@@ -36,8 +36,8 @@ export default function Features() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-900/80 to-gray-900 z-10" />
         <LazyVideo
           src="https://ik.imagekit.io/appraisily/Videos/hero4.mp4?updatedAt=1731840454419"
-          poster="https://ik.imagekit.io/appraisily/WebPage/video_poster.jpg?tr=w-1920,h-1080,q-50"
-          fallbackImage="https://ik.imagekit.io/appraisily/WebPage/video_poster.jpg?tr=w-1920,h-1080,q-50"
+          poster="https://placehold.co/1920x1080/333/fff?text=Art+Appraisal+Video"
+          fallbackImage="https://placehold.co/1920x1080/333/fff?text=Art+Appraisal+Video"
           className="h-full w-full opacity-30"
           autoPlay
           loop
