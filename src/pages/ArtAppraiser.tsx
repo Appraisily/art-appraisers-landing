@@ -5,7 +5,6 @@ import { ART_APPRAISER_SEO } from '../config/seo.config';
 
 // Critical components above the fold (eager loading)
 import Hero from '../components/sections/Hero';
-import LeadCapture from '../components/LeadCapture';
 import TrustBar from '../components/TrustBar';
 import Features from '../components/sections/Features';
 import LazyComponent from '../components/LazyComponent';
@@ -60,7 +59,6 @@ export default function ArtAppraiser() {
       <main className="relative">
         <Hero />
         <TrustBar />
-        <LeadCapture />
         <Features />
         
         {/* Below-the-fold Components with Lazy Loading */}
