@@ -176,25 +176,6 @@ const Services: React.FC = () => {
             Select the service that best suits your needs. Each appraisal is conducted by certified experts using advanced analysis tools.
           </p>
         </div>
-
-        {/* Hero Image Section */}
-        <div className="mt-12 mb-16">
-          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-xl">
-            <LazyImage
-              src="https://ik.imagekit.io/appraisily/WebPage/signing.png?updatedAt=1741034482361"
-              alt="Professional Art Appraisal Documentation"
-              className="w-full h-auto object-cover"
-              width={1456}
-              height={816}
-              placeholderColor="#f9fafb"
-              blurAmount={10}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-              <p className="text-lg font-medium">Professional documentation and certification for all your valuable pieces</p>
-            </div>
-          </div>
-        </div>
         
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {services.map((service) => (
