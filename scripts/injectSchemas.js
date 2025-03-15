@@ -62,7 +62,7 @@ const loadSchemas = () => {
       description: 'Expert art appraisal services for insurance, donations, estate planning, and market valuation.',
       offers: {
         '@type': 'AggregateOffer',
-        priceCurrency: 'EUR',
+        priceCurrency: 'USD',
         lowPrice: '59',
         highPrice: '299',
         offerCount: '4'
@@ -70,7 +70,7 @@ const loadSchemas = () => {
       termsOfService: `${BASE_URL}/terms-of-service`,
       areaServed: {
         '@type': 'Country',
-        name: 'Spain'
+        name: 'United States'
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
@@ -86,7 +86,7 @@ const loadSchemas = () => {
             priceSpecification: {
               '@type': 'PriceSpecification',
               price: '99',
-              priceCurrency: 'EUR'
+              priceCurrency: 'USD'
             }
           },
           {
@@ -99,7 +99,7 @@ const loadSchemas = () => {
             priceSpecification: {
               '@type': 'PriceSpecification',
               price: '149',
-              priceCurrency: 'EUR'
+              priceCurrency: 'USD'
             }
           }
         ]
@@ -113,9 +113,9 @@ const loadSchemas = () => {
         },
         author: {
           '@type': 'Person',
-          name: 'Cliente satisfecho'
+          name: 'Satisfied Customer'
         },
-        reviewBody: 'Un servicio excepcional. La tasación de mis obras fue precisa y completamente profesional.'
+        reviewBody: 'Exceptional service. The appraisal of my artwork was accurate and completely professional.'
       },
       aggregateRating: {
         '@type': 'AggregateRating',
@@ -132,18 +132,18 @@ const loadSchemas = () => {
       mainEntity: [
         {
           '@type': 'Question',
-          name: '¿Cuánto cuesta una tasación profesional de arte?',
+          name: 'How much does a professional art appraisal cost?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Nuestros servicios de tasación comienzan desde €59 para evaluaciones básicas y pueden llegar hasta €299 para informes completos con certificación para seguros e impuestos. El precio depende del tipo de informe, número de obras y urgencia.'
+            text: 'Our appraisal services start from $59 for basic evaluations and can go up to $299 for complete reports with insurance and tax certification. The price depends on the type of report, number of artworks, and urgency.'
           }
         },
         {
           '@type': 'Question',
-          name: '¿Cuánto tiempo toma recibir una tasación de arte?',
+          name: 'How long does it take to receive an art appraisal?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'El tiempo estándar de entrega es de 48-72 horas para informes básicos. Para tasaciones completas con investigación exhaustiva, el tiempo puede ser de 5-7 días hábiles. Ofrecemos servicios urgentes con entrega en 24 horas con un costo adicional.'
+            text: 'The standard delivery time is 48-72 hours for basic reports. For comprehensive appraisals with thorough research, the time can be 5-7 business days. We offer urgent services with 24-hour delivery at an additional cost.'
           }
         }
       ]
