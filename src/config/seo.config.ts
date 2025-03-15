@@ -24,7 +24,7 @@ export const ORGANIZATION_SCHEMA = {
     '@type': 'ContactPoint',
     telephone: '+1-800-555-1234',
     contactType: 'customer service',
-    availableLanguage: ['English', 'Spanish']
+    availableLanguage: ['English']
   }
 };
 

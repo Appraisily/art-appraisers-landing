@@ -42,7 +42,7 @@ const loadSchemas = () => {
         '@type': 'ContactPoint',
         telephone: '+1-800-555-1234',
         contactType: 'customer service',
-        availableLanguage: ['English', 'Spanish']
+        availableLanguage: ['English']
       }
     };
 
@@ -180,9 +180,9 @@ const injectSchemas = () => {
     // Guardar el HTML modificado
     fs.writeFileSync(htmlPath, htmlContent);
     
-    console.log('✅ Esquemas de datos estructurados insertados correctamente en el HTML');
+    console.log('✅ Structured data schemas successfully inserted into HTML');
   } catch (error) {
-    console.error('Error al insertar los esquemas:', error);
+    console.error('Error inserting schemas:', error);
   }
 };
 
