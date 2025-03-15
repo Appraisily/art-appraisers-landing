@@ -18,8 +18,7 @@ const outputFile = path.join(DIST_FOLDER, 'sitemap.xml');
 // Configure your site's domain - should be customized in your deployment
 const SITE_DOMAIN = process.env.SITE_DOMAIN || 'https://art-appraisers.example.com';
 const ROUTES = [
-  '/',
-  '/art-appraiser'
+  '/'
 ];
 
 /**

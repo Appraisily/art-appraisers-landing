@@ -26,7 +26,7 @@ const RouteObserver = () => {
   
   useEffect(() => {
     // Precargar recursos específicos según la ruta
-    if (location.pathname === '/art-appraiser') {
+    if (location.pathname === '/' || location.pathname === '/art-appraiser') {
       preloadResources(combineResources(globalResources, artAppraiserResources));
     } else {
       preloadResources(globalResources);
@@ -50,14 +50,17 @@ const App = () => {
         <RouteObserver />
         <div className="min-h-screen bg-white">
           <Routes>
-            <Route path="/" element={<Navigate to="/art-appraiser" replace />} />
             <Route 
-              path="/art-appraiser" 
+              path="/" 
               element={
                 <React.Suspense fallback={<PageLoader />}>
                   <ArtAppraiser />
                 </React.Suspense>
               } 
+            />
+            <Route 
+              path="/art-appraiser" 
+              element={<Navigate to="/" replace />} 
             />
             <Route 
               path="*" 
@@ -67,7 +70,7 @@ const App = () => {
                     <h1 className="text-4xl font-bold text-gray-900">404</h1>
                     <p className="mt-2 text-lg text-gray-600">Página no encontrada</p>
                     <a 
-                      href="/art-appraiser" 
+                      href="/" 
                       className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
                     >
                       Volver a inicio
