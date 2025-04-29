@@ -11,12 +11,12 @@ interface LazyComponentProps {
 const DefaultPlaceholder = () => (
   <div className="py-8 px-4 flex justify-center items-center min-h-[200px]">
     <div className="animate-pulse flex space-x-4 w-full max-w-md">
-      <div className="rounded-full bg-slate-200 h-12 w-12"></div>
+      <div className="rounded-full bg-gray-200 h-12 w-12"></div>
       <div className="flex-1 space-y-4 py-1">
-        <div className="h-4 bg-slate-200 rounded w-3/4"></div>
+        <div className="h-4 bg-gray-200 rounded w-3/4"></div>
         <div className="space-y-2">
-          <div className="h-4 bg-slate-200 rounded"></div>
-          <div className="h-4 bg-slate-200 rounded w-5/6"></div>
+          <div className="h-4 bg-gray-200 rounded"></div>
+          <div className="h-4 bg-gray-200 rounded w-5/6"></div>
         </div>
       </div>
     </div>
@@ -30,45 +30,45 @@ export default function LazyComponent({
   threshold = 0.1,
   className = '',
 }: LazyComponentProps) {
-  // Estado para controlar si el componente está visible
+  // State to control if the component is visible
   const [isVisible, setIsVisible] = useState(false);
-  // Estado para controlar si el componente está cargado
+  // State to control if the component is loaded
   const [isLoaded, setIsLoaded] = useState(false);
-  // Referencia al elemento del DOM que será observado
+  // Reference to the DOM element that will be observed
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Verificar si el navegador soporta Intersection Observer
+    // Check if the browser supports Intersection Observer
     if (!('IntersectionObserver' in window)) {
-      // Si no es compatible, simplemente mostrar el componente
+      // If not compatible, simply show the component
       setIsVisible(true);
       return;
     }
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      // Si el elemento es visible en el viewport
+      // If the element is visible in the viewport
       if (entries[0].isIntersecting) {
         setIsVisible(true);
-        // Una vez que es visible, dejar de observar
+        // Once visible, stop observing
         observer.disconnect();
       }
     };
 
-    // Opciones para el observer
+    // Options for the observer
     const options = {
       rootMargin,
       threshold,
     };
 
-    // Crear el observer
+    // Create the observer
     const observer = new IntersectionObserver(observerCallback, options);
     
-    // Si tenemos la referencia al elemento, empezar a observarlo
+    // If we have a reference to the element, start observing
     if (ref.current) {
       observer.observe(ref.current);
     }
 
-    // Limpiar el observer cuando el componente se desmonte
+    // Clean up the observer when the component unmounts
     return () => {
       if (observer) {
         observer.disconnect();
@@ -76,10 +76,10 @@ export default function LazyComponent({
     };
   }, [rootMargin, threshold]);
 
-  // Manejar la transición de carga
+  // Handle loading transition
   useEffect(() => {
     if (isVisible) {
-      // Simular un pequeño retraso para la animación de transición
+      // Simulate a small delay for the transition animation
       const timeout = setTimeout(() => {
         setIsLoaded(true);
       }, 100);

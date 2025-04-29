@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { Award, Shield, FileCheck, Clock, Users, ArrowRight, X } from 'lucide-react';
 import LazyVideo from '../core/media/LazyVideo';
+import { Container, Section } from '../core/Container';
+import { Card, CardHeader, CardTitle, CardContent } from '../core/Card';
+import Button from '../core/Button';
+import Badge from '../core/Badge';
+import { cn } from '../../utils/cn';
 
 // TypeScript interfaces
 interface Feature {
@@ -67,46 +72,51 @@ export default function Features() {
   // Modal component for "Learn More" functionality
   const FeatureModal = ({ feature, onClose }: FeatureModalProps) => (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="relative bg-white w-full max-w-md rounded-xl shadow-2xl p-6 animate-fadeIn">
-        <button 
-          onClick={onClose}
-          className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
-          aria-label="Close modal"
-        >
-          <X size={20} />
-        </button>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="rounded-lg bg-blue-600 p-3 flex-shrink-0">
-            <feature.icon className="h-6 w-6 text-white" />
-          </div>
-          <h3 className="text-xl font-semibold text-gray-900">{feature.title}</h3>
-        </div>
-        <p className="text-gray-600 mb-4">{feature.learnMore}</p>
-        <div className="mt-6">
-          <button
+      <Card className="relative w-full max-w-md animate-fadeIn">
+        <CardHeader>
+          <button 
             onClick={onClose}
-            className="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+            className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100"
+            aria-label="Close modal"
           >
-            Got it
+            <X size={20} />
           </button>
-        </div>
-      </div>
+          <div className="flex items-center gap-3 mb-1">
+            <div className="rounded-lg bg-blue-600 p-3 flex-shrink-0">
+              <feature.icon className="h-6 w-6 text-white" />
+            </div>
+            <CardTitle>{feature.title}</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-gray-600 mb-4">{feature.learnMore}</p>
+          <div className="mt-4">
+            <Button
+              variant="primary"
+              fullWidth
+              onClick={onClose}
+            >
+              Got it
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 
   return (
-    <section 
-      className="relative bg-gray-900 py-24 sm:py-32 overflow-hidden"
+    <Section
+      className="relative bg-gradient-to-b from-gray-50 to-white overflow-hidden"
       aria-labelledby="features-heading"
     >
       {/* Video Background - Reduced opacity and enhanced overlay */}
       <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/95 via-gray-50/90 to-white/95 z-10" />
         <LazyVideo
           src="https://ik.imagekit.io/appraisily/Videos/hero4.mp4?updatedAt=1731840454419"
           poster="https://placehold.co/1920x1080/333/fff?text=Art+Appraisal+Video"
           fallbackImage="https://placehold.co/1920x1080/333/fff?text=Art+Appraisal+Video"
-          className="h-full w-full opacity-20"
+          className="h-full w-full object-cover opacity-20"
           autoPlay
           loop
           muted
@@ -117,33 +127,34 @@ export default function Features() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="relative mx-auto max-w-3xl text-center">
+      <Container>
+        <div className="relative mx-auto max-w-3xl text-center mb-12">
           <div 
-            className="absolute -inset-x-4 -inset-y-2 bg-primary/20 blur-2xl rounded-3xl" 
+            className="absolute -inset-x-4 -inset-y-2 bg-blue-600/10 blur-2xl rounded-3xl" 
             aria-hidden="true"
           />
           <h2 
             id="features-heading"
-            className="relative text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 sm:text-5xl"
+            className="relative text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6"
           >
             Why Our Certified Appraisers Deliver Unmatched Value
           </h2>
-          <p className="relative mt-6 text-lg leading-8 text-blue-100 font-medium">
+          <p className="relative text-lg leading-8 text-gray-700 font-medium">
             Museum-grade analysis, 24–48h turnaround, and reports accepted by top institutions
           </p>
         </div>
 
         {/* Social proof above feature grid */}
-        <div className="flex flex-wrap justify-center gap-6 mt-8">
+        <div className="flex flex-wrap justify-center gap-6 mt-8 mb-12">
           {testimonialSnippets.map((testimonial, index) => (
-            <div 
+            <Badge 
               key={index}
-              className="inline-flex items-center py-1.5 px-3 rounded-full bg-white/10 backdrop-blur-sm"
+              variant="outline"
+              className="py-1.5 px-3 text-sm"
             >
-              <span className="text-sm text-blue-200 italic mr-1">"{testimonial.quote}"</span>
-              <span className="text-xs text-blue-300">– {testimonial.author}</span>
-            </div>
+              <span className="text-gray-700 italic mr-1">"{testimonial.quote}"</span>
+              <span className="text-gray-500 text-xs">– {testimonial.author}</span>
+            </Badge>
           ))}
         </div>
 
@@ -154,61 +165,71 @@ export default function Features() {
             aria-labelledby="features-heading"
           >
             {features.map((feature, index) => (
-              <li
-                key={feature.title}
-                className="relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-sm p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 shadow-lg group"
-              >
-                <div className="relative h-full flex flex-col">
-                  <div className="flex items-center gap-3">
+              <li key={feature.title}>
+                <Card 
+                  variant="feature" 
+                  className="h-full flex flex-col group"
+                >
+                  <div className="flex items-center gap-3 mb-3">
                     <div 
                       className="rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 p-2.5 flex-shrink-0 shadow-md"
                       aria-hidden="true"
                     >
                       <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white drop-shadow-sm" />
                     </div>
-                    <h3 className="text-lg font-semibold text-white">{feature.title}</h3>
+                    <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
                   </div>
                   
                   {/* Benefit text - highlighted */}
-                  <p className="mt-2 text-sm font-medium text-blue-200">{feature.benefit}</p>
+                  <Badge variant="primary" className="inline-block mb-3 bg-blue-50">
+                    {feature.benefit}
+                  </Badge>
                   
                   {/* Description */}
-                  <p className="mt-3 text-sm leading-6 text-gray-300 flex-grow">{feature.description}</p>
+                  <p className="text-sm leading-6 text-gray-600 flex-grow">{feature.description}</p>
                   
                   {/* Learn More interaction */}
-                  <button 
+                  <Button 
+                    variant="text"
                     onClick={() => setActiveModal(index)}
-                    className="mt-4 inline-flex items-center text-xs text-blue-300 hover:text-blue-100 transition-colors"
+                    className="mt-4 text-xs justify-start"
+                    endIcon={<ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />}
                     aria-label={`Learn more about ${feature.title}`}
                   >
-                    <span>Learn More</span>
-                    <ArrowRight size={12} className="ml-1 transition-transform group-hover:translate-x-0.5" />
-                  </button>
-                </div>
+                    Learn More
+                  </Button>
+                </Card>
               </li>
             ))}
           </ul>
           
           {/* Primary and secondary CTAs */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-12">
-            <a 
-              href="#start-appraisal" 
-              className="flex items-center justify-center w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200"
+            <Button 
+              variant="highConversion"
+              as="a"
+              href="#start-appraisal"
+              fullWidth
+              size="lg" 
             >
               Find My Expert Appraiser
-            </a>
-            <a 
-              href="#experts" 
-              className="flex items-center justify-center gap-2 text-blue-200 hover:text-white transition-colors group"
+            </Button>
+            <Button
+              variant="text"
+              as="a" 
+              href="#experts"
+              className="group"
+              endIcon={
+                <svg className="w-5 h-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              }
             >
-              <span>See Our Experts</span>
-              <svg className="w-5 h-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </a>
+              See Our Experts
+            </Button>
           </div>
         </div>
-      </div>
+      </Container>
 
       {/* Feature modals */}
       {activeModal !== null && (
@@ -217,6 +238,6 @@ export default function Features() {
           onClose={() => setActiveModal(null)} 
         />
       )}
-    </section>
+    </Section>
   );
 }

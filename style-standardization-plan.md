@@ -1,6 +1,6 @@
 # Style Standardization Plan for Art Appraisers Landing Page
 
-This document outlines our comprehensive plan to standardize styles across the entire landing page, ensuring a consistent visual language and improved user experience.
+This document outlines our comprehensive plan to standardize styles across the entire landing page, ensuring visual consistency with the main Appraisily website while maintaining conversion optimization.
 
 ## Table of Contents
 1. [Color System](#color-system)
@@ -16,33 +16,40 @@ This document outlines our comprehensive plan to standardize styles across the e
 
 ### Primary Colors
 ```css
---color-slate-950: #0f172a; /* Dark background */
---color-slate-900: #1e293b; /* Secondary background */
---color-slate-800: #334155; /* Tertiary background */
---color-slate-200: #e2e8f0; /* Light text on dark backgrounds */
---color-slate-100: #f1f5f9; /* Lightest text on dark backgrounds */
+/* Blues - Primary Brand Colors */
+--color-blue-50: #eff6ff;   /* Light background */
+--color-blue-100: #dbeafe;  /* Secondary light background */
+--color-blue-200: #bfdbfe;  /* Tertiary light background */
+--color-blue-600: #2563eb;  /* Primary blue */
+--color-blue-700: #1d4ed8;  /* Darker blue */
+--color-blue-800: #1e40af;  /* Darkest blue */
 
---color-amber-600: #d97706; /* Primary CTA hover */
---color-amber-500: #f59e0b; /* Primary CTA */
---color-amber-400: #fbbf24; /* Accent/highlights */
---color-amber-100: #fef3c7; /* Badges & light components */
+/* Neutral Colors */
+--color-gray-50: #f9fafb;   /* Background alternate */
+--color-gray-100: #f3f4f6;  /* Light background */
+--color-gray-200: #e5e7eb;  /* Border light */
+--color-gray-700: #374151;  /* Secondary text */
+--color-gray-800: #1f2937;  /* Primary text */
+--color-gray-900: #111827;  /* Headings */
 
---color-indigo-500: #6366f1; /* Secondary accents */
+/* Accent Colors - For Conversion Points */
+--color-amber-500: #f59e0b; /* Accents and high-priority CTAs */
+--color-amber-600: #d97706; /* Accent hover */
 ```
 
 ### Functional Colors
 ```css
 --color-success: #10b981; /* Success messages/states */
---color-warning: #f59e0b; /* Warning messages/states (same as amber-500) */
+--color-warning: #f59e0b; /* Warning messages/states */
 --color-error: #ef4444; /* Error messages/states */
---color-info: #3b82f6; /* Info messages/states */
+--color-info: #3b82f6; /* Info messages/states (matches blue-600) */
 ```
 
 ### Background & Surface Colors
 ```css
---bg-gradient-hero: linear-gradient(to bottom, var(--color-slate-950), var(--color-slate-900), var(--color-slate-800)/0.9);
---bg-gradient-card: linear-gradient(to right, var(--color-slate-800)/0.7, var(--color-slate-900)/0.7);
---bg-gradient-cta: linear-gradient(to right, var(--color-amber-500), var(--color-amber-600));
+--bg-gradient-hero: linear-gradient(to bottom, var(--color-blue-50), white);
+--bg-gradient-card-blue: linear-gradient(to right, var(--color-blue-600), var(--color-blue-700));
+--bg-gradient-card-amber: linear-gradient(to right, var(--color-amber-500), var(--color-amber-600));
 ```
 
 ## Typography
@@ -85,44 +92,56 @@ This document outlines our comprehensive plan to standardize styles across the e
 
 ## Button System
 
-### Primary Button
+### Primary Button (Blue - Default)
+- **Style**: Blue background with white text
+- **Classes**: `bg-blue-600 text-white font-medium rounded-md px-4 py-2 hover:bg-blue-700 shadow-sm transition-colors duration-200`
+- **Hover State**: Darker blue
+- **Focus State**: Ring outline
+
+### High-Conversion Button (Amber - For Important CTAs)
 - **Style**: Amber gradient background with white text
-- **Classes**: `bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-xl px-6 py-3.5 shadow-lg hover:from-amber-600 hover:to-amber-700 transition-all duration-200`
+- **Classes**: `bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-lg px-6 py-3 shadow-lg hover:from-amber-600 hover:to-amber-700 transition-all duration-200`
 - **Hover State**: Darker amber gradient, subtle scale effect
-- **Focus State**: Outline with offset
+- **Usage**: Primary call-to-action buttons (Start Appraisal, Find Expert)
 
 ### Secondary Button
-- **Style**: Slate background with white text and border
-- **Classes**: `bg-slate-800/80 backdrop-blur-sm text-white font-semibold rounded-xl px-6 py-3.5 border border-slate-600/30 hover:bg-slate-700/80 hover:border-slate-500/50 shadow-md transition-all duration-200`
-- **Hover State**: Lighter background, higher opacity border
+- **Style**: White background with border and dark text
+- **Classes**: `bg-white text-gray-800 font-medium rounded-md border border-gray-200 px-4 py-2 hover:bg-gray-50 shadow-sm transition-colors duration-200`
+- **Hover State**: Light gray background
 
 ### Text Button / Link
-- **Style**: No background, text with optional icon
-- **Classes**: `text-slate-200 hover:text-white inline-flex items-center gap-2 font-medium transition-colors`
-- **Hover State**: Text color change, optional underline, icon movement
+- **Style**: No background, blue text
+- **Classes**: `text-blue-600 hover:text-blue-800 inline-flex items-center gap-2 font-medium transition-colors`
+- **Hover State**: Darker blue, optional underline
 
 ### Icon Button
 - **Style**: Rounded background with icon
-- **Classes**: `p-2 rounded-full bg-slate-700/70 text-slate-300 hover:bg-slate-600/70 hover:text-white transition-colors`
+- **Classes**: `p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 transition-colors`
 
-### CTA Badge
+### Badge
 - **Style**: Small pill-shaped badge
-- **Classes**: `rounded-full bg-amber-500 px-2 py-0.5 text-xs font-semibold text-white shadow-md`
+- **Classes**: `rounded-full bg-blue-100 text-blue-800 px-3 py-1 text-xs font-medium`
+- **Variants**: 
+  - Outline: `border border-gray-200 bg-white`
+  - Amber Accent: `bg-amber-100 text-amber-800`
 
 ## Card & Container Styles
 
 ### Primary Card
-- **Style**: Slate background with subtle border
-- **Classes**: `relative rounded-2xl bg-slate-800/70 backdrop-blur-sm border border-slate-700/50 shadow-lg overflow-hidden`
-- **Hover State**: Optional subtle scale or background lightening
+- **Style**: White background with subtle shadow
+- **Classes**: `bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden`
+- **Hover State**: Larger shadow
 
 ### Feature Card
-- **Style**: Slightly transparent with backdrop blur
-- **Classes**: `relative rounded-xl bg-slate-900/50 border border-slate-700/50 hover:bg-slate-800/80 transition-colors duration-200 p-6`
+- **Style**: White or light blue background
+- **Classes**: `bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200`
+- **Variants**:
+  - Blue accent: `border-l-4 border-l-blue-600`
+  - Amber accent: `border-l-4 border-l-amber-500`
 
 ### Modal
-- **Style**: White background for contrast with dark theme
-- **Classes**: `bg-white rounded-2xl shadow-2xl p-6`
+- **Style**: White background with shadow
+- **Classes**: `bg-white rounded-xl shadow-2xl p-6 border border-gray-200`
 
 ### Section Container
 - **Style**: Max width container with responsive padding
@@ -154,26 +173,27 @@ This document outlines our comprehensive plan to standardize styles across the e
 ## Component-Specific Standards
 
 ### Hero Section
-- **Background**: Slate gradient with subtle pattern
-- **Typography**: Large heading with gradient text, regular text in slate-100/200
-- **CTA**: Primary amber button with turnaround badge
-- **Orbs**: Limited to 2-3 subtle orbs with low opacity
-- **Expert Cards**: Standardized card design with consistent spacing
+- **Background**: Light blue gradient to white with subtle pattern
+- **Typography**: Large heading with dark blue/black text
+- **CTA**: Mix of blue (primary) and amber (high-conversion) buttons
+- **Upload Area**: Clean white card with clear border and shadow
+- **Trust Indicators**: Blue-themed badges with icons
 
 ### Features Section
-- **Icons**: Standard size and style (h-5 w-5)
-- **Cards**: Uniform size and padding
-- **Hover Effects**: Consistent transitions (duration-200)
+- **Background**: White or very light blue
+- **Cards**: White with consistent border radius and optional blue accents
+- **Icons**: Blue-themed, standard size (h-5 w-5)
+- **Hover Effects**: Subtle shadow or scale changes (transform: scale(1.02))
 
 ### Process Section
-- **Timeline**: Consistent connector style
-- **Images**: Same aspect ratio and hover effects
-- **Icons**: Same size and color patterns as feature icons
+- **Timeline**: Blue connector lines
+- **Steps**: Clearly numbered with blue accent elements
+- **Images**: Consistent aspect ratio with subtle hover effects
 
 ### Success Stories
-- **Testimonials**: Standard card design
-- **Quotation Style**: Consistent styling for quotes
-- **Modal Interactions**: Uniform modal design and animations
+- **Testimonials**: Clean white cards with subtle shadows
+- **Ratings**: Gold/amber stars for ratings
+- **Expert Photos**: Consistent circular cropping with border
 
 ## Responsive Behavior
 
@@ -190,7 +210,7 @@ This document outlines our comprehensive plan to standardize styles across the e
 - **Typography**: Reduced sizes (e.g., text-4xl → text-3xl)
 - **Spacing**: Condensed (e.g., py-24 → py-16)
 - **Layout**: Stack elements vertically
-- **CTAs**: Full width on small screens
+- **Cards**: Full width on mobile
 
 ### Tablet Adjustments
 - **Grid Layouts**: 2 columns instead of 3-4
@@ -198,54 +218,56 @@ This document outlines our comprehensive plan to standardize styles across the e
 
 ### Desktop Enhancements
 - **Layout**: Multi-column grids
-- **CTAs**: Standard width, side-by-side
-- **Animations**: More subtle enhancements
+- **Animations**: Subtle motion effects for visual interest
+- **Hover States**: Enhanced interaction feedback
 
 ## Implementation Plan
 
-### Phase 1: Create Design Token System
-1. Create a new `theme.ts` file in `/src/config/` folder
-2. Define all color, typography, and spacing tokens
-3. Update Tailwind config to use these design tokens
+### Phase 1: ShadCN UI Integration
+1. Integrate ShadCN UI components
+2. Update Tailwind config to match the main website's theme
+3. Create a theme.ts file with shared color tokens
 
 ### Phase 2: Component Standardization
-1. Create reusable Button components:
-   - `Button.tsx` with variants (primary, secondary, text)
-   - `IconButton.tsx` for icon-only buttons
-   - `Badge.tsx` for small status/info pills
+1. Adapt Button components to match the main website:
+   - Use ShadCN Button with customized variants
+   - Add amber "high-conversion" variant for key CTAs
   
-2. Create Card components:
-   - `Card.tsx` with variants (primary, feature)
-   - `Modal.tsx` for consistent modals
+2. Standardize Card components:
+   - Use ShadCN Card with appropriate styling
+   - Add feature card variants
 
-3. Update utility components:
-   - Standardize `LazyImage`, `LazyVideo` props
-   - Create consistent animation components
+3. Create consistent Badge and Icon components:
+   - Standardize trust indicators and badges
+   - Ensure icon sizing and coloring is consistent
 
 ### Phase 3: Section Refactoring
-1. Update Hero.tsx (already done)
-2. Update Features.tsx to use standardized components
-3. Update Process.tsx to use standardized components
-4. Update SuccessStories.tsx to use standardized components
+1. Update Hero.tsx to harmonize with main site while keeping conversion elements
+2. Update Features.tsx to use standardized card components
+3. Update Process.tsx to use consistent coloring and styling
+4. Update SuccessStories.tsx with harmonized testimonial cards
 
 ### Phase 4: Testing & QA
-1. Responsive testing across all breakpoints
-2. A11y verification for all interactive elements
+1. A/B testing of blue vs. amber CTAs for conversion
+2. Responsive testing across all breakpoints
 3. Performance optimization
+4. Cross-browser compatibility verification
 
 ### Timeline
-- **Phase 1**: 1 day
-- **Phase 2**: 2 days
-- **Phase 3**: 3 days
-- **Phase 4**: 1 day
-- **Total**: 7 days
+- **Phase 1**: 2 days
+- **Phase 2**: 3 days
+- **Phase 3**: 4 days
+- **Phase 4**: 2 days
+- **Total**: 11 days
 
-## How This Improves Conversion
+## Balance of Brand Consistency & Conversion
 
-1. **Visual Consistency**: Creates a professional, polished appearance that builds trust
-2. **Focused CTAs**: The amber buttons clearly stand out as action points
-3. **Information Hierarchy**: Consistent styling creates clear visual hierarchy
-4. **Reduced Cognitive Load**: Users don't need to decipher different button styles
-5. **Mobile Optimization**: Ensures critical CTAs remain accessible on all devices
+This plan achieves a balance between matching the main Appraisily site's brand identity and maintaining high conversion rates:
 
-By implementing this plan, all buttons, cards, typography, and colors will be standardized across the entire application, creating a cohesive and professional user experience that enhances brand perception and improves conversion rates. 
+1. **Primary Brand Colors**: Uses the blue color scheme from the main site for most UI elements
+2. **Conversion-Focused Elements**: Strategically applies amber/gold for high-priority CTAs and important highlights
+3. **Clean, Modern Aesthetic**: Maintains the light, professional feel of the main site
+4. **Visual Hierarchy**: Ensures the most important actions stand out while fitting the overall brand
+5. **Component Consistency**: Standardizes all UI elements to create a cohesive cross-site experience
+
+By implementing this plan, users will experience a seamless transition between the landing page and the main application, while still benefiting from conversion-optimized elements where they matter most. 
