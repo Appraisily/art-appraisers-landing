@@ -13,52 +13,52 @@ import { cn } from '../../utils/cn';
 const analyticsSteps = [
   {
     title: 'Intelligent Keyword Extraction',
-    description: 'Our AI system automatically extracts the most effective search terms used by major auction houses, generating 25+ specialized queries.',
+    description: 'Our system automatically extracts the most effective search terms used by major auction houses, generating 25+ specialized queries in seconds.',
     icon: Search,
-    iconClass: 'bg-blue-100',
-    iconTextClass: 'text-blue-600',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
   },
   {
     title: 'Progressive Market Data Gathering',
-    description: 'Our system navigates auction databases through a multi-tiered approach, from specific to broader terms to find the most relevant matches.',
+    description: 'Our algorithm navigates auction databases through a multi-tiered approach, processing millions of records in minutes what would take days manually.',
     icon: Database,
-    iconClass: 'bg-indigo-100',
-    iconTextClass: 'text-indigo-600',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
   },
   {
-    title: 'AI-Powered Quality Assessment',
-    description: 'Each potential comparable item undergoes sophisticated AI evaluation, scored for relevance to your specific piece.',
+    title: 'Advanced Relevance Assessment',
+    description: 'Each potential comparable item undergoes sophisticated evaluation, accurately identifying idioms and artistic styles for true relevance to your piece.',
     icon: Brain,
-    iconClass: 'bg-purple-100',
-    iconTextClass: 'text-purple-600',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
   },
   {
-    title: 'Advanced Statistical Analysis',
-    description: 'We process market data using sophisticated statistical methods to calculate price distributions and position your item in the market.',
+    title: 'Statistical Market Analysis',
+    description: 'We process comprehensive market data using sophisticated statistical methods to calculate price distributions and position your item accurately.',
     icon: BarChart3,
-    iconClass: 'bg-cyan-100',
-    iconTextClass: 'text-cyan-600',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
   },
   {
     title: 'Historical Trend Analysis',
-    description: 'Unique to Valuer Agent, we perform temporal market analysis to identify price movements and calculate market changes over time.',
+    description: 'Unique to our Valuer Agent, we perform temporal market analysis to identify price movements and calculate market changes over time.',
     icon: LineChart,
-    iconClass: 'bg-teal-100',
-    iconTextClass: 'text-teal-600',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
   },
   {
     title: 'Investment Metric Calculation',
-    description: 'Our system generates specialized metrics like Historical Significance Score and Investment Potential Rating.',
+    description: 'Our system generates specialized metrics like Historical Significance Score and Investment Potential Rating that provide actionable investment insights.',
     icon: Sparkles,
-    iconClass: 'bg-amber-100',
-    iconTextClass: 'text-amber-600',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
   },
   {
     title: 'Comprehensive Reporting',
-    description: 'The final analytics package delivers clear, actionable insights with detailed comparable sales and high-quality visualizations.',
+    description: 'The final analytics package delivers clear, actionable insights with detailed comparable sales and high-quality visualizations in 24-48 hours, not weeks.',
     icon: Clock,
-    iconClass: 'bg-green-100',
-    iconTextClass: 'text-green-600',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
   },
 ];
 
@@ -103,7 +103,6 @@ export default function ValuerAnalytics() {
   const sectionRef = useRef<HTMLElement>(null);
   
   useEffect(() => {
-    // Function to check if element is in viewport
     const isElementInViewport = (el: HTMLElement) => {
       const rect = el.getBoundingClientRect();
       return (
@@ -112,16 +111,13 @@ export default function ValuerAnalytics() {
       );
     };
     
-    // Function to handle scroll event
     const handleScroll = () => {
       if (sectionRef.current && videoRef.current) {
         if (isElementInViewport(sectionRef.current)) {
           if (videoRef.current.paused) {
-            // Start playing when section is visible
             videoRef.current.play().catch(e => console.log("Video play failed:", e));
           }
         } else {
-          // Pause when section is not visible
           if (!videoRef.current.paused) {
             videoRef.current.pause();
           }
@@ -129,25 +125,24 @@ export default function ValuerAnalytics() {
       }
     };
     
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-    
-    // Initial check
     handleScroll();
     
-    // Clean up
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
   
   return (
-    <Section className="bg-gradient-to-b from-blue-50 to-white overflow-hidden relative py-24" ref={sectionRef}>
-      {/* Background Video */}
-      <div className="absolute inset-0 overflow-hidden z-0">
+    <Section 
+      className="bg-white relative py-24 overflow-hidden" 
+      ref={sectionRef}
+    >
+      {/* Background Video Layer */}
+      <div className="absolute inset-0 z-0">
         <video 
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover opacity-10"
+          className="w-full h-full object-cover opacity-10"
           playsInline
           muted
           loop
@@ -159,20 +154,20 @@ export default function ValuerAnalytics() {
         </video>
       </div>
       
-      {/* Background Pattern */}
+      {/* Background Pattern Layer */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 z-0" />
       
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Badge 
-            variant="accent"
-            className="mb-6 py-2 px-4 inline-flex items-center justify-center gap-2"
+            variant="outline"
+            className="mb-6 py-2 px-4 inline-flex items-center justify-center gap-2 bg-white"
             icon={<Database className="h-5 w-5" />}
           >
             <span className="font-semibold">3+ Million Auction Records</span>
           </Badge>
           
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-6">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
             Why Our Certified Appraisers Deliver Unmatched Value
           </h2>
           
@@ -185,17 +180,17 @@ export default function ValuerAnalytics() {
         <div className="mt-16 space-y-12">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">AI-Powered Market Intelligence</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Advanced Valuation Algorithm</h3>
               <p className="text-gray-600 mb-6">
-                Valuer Agent delivers comprehensive market analysis for art, antiques, and collectibles using advanced AI and sophisticated data processing technology. Our enhanced analytics service provides precise valuation insights based on real auction market data.
+                Valuer Agent delivers comprehensive market analysis for art, antiques, and collectibles using our proprietary valuation algorithm and sophisticated data processing technology. Our enhanced analytics service provides precise valuation insights based on real auction market data.
               </p>
-              <div className="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-600">
-                <p className="font-medium text-blue-700">
-                  What would take days of manual research is accomplished in minutes with our AI-powered system, delivering more accurate results.
+              <div className="bg-gray-100 rounded-lg p-4 border-l-4 border-gray-900">
+                <p className="font-medium text-gray-700">
+                  Our system accomplishes in minutes what would take days of manual research, saving you valuable time while delivering more accurate, comprehensive results.
                 </p>
               </div>
             </div>
-            <div className="relative aspect-video overflow-hidden rounded-2xl shadow-xl">
+            <div className="relative aspect-video overflow-hidden rounded-2xl shadow-md border border-gray-200">
               <LazyImage
                 src="https://via.placeholder.com/800x400?text=Valuer+Agent+Analytics"
                 alt="Valuer Agent Analytics"
@@ -215,7 +210,7 @@ export default function ValuerAnalytics() {
                 <Card 
                   key={step.title} 
                   variant="feature" 
-                  className="border-gray-200 hover:border-blue-200 transition-colors duration-200"
+                  className="border-gray-200 hover:border-gray-300 transition-colors duration-200"
                 >
                   <div className="flex items-start gap-4">
                     <div className={cn(`flex h-12 w-12 items-center justify-center rounded-full`, step.iconClass)}>
@@ -249,10 +244,10 @@ export default function ValuerAnalytics() {
           </div>
           
           {/* Example Output Section */}
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-            <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+          <div className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+            <div className="p-6 bg-gray-900 text-white">
               <h3 className="text-xl font-bold mb-1">Valuer Agent in Action</h3>
-              <p className="opacity-90">See how our system analyzed a Salvador Dali artwork</p>
+              <p className="opacity-90">See how our algorithm analyzed a Salvador Dali artwork</p>
             </div>
             
             <div className="p-6">
@@ -262,7 +257,7 @@ export default function ValuerAnalytics() {
                   <div className="space-y-4">
                     <div>
                       <div className="flex items-center mb-2">
-                        <div className="h-2 w-2 rounded-full bg-blue-600 mr-2"></div>
+                        <div className="h-2 w-2 rounded-full bg-gray-900 mr-2"></div>
                         <h5 className="font-medium text-gray-900">Very Specific (5)</h5>
                       </div>
                       <ul className="pl-4 text-sm text-gray-600 space-y-1">
@@ -274,7 +269,7 @@ export default function ValuerAnalytics() {
                     
                     <div>
                       <div className="flex items-center mb-2">
-                        <div className="h-2 w-2 rounded-full bg-indigo-500 mr-2"></div>
+                        <div className="h-2 w-2 rounded-full bg-gray-700 mr-2"></div>
                         <h5 className="font-medium text-gray-900">Specific (10)</h5>
                       </div>
                       <ul className="pl-4 text-sm text-gray-600 space-y-1">
@@ -286,7 +281,7 @@ export default function ValuerAnalytics() {
                     
                     <div>
                       <div className="flex items-center mb-2">
-                        <div className="h-2 w-2 rounded-full bg-purple-500 mr-2"></div>
+                        <div className="h-2 w-2 rounded-full bg-gray-500 mr-2"></div>
                         <h5 className="font-medium text-gray-900">Moderate (5)</h5>
                       </div>
                       <ul className="pl-4 text-sm text-gray-600 space-y-1">
@@ -299,7 +294,7 @@ export default function ValuerAnalytics() {
                 </div>
                 
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Top Comparable Sales with AI Scores</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Top Comparable Sales with Relevance Scores</h4>
                   <div className="space-y-3">
                     {daliComparables.map((item, i) => (
                       <div 
@@ -309,7 +304,7 @@ export default function ValuerAnalytics() {
                         <div 
                           className={cn(
                             "h-10 w-10 rounded-full flex items-center justify-center mr-3 font-semibold text-white",
-                            item.score >= 70 ? "bg-green-500" : "bg-amber-500"
+                            item.score >= 70 ? "bg-gray-900" : "bg-gray-600"
                           )}
                         >
                           {item.score}
@@ -331,27 +326,27 @@ export default function ValuerAnalytics() {
           
           {/* Benefits Summary */}
           <div className="mt-16">
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Why Our Analytics Process Stands Apart</h3>
+            <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Customer Benefits Our Process Delivers</h3>
             
             <div className="grid md:grid-cols-3 gap-6">
-              <Card variant="featureBlueAccent">
-                <CardTitle>Real-Time Data</CardTitle>
+              <Card variant="feature" className="border-gray-200">
+                <CardTitle>Time Efficiency</CardTitle>
                 <CardContent className="pt-4">
-                  <p className="text-gray-600">Analysis based on current auction market information, continuously updated for accuracy.</p>
+                  <p className="text-gray-600">Our algorithm performs millions of searches in minutes, saving you days of research time while providing more comprehensive results.</p>
                 </CardContent>
               </Card>
               
-              <Card variant="featureBlueAccent">
-                <CardTitle>Precision Targeting</CardTitle>
+              <Card variant="feature" className="border-gray-200">
+                <CardTitle>Accurate Identification</CardTitle>
                 <CardContent className="pt-4">
-                  <p className="text-gray-600">AI refinement ensures comparables are truly relevant to your specific item.</p>
+                  <p className="text-gray-600">Advanced pattern recognition ensures your item's style, period, and artistic idioms are correctly identified for accurate valuation.</p>
                 </CardContent>
               </Card>
               
-              <Card variant="featureBlueAccent">
-                <CardTitle>Transparent Methodology</CardTitle>
+              <Card variant="feature" className="border-gray-200">
+                <CardTitle>Institutional Acceptance</CardTitle>
                 <CardContent className="pt-4">
-                  <p className="text-gray-600">Clear quality ratings for all market data used in your valuation.</p>
+                  <p className="text-gray-600">Our reports are accepted by major institutions, insurance companies, and auction houses due to their thoroughness and accuracy.</p>
                 </CardContent>
               </Card>
             </div>
@@ -366,7 +361,7 @@ export default function ValuerAnalytics() {
               endIcon={<ArrowRight className="h-5 w-5" />}
               className="hover:scale-105"
             >
-              Get Your AI-Powered Appraisal
+              Get Your Expert Appraisal
             </Button>
           </div>
         </div>

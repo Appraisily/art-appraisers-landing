@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Award, Shield, FileCheck, Clock, Users, ArrowRight, X } from 'lucide-react';
 import LazyVideo from '../core/media/LazyVideo';
 import { Container, Section } from '../core/Container';
@@ -68,6 +68,39 @@ const testimonialSnippets = [
 
 export default function Features() {
   const [activeModal, setActiveModal] = useState<number | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    const isElementInViewport = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+      );
+    };
+    
+    const handleScroll = () => {
+      if (sectionRef.current && videoRef.current) {
+        if (isElementInViewport(sectionRef.current)) {
+          if (videoRef.current.paused) {
+            videoRef.current.play().catch(e => console.log("Video play failed:", e));
+          }
+        } else {
+          if (!videoRef.current.paused) {
+            videoRef.current.pause();
+          }
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   // Modal component for "Learn More" functionality
   const FeatureModal = ({ feature, onClose }: FeatureModalProps) => (
@@ -106,28 +139,30 @@ export default function Features() {
 
   return (
     <Section
-      className="relative bg-gradient-to-b from-gray-50 to-white overflow-hidden"
+      className="relative bg-white overflow-hidden py-24"
       aria-labelledby="features-heading"
+      ref={sectionRef}
     >
-      {/* Video Background - Reduced opacity and enhanced overlay */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/95 via-gray-50/90 to-white/95 z-10" />
-        <LazyVideo
-          src="https://ik.imagekit.io/appraisily/Videos/hero4.mp4?updatedAt=1731840454419"
-          poster="https://placehold.co/1920x1080/333/fff?text=Art+Appraisal+Video"
-          fallbackImage="https://placehold.co/1920x1080/333/fff?text=Art+Appraisal+Video"
-          className="h-full w-full object-cover opacity-20"
-          autoPlay
-          loop
-          muted
+      {/* Background Video Layer */}
+      <div className="absolute inset-0 z-0">
+        <video 
+          ref={videoRef}
+          className="w-full h-full object-cover opacity-20"
           playsInline
+          muted
+          loop
           preload="none"
-          rootMargin="200px 0px"
-          disableMobileAutoplay={true} // Performance improvement for mobile
-        />
+          poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        >
+          <source src="https://ik.imagekit.io/appraisily/Videos/hero4.mp4?updatedAt=1731840454419" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
+      
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 z-0" />
 
-      <Container>
+      <Container className="relative z-10">
         <div className="relative mx-auto max-w-3xl text-center mb-12">
           <div 
             className="absolute -inset-x-4 -inset-y-2 bg-blue-600/10 blur-2xl rounded-3xl" 
