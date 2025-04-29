@@ -48,34 +48,47 @@ export default function Hero() {
 
   return (
     <section 
-      className="relative isolate overflow-hidden bg-gradient-to-b from-blue-50 to-white pt-6 pb-16"
+      className="relative isolate overflow-hidden bg-gradient-to-b from-blue-100 to-white pt-8 pb-0 sm:pt-10 sm:pb-0"
       aria-labelledby="hero-heading"
     >
-      {/* Background Pattern - Decorative */}
+      {/* Enhanced Background Pattern */}
       <div 
-        className="absolute inset-0 bg-[radial-gradient(#3b82f6_0.8px,transparent_0.8px)] opacity-[0.03] [background-size:16px_16px]" 
+        className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] opacity-[0.05] [background-size:20px_20px]" 
         aria-hidden="true"
       />
       
-      {/* Refined orbs - More subtle with blue tones */}
+      {/* Abstract shapes - modern design elements */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -left-4 top-1/4 h-64 w-64 rounded-full bg-blue-600/10 blur-3xl animate-[pulse_6s_ease-in-out_infinite]" />
-        <div className="absolute right-10 top-1/3 h-48 w-48 rounded-full bg-blue-400/10 blur-3xl animate-[pulse_8s_ease-in-out_infinite]" />
-        <div className="absolute left-1/3 bottom-1/4 h-80 w-80 rounded-full bg-blue-500/5 blur-3xl animate-[pulse_7s_ease-in-out_infinite]" />
+        {/* Geometric elements */}
+        <svg className="absolute -left-28 -top-28 w-[500px] h-[500px] text-blue-600/10" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="heroGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.1"/>
+              <stop offset="100%" stopColor="#1e40af" stopOpacity="0.05"/>
+            </linearGradient>
+          </defs>
+          <circle cx="250" cy="250" r="200" fill="url(#heroGradient1)" opacity="0.8"/>
+          <path d="M100,100 L400,100 L400,400 L100,400 Z" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.4"/>
+        </svg>
+        
+        {/* Enhanced orbs with more visible gradients */}
+        <div className="absolute -left-4 top-1/4 h-80 w-80 rounded-full bg-gradient-to-br from-blue-600/15 to-purple-600/10 blur-3xl animate-[pulse_6s_ease-in-out_infinite]" />
+        <div className="absolute right-10 top-1/3 h-60 w-60 rounded-full bg-gradient-to-r from-blue-400/15 to-cyan-400/10 blur-3xl animate-[pulse_8s_ease-in-out_infinite]" />
+        <div className="absolute left-1/3 bottom-1/4 h-96 w-96 rounded-full bg-gradient-to-tr from-blue-500/10 to-indigo-500/5 blur-3xl animate-[pulse_7s_ease-in-out_infinite]" />
       </div>
 
-      <Container>
-        {/* Logo and header */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-xl bg-white/70 backdrop-blur-sm px-4 py-2 border border-gray-200/50 shadow-sm">
+      <Container className="px-5 sm:px-6">
+        {/* Logo and header - Fixed background for logo visibility */}
+        <div className="mb-8 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 border border-gray-200/50 shadow-sm">
           <Logo variant="light" size="md" />
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-10 sm:gap-12 items-start md:items-center">
           {/* Content Section */}
-          <div className="flex flex-col space-y-6 z-10">
+          <div className="flex flex-col space-y-7 z-10">
             <h1 
               id="hero-heading" 
-              className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight"
             >
               Connect with Certified Art Appraisers Instantly
             </h1>
@@ -84,8 +97,8 @@ export default function Hero() {
               Specializing in fine art, antiques & collectibles—trusted by collectors worldwide.
             </p>
             
-            {/* Expert Faces */}
-            <div className="flex -space-x-3 sm:-space-x-4" aria-label="Our expert appraisers">
+            {/* Expert Faces - improved for mobile */}
+            <div className="flex -space-x-2 sm:-space-x-4 py-2" aria-label="Our expert appraisers">
               {experts.map((expert, index) => (
                 <a 
                   key={expert.name} 
@@ -127,49 +140,49 @@ export default function Hero() {
               </a>
             </div>
             
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 text-base">
               Join thousands who trust our certified experts for professional art appraisals
             </p>
             
-            {/* Trust indicators */}
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
+            {/* Trust indicators - improved for mobile */}
+            <div className="flex flex-col gap-5 mt-2">
+              <div className="flex items-center gap-4">
                 <div className="flex-shrink-0">
-                  <div className="rounded-full bg-gray-100 p-1.5 sm:p-2" aria-hidden="true">
-                    <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                  <div className="rounded-full bg-gray-100 p-2.5 sm:p-3" aria-hidden="true">
+                    <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                   </div>
                 </div>
-                <p className="text-base sm:text-lg text-gray-700">
+                <p className="text-base sm:text-lg font-medium text-gray-700">
                   USPAP-certified experts with 15+ years of experience
                 </p>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <div className="flex-shrink-0">
-                  <div className="rounded-full bg-gray-100 p-1.5 sm:p-2" aria-hidden="true">
-                    <Award className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                  <div className="rounded-full bg-gray-100 p-2.5 sm:p-3" aria-hidden="true">
+                    <Award className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                   </div>
                 </div>
-                <p className="text-base sm:text-lg text-gray-700">
+                <p className="text-base sm:text-lg font-medium text-gray-700">
                   Trusted by leading institutions worldwide
                 </p>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <div className="flex-shrink-0">
-                  <div className="rounded-full bg-gray-100 p-1.5 sm:p-2" aria-hidden="true">
-                    <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                  <div className="rounded-full bg-gray-100 p-2.5 sm:p-3" aria-hidden="true">
+                    <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                   </div>
                 </div>
-                <p className="text-base sm:text-lg text-gray-700">
+                <p className="text-base sm:text-lg font-medium text-gray-700">
                   Fast 24-48 hour professional appraisals
                 </p>
               </div>
             </div>
 
-            {/* CTA section */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <div className="relative">
+            {/* CTA section - improved for mobile */}
+            <div className="flex flex-col gap-4 mt-4 w-full">
+              <div className="relative w-full">
                 <Button
                   variant="highConversion"
                   size="lg"
@@ -177,12 +190,13 @@ export default function Hero() {
                   href="https://appraisily.com/start"
                   id="start-appraisal-nav"
                   fullWidth
+                  className="p-3 sm:p-4 text-base sm:text-lg"
                 >
                   Find My Expert Appraiser
                 </Button>
                 <Badge 
                   variant="accent"
-                  className="absolute -right-2 -top-2 shadow-md"
+                  className="absolute -right-2 -top-2 shadow-md font-medium"
                 >
                   24-48h turnaround
                 </Badge>
@@ -194,41 +208,42 @@ export default function Hero() {
                 as="a"
                 href="#services"
                 endIcon={<Award className="h-5 w-5" />}
+                className="p-3 sm:p-4 text-base sm:text-lg"
               >
                 View Services
               </Button>
             </div>
           </div>
 
-          {/* Stats Card */}
-          <div className="relative mt-4 lg:mt-0">
+          {/* Stats Card - improved for mobile */}
+          <div className="relative mt-8 md:mt-0">
             <div 
-              className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-blue-500/5 rounded-2xl blur-3xl" 
+              className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-blue-500/10 rounded-2xl blur-3xl" 
               aria-hidden="true"
             />
             <Card variant="primary" className="relative">
-              <CardContent className="p-4 sm:p-6 lg:p-8">
+              <CardContent className="p-5 sm:p-6 lg:p-8">
                 {/* Featured Expert */}
                 <a
                   href="#experts"
-                  className="mb-6 flex items-center gap-4 p-3 sm:p-4 rounded-xl bg-gray-50 border border-gray-200 hover:bg-gray-100 transition-colors duration-200"
+                  className="mb-6 flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-200 hover:bg-gray-100 transition-colors duration-200"
                   aria-label={`View profile of ${experts[0].name}, ${experts[0].role}`}
                 >
                   <img
                     src={experts[0].image}
                     alt={`${experts[0].name}, ${experts[0].role}`}
-                    className="h-16 w-16 sm:h-20 sm:w-20 rounded-xl object-cover shadow-sm"
+                    className="h-20 w-20 rounded-xl object-cover shadow-sm"
                     loading="eager"
                     width={80}
                     height={80}
                   />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{experts[0].name}</h3>
-                    <p className="text-gray-600">{experts[0].role}</p>
-                    <div className="mt-1 sm:mt-2 flex gap-2">
+                    <h3 className="text-xl font-semibold text-gray-900">{experts[0].name}</h3>
+                    <p className="text-gray-600 text-base">{experts[0].role}</p>
+                    <div className="mt-2 flex gap-2">
                       <Badge 
                         variant="accent"
-                        icon={<Award className="h-3 w-3 sm:h-4 sm:w-4 text-amber-600" />}
+                        icon={<Award className="h-4 w-4 text-amber-600" />}
                       >
                         Certified Expert
                       </Badge>
@@ -237,24 +252,24 @@ export default function Hero() {
                 </a>
 
                 <div 
-                  className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
+                  className="grid grid-cols-2 gap-5 sm:gap-6 lg:gap-8"
                   aria-label="Our appraisal service statistics"
                 >
-                  <div className="text-center">
+                  <div className="text-center p-3 bg-gray-50/80 rounded-lg">
                     <div className="text-3xl sm:text-4xl font-bold text-gray-900">15K+</div>
-                    <div className="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-600">Artworks Appraised</div>
+                    <div className="mt-1 sm:mt-2 text-sm text-gray-600">Artworks Appraised</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center p-3 bg-gray-50/80 rounded-lg">
                     <div className="text-3xl sm:text-4xl font-bold text-gray-900">98%</div>
-                    <div className="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-600">Client Satisfaction</div>
+                    <div className="mt-1 sm:mt-2 text-sm text-gray-600">Client Satisfaction</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center p-3 bg-gray-50/80 rounded-lg">
                     <div className="text-3xl sm:text-4xl font-bold text-gray-900">50+</div>
-                    <div className="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-600">Countries Served</div>
+                    <div className="mt-1 sm:mt-2 text-sm text-gray-600">Countries Served</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center p-3 bg-gray-50/80 rounded-lg">
                     <div className="text-3xl sm:text-4xl font-bold text-gray-900">24h</div>
-                    <div className="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-600">Avg. Turnaround</div>
+                    <div className="mt-1 sm:mt-2 text-sm text-gray-600">Avg. Turnaround</div>
                   </div>
                 </div>
               </CardContent>
@@ -262,20 +277,6 @@ export default function Hero() {
           </div>
         </div>
       </Container>
-      
-      {/* Sticky mobile CTA */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-3 z-50 shadow-lg border-t border-gray-200">
-        <Button
-          variant="highConversion"
-          fullWidth
-          as="a"
-          href="https://appraisily.com/start"
-          size="md"
-          startIcon={<Clock className="h-4 w-4" />}
-        >
-          Find My Expert Appraiser
-        </Button>
-      </div>
     </section>
   );
 }

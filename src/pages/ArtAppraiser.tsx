@@ -12,6 +12,7 @@ import LazyComponent from '../components/utility/LazyComponent';
 // Regular imports for components below the fold
 // We use regular imports since LazyComponent will handle visibility
 import Process from '../components/sections/Process';
+import ValuerAnalytics from '../components/sections/ValuerAnalytics';
 import RecentAppraisals from '../components/sections/RecentAppraisals';
 import SuccessStories from '../components/sections/SuccessStories';
 import WhyChooseUs from '../components/features/value/WhyChooseUs';
@@ -44,6 +45,7 @@ export default function ArtAppraiser() {
       window.requestIdleCallback(() => {
         // Dynamic import for prefetching during idle time
         import('../components/sections/Process');
+        import('../components/sections/ValuerAnalytics');
       }, { timeout: 2000 });
     }
   }, []);
@@ -62,6 +64,10 @@ export default function ArtAppraiser() {
         {/* Below-the-fold Components with Lazy Loading */}
         <LazyComponent threshold={0.1} rootMargin="100px">
           <Process />
+        </LazyComponent>
+        
+        <LazyComponent threshold={0.1} rootMargin="100px">
+          <ValuerAnalytics />
         </LazyComponent>
         
         <LazyComponent threshold={0.1} rootMargin="100px">
