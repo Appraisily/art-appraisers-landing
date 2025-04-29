@@ -73,17 +73,26 @@ export default function Hero() {
                 id="hero-heading" 
                 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 sm:text-6xl"
               >
-                Expert Art Appraisers You Can Trust
+                Connect with Certified Art Appraisers Instantly
               </h1>
+
+              <p className="mt-4 text-xl text-blue-100">
+                Specializing in fine art, antiques & collectibles—trusted by collectors worldwide.
+              </p>
               
               {/* Expert Faces */}
               <div className="mt-8 flex -space-x-4" aria-label="Our expert appraisers">
                 {experts.map((expert, index) => (
-                  <div key={expert.name} className="relative group">
+                  <a 
+                    key={expert.name} 
+                    href="#experts" 
+                    className="relative group"
+                    aria-label={`View profile of ${expert.name}, ${expert.role}`}
+                  >
                     <img
                       src={expert.image}
                       alt={`${expert.name}, ${expert.role}`}
-                      className="h-16 w-16 rounded-full border-2 border-white object-cover"
+                      className="h-16 w-16 rounded-full border-2 border-white object-cover hover:border-blue-300 transition-colors duration-200"
                       loading={index === 0 ? "eager" : "lazy"}
                       width={64}
                       height={64}
@@ -103,14 +112,15 @@ export default function Hero() {
                     >
                       {expert.name}
                     </div>
-                  </div>
+                  </a>
                 ))}
-                <div 
-                  className="flex items-center justify-center h-16 w-16 rounded-full border-2 border-dashed border-white/50 bg-white/10 backdrop-blur-sm text-white text-sm font-medium"
-                  aria-label="And 10 more expert appraisers"
+                <a 
+                  href="#experts"
+                  className="flex items-center justify-center h-16 w-16 rounded-full border-2 border-dashed border-white/50 bg-white/10 backdrop-blur-sm text-white text-sm font-medium hover:bg-white/20 transition-colors duration-200"
+                  aria-label="View all of our expert appraisers"
                 >
                   +10
-                </div>
+                </a>
               </div>
               
               <p className="mt-4 text-blue-200 text-sm">
@@ -153,25 +163,30 @@ export default function Hero() {
               </div>
 
               <div className="mt-12 flex flex-col sm:flex-row gap-4">
-                <a
-                  href="https://appraisily.com/start"
-                  id="start-appraisal-nav"
-                  className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-blue-600 px-6 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg hover:from-primary/90 hover:to-blue-600/90 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 animate-pulse-subtle scale-105 ring-2 ring-blue-300/50 hover:shadow-xl"
-                  aria-label="Get my appraisal - Start the art valuation process"
-                >
-                  <span className="relative">
-                    Get My Appraisal
-                    <span className="absolute -bottom-1 left-0 w-full h-px bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200" aria-hidden="true" />
-                  </span>
-                  <svg 
-                    className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" 
-                    viewBox="0 0 20 20" 
-                    fill="currentColor"
-                    aria-hidden="true"
+                <div className="relative">
+                  <a
+                    href="https://appraisily.com/start"
+                    id="start-appraisal-nav"
+                    className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-blue-600 px-6 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg hover:from-primary/90 hover:to-blue-600/90 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 animate-pulse-subtle scale-105 ring-2 ring-blue-300/50 hover:shadow-xl w-full sm:w-auto"
+                    aria-label="Find my expert appraiser - Start the art valuation process"
                   >
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </a>
+                    <span className="relative">
+                      Find My Expert Appraiser
+                      <span className="absolute -bottom-1 left-0 w-full h-px bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200" aria-hidden="true" />
+                    </span>
+                    <svg 
+                      className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" 
+                      viewBox="0 0 20 20" 
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </a>
+                  <div className="absolute -right-3 -top-3 flex items-center justify-center rounded-full bg-blue-500 px-3 py-1 text-xs font-semibold text-white shadow-md animate-pulse">
+                    24-48h turnaround
+                  </div>
+                </div>
                 
                 <a
                   href="#services"
@@ -196,7 +211,11 @@ export default function Hero() {
               <div className="relative overflow-hidden rounded-2xl bg-white/[0.075] backdrop-blur-sm border border-white/10">
                 <div className="p-8">
                   {/* Featured Expert */}
-                  <div className="mb-8 flex items-center gap-6 p-4 rounded-xl bg-white/[0.05] border border-white/10">
+                  <a
+                    href="#experts"
+                    className="mb-8 flex items-center gap-6 p-4 rounded-xl bg-white/[0.05] border border-white/10 hover:bg-white/[0.1] transition-colors duration-200"
+                    aria-label={`View profile of ${experts[0].name}, ${experts[0].role}`}
+                  >
                     <img
                       src={experts[0].image}
                       alt={`${experts[0].name}, ${experts[0].role}`}
@@ -221,7 +240,7 @@ export default function Hero() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
 
                   <div 
                     className="grid grid-cols-2 gap-8"

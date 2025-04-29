@@ -35,12 +35,12 @@ export default defineConfig({
           ],
           critical: [
             './src/components/sections/Hero.tsx',
-            './src/components/TrustBar.tsx', 
-            './src/components/LeadCapture.tsx'
+            './src/components/features/trust/TrustBar.tsx',
+            './src/components/forms/LeadCapture.tsx'
           ],
           deferred: [
-            './src/components/LazyComponent.tsx',
-            './src/components/LazyImage.tsx'
+            './src/components/utility/LazyComponent.tsx',
+            './src/components/core/media/LazyImage.tsx'
           ]
         }
       }

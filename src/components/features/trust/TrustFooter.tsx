@@ -115,7 +115,7 @@ export default function TrustFooter() {
                     href="https://appraisily.com/start"
                     className="w-full sm:w-auto rounded-xl bg-blue-500 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-200"
                   >
-                    Start Now
+                    Connect with Your Appraiser
                   </a>
                 </div>
               </div>

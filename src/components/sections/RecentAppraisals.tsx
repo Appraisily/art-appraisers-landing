@@ -1,5 +1,5 @@
 import React from 'react';
-import { DollarSign, ArrowRight, TrendingUp, History } from 'lucide-react';
+import { DollarSign, ArrowRight, TrendingUp, History, User } from 'lucide-react';
 
 const getImageUrl = (url: string) => {
   const isMobile = window.innerWidth <= 768;
@@ -17,7 +17,8 @@ const cases = [
     description: "Original hand-made surrealist abstract painting by Tom Kidd (B.1955). Renowned for his fine quality work, Kidd's piece was directly purchased from the artist and was featured as a book cover.",
     initialEstimate: "$800",
     finalValue: "$2,200",
-    url: "https://www.appraisily.com/appraisals/1-9/"
+    url: "https://www.appraisily.com/appraisals/1-9/",
+    appraiser: "Andrés Gómez"
   },
   {
     id: 2,
@@ -26,7 +27,8 @@ const cases = [
     description: "Early to mid 17th-century painting attributed to Dutch Golden Age painter Frans Hals the Elder. Features a dignified individual seated with a possible string instrument, adorned in period clothing.",
     initialEstimate: "Unknown",
     finalValue: "$85,000",
-    url: "https://www.appraisily.com/appraisals/1-8/"
+    url: "https://www.appraisily.com/appraisals/1-8/",
+    appraiser: "Charlotte Smith"
   },
   {
     id: 3,
@@ -35,7 +37,8 @@ const cases = [
     description: "17th century Dutch tavern interior by Flemish master Adriaen Brouwer (c. 1605 – 1638). Known for his unique style and mastery of chiaroscuro.",
     initialEstimate: "$2,000",
     finalValue: "$6,000",
-    url: "https://www.appraisily.com/appraisals/1-7/"
+    url: "https://www.appraisily.com/appraisals/1-7/",
+    appraiser: "Adrian Dupont"
   },
   {
     id: 4,
@@ -44,7 +47,8 @@ const cases = [
     description: "Mid to late 20th century oil painting by German artist Himmy, depicting a serene forest path with two figures. Features tranquil earthy tones and masterful composition.",
     initialEstimate: "$300",
     finalValue: "$800",
-    url: "https://www.appraisily.com/appraisals/1-6/"
+    url: "https://www.appraisily.com/appraisals/1-6/",
+    appraiser: "Elena Petrova"
   },
   {
     id: 5,
@@ -53,7 +57,8 @@ const cases = [
     description: "Contemporary piece by Patrice Le Pera depicting traditional dancers at dawn. Women in traditional attire carry green plants through a vibrant landscape.",
     initialEstimate: "$3,500",
     finalValue: "$7,000",
-    url: "https://www.appraisily.com/appraisals/1-4/"
+    url: "https://www.appraisily.com/appraisals/1-4/",
+    appraiser: "James Chen"
   },
   {
     id: 6,
@@ -62,7 +67,8 @@ const cases = [
     description: "36×24 oil on glass painting with back light illumination by Springfield artist Wiley Ross. Modern portrait with abstract elements against vibrant red and orange background.",
     initialEstimate: "$2,500",
     finalValue: "$5,800",
-    url: "https://www.appraisily.com/appraisals/1-3/"
+    url: "https://www.appraisily.com/appraisals/1-3/",
+    appraiser: "Andrés Gómez"
   }
 ];
 
@@ -79,7 +85,7 @@ export default function RecentAppraisals() {
               Recent Appraisals
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Browse through our latest professional valuations to see examples of our detailed analysis and expertise
+              See how our expert appraisers provide detailed analysis and valuation for a variety of artworks
             </p>
           </div>
 
@@ -123,7 +129,13 @@ export default function RecentAppraisals() {
                       </h3>
                       <ArrowRight className="h-5 w-5 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
-                    <p className="mt-4 text-gray-600 line-clamp-3">{case_.description}</p>
+                    <div className="mt-2 flex items-center">
+                      <User className="h-4 w-4 text-primary mr-2" />
+                      <span className="text-sm font-medium text-primary">
+                        Appraiser: {case_.appraiser}
+                      </span>
+                    </div>
+                    <p className="mt-3 text-gray-600 line-clamp-3">{case_.description}</p>
                   </div>
                 </div>
               </a>

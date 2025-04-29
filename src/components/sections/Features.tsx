@@ -1,12 +1,12 @@
 import React from 'react';
-import { Award, Shield, FileCheck, Clock } from 'lucide-react';
-import LazyVideo from '../ui/LazyVideo';
+import { Award, Shield, FileCheck, Clock, Users } from 'lucide-react';
+import LazyVideo from '../core/media/LazyVideo';
 
 const features = [
   {
     icon: Award,
     title: 'Certified Experts',
-    description: 'Our team consists of ISA and AAA certified professional appraisers'
+    description: 'Hand-picked specialists, vetted by ISA & AAA for museum-grade appraisals'
   },
   {
     icon: Shield,
@@ -22,6 +22,11 @@ const features = [
     icon: Clock,
     title: '24-48h Turnaround',
     description: 'Fast professional service with detailed analysis'
+  },
+  {
+    icon: Users,
+    title: 'Category Specialists',
+    description: 'From Old Masters to Contemporary Works - expertise in all art categories'
   }
 ];
 
@@ -67,7 +72,7 @@ export default function Features() {
 
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:max-w-none">
           <ul 
-            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
             role="list"
             aria-labelledby="features-heading"
           >
@@ -91,6 +96,18 @@ export default function Features() {
               </li>
             ))}
           </ul>
+          
+          <div className="flex justify-center mt-12">
+            <a 
+              href="#experts" 
+              className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors group"
+            >
+              <span>See Our Experts</span>
+              <svg className="w-5 h-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>

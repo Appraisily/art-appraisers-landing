@@ -1,51 +1,51 @@
 import React from 'react';
 import { Upload, Search, TrendingUp, FileText, Clock, ArrowRight } from 'lucide-react';
-import LazyImage from '../LazyImage';
+import LazyImage from '../core/media/LazyImage';
 
 const steps = [
   {
-    title: 'Submit Your Artwork',
-    description: 'Upload high-quality images and documentation of your items.',
+    title: 'Submit Your Artwork to Your Dedicated Appraiser',
+    description: 'Upload high-quality images and documentation to your assigned expert.',
     icon: Upload,
     timeline: 'Immediate',
     iconClass: 'bg-blue-100',
     iconTextClass: 'text-blue-600',
     badgeClass: 'bg-blue-50 text-blue-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step1.png',
-    imageAlt: 'Submit your artwork for appraisal'
+    imageAlt: 'Submit your artwork to your dedicated appraiser'
   },
   {
-    title: 'Image Analysis',
-    description: 'Our experts analyze your items using advanced AI-driven tools.',
+    title: 'Our Experts Analyze & Authenticate',
+    description: 'Your appraiser examines your items using advanced analytical tools and expertise.',
     icon: Search,
     timeline: 'Minutes',
     iconClass: 'bg-indigo-100',
     iconTextClass: 'text-indigo-600',
     badgeClass: 'bg-indigo-50 text-indigo-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step2.png',
-    imageAlt: 'Advanced image analysis process'
+    imageAlt: 'Experts analyzing and authenticating artwork'
   },
   {
-    title: 'Market Valuation',
-    description: 'We evaluate based on current market trends and historical significance.',
+    title: 'Appraiser Conducts Market Valuation',
+    description: 'Your expert evaluates current market trends and historical significance of your item.',
     icon: TrendingUp,
     timeline: '12 Hours',
     iconClass: 'bg-purple-100',
     iconTextClass: 'text-purple-600',
     badgeClass: 'bg-purple-50 text-purple-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step3.png',
-    imageAlt: 'Market valuation analysis'
+    imageAlt: 'Appraiser conducting market valuation'
   },
   {
-    title: 'Receive Report',
-    description: 'Get your detailed appraisal report with final valuation.',
+    title: 'Receive Your Detailed Expert Report',
+    description: 'Get your comprehensive appraisal report with professional certification.',
     icon: FileText,
     timeline: '24 Hours',
     iconClass: 'bg-green-100',
     iconTextClass: 'text-green-600',
     badgeClass: 'bg-green-50 text-green-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step4.png',
-    imageAlt: 'Final appraisal report'
+    imageAlt: 'Detailed expert appraisal report'
   }
 ];
 
@@ -63,10 +63,10 @@ export default function Process() {
               <span className="text-primary font-semibold">24-48 Hour Turnaround</span>
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-              Fast & Efficient Process
+              Fast & Efficient, Appraiser-Led Process
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Our streamlined process ensures accurate and timely appraisals within 24-48 hours
+              Our certified appraisers ensure accurate and timely evaluations within 24-48 hours
             </p>
           </div>
 
@@ -128,7 +128,7 @@ export default function Process() {
               href="https://appraisily.com/start"
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200"
             >
-              Start Your Appraisal Now
+              Start with Your Appraiser
               <ArrowRight className="h-5 w-5" />
             </a>
           </div>

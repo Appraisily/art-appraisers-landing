@@ -1,24 +1,23 @@
 import React, { useEffect } from 'react';
 // SEO Component
-import SEO from '../components/SEO';
+import SEO from '../components/utility/SEO';
 import { ART_APPRAISER_SEO } from '../config/seo.config';
 
 // Critical components above the fold (eager loading)
 import Hero from '../components/sections/Hero';
-import TrustBar from '../components/TrustBar';
+import TrustBar from '../components/features/trust/TrustBar';
 import Features from '../components/sections/Features';
-import LazyComponent from '../components/LazyComponent';
+import LazyComponent from '../components/utility/LazyComponent';
 
 // Regular imports for components below the fold
 // We use regular imports since LazyComponent will handle visibility
 import Process from '../components/sections/Process';
-import ValueProposition from '../components/ValueProposition';
 import RecentAppraisals from '../components/sections/RecentAppraisals';
 import SuccessStories from '../components/sections/SuccessStories';
-import WhyChooseUs from '../components/WhyChooseUs';
-import Services from '../components/Services';
-import Experts from '../components/Experts';
-import TrustFooter from '../components/TrustFooter';
+import WhyChooseUs from '../components/features/value/WhyChooseUs';
+import Services from '../components/features/services/Services';
+import Experts from '../components/features/experts/Experts';
+import TrustFooter from '../components/features/trust/TrustFooter';
 
 // Add type declaration for window.dataLayer
 declare global {
@@ -45,7 +44,6 @@ export default function ArtAppraiser() {
       window.requestIdleCallback(() => {
         // Dynamic import for prefetching during idle time
         import('../components/sections/Process');
-        import('../components/ValueProposition');
       }, { timeout: 2000 });
     }
   }, []);
@@ -67,10 +65,6 @@ export default function ArtAppraiser() {
         </LazyComponent>
         
         <LazyComponent threshold={0.1} rootMargin="100px">
-          <ValueProposition />
-        </LazyComponent>
-        
-        <LazyComponent threshold={0.1} rootMargin="100px">
           <RecentAppraisals />
         </LazyComponent>
         
@@ -86,11 +80,11 @@ export default function ArtAppraiser() {
           <Services />
         </LazyComponent>
         
-        <LazyComponent threshold={0.1} rootMargin="100px">
+        <LazyComponent threshold={0.1} rootMargin="100px" id="experts">
           <Experts />
         </LazyComponent>
         
-        <LazyComponent threshold={0.1} rootMargin="100px">
+        <LazyComponent threshold={0.1} rootMargin="100px" id="trust-footer">
           <TrustFooter />
         </LazyComponent>
       </main>

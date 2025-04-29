@@ -106,7 +106,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, videoId, title
 const services = [
   {
     title: 'Regular Appraisal',
-    description: 'Comprehensive evaluation of your art or antique pieces with detailed market analysis.',
+    description: 'Our certified appraisers provide comprehensive evaluation of your art or antique pieces with detailed market analysis.',
     icon: Scale,
     features: [
       { text: 'Expert Analysis', icon: Search },
@@ -122,7 +122,7 @@ const services = [
   },
   {
     title: 'Insurance Appraisal',
-    description: 'Detailed reports specifically designed for insurance purposes and coverage.',
+    description: 'Our expert appraisers prepare detailed reports specifically designed for insurance purposes and coverage.',
     icon: Shield,
     features: [
       { text: 'Replacement Value', icon: Receipt },
@@ -138,7 +138,7 @@ const services = [
   },
   {
     title: 'Tax Deduction Appraisal',
-    description: 'IRS-compliant appraisals for charitable donations and tax purposes.',
+    description: 'Our certified appraisers prepare IRS-compliant appraisals for charitable donations and tax purposes.',
     icon: FileCheck,
     features: [
       { text: 'IRS Compliance', icon: Landmark },
@@ -165,15 +165,17 @@ const Services: React.FC = () => {
     title: ''
   });
 
+  const [chatModalOpen, setChatModalOpen] = useState(false);
+
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white py-24 sm:py-32" id="services">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Choose Your Appraisal Service
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Select the service that best suits your needs. Each appraisal is conducted by certified experts using advanced analysis tools.
+            Our certified appraisers tailor each report to your needs. Select the service that best fits your requirements.
           </p>
         </div>
         
@@ -216,6 +218,12 @@ const Services: React.FC = () => {
                 >
                   Select This Service
                 </a>
+                <button
+                  onClick={() => setChatModalOpen(true)}
+                  className="text-primary hover:text-primary/80 text-sm font-medium mt-2 transition-colors"
+                >
+                  Not sure? Talk to an Appraiser
+                </button>
               </div>
             </div>
           ))}
@@ -228,6 +236,66 @@ const Services: React.FC = () => {
         videoId={videoModal.videoId}
         title={videoModal.title}
       />
+
+      {chatModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setChatModalOpen(false)}
+        >
+          <div 
+            className="bg-white rounded-xl p-6 max-w-md w-full shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold text-gray-900">Talk to an Appraiser</h3>
+              <button 
+                onClick={() => setChatModalOpen(false)}
+                className="text-gray-400 hover:text-gray-500"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <p className="text-gray-600 mb-6">
+              Not sure which service you need? Our expert appraisers are ready to help. Enter your contact information and we'll connect you with a specialist.
+            </p>
+            <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setChatModalOpen(false); }}>
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-gray-900 p-2 border"
+                  placeholder="Your name" 
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-gray-900 p-2 border"
+                  placeholder="Your email" 
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+                <textarea 
+                  id="message" 
+                  rows={3} 
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-gray-900 p-2 border"
+                  placeholder="Tell us briefly about your artwork or question" 
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+              >
+                Connect with an Appraiser
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
