@@ -44,34 +44,6 @@ const experts = [
       { icon: Globe2, text: 'Modern Art Specialist' }
     ],
     bio: 'Adrian specializes in 20th and 21st century artwork, with particular expertise in modern and contemporary paintings. His background includes curatorial work at major contemporary art museums before joining our team of expert appraisers.',
-  },
-  {
-    name: 'Elena Petrova',
-    title: 'Eastern European Art Specialist',
-    specialties: ['Russian Art', 'Eastern European Icons'],
-    image: 'https://ik.imagekit.io/appraisily/Appraisers/elena.png?tr=w-400,h-400,q-75',
-    credentials: ['PhD in Art History'],
-    quote: 'Bringing specialized expertise to niche art markets and culturally significant pieces.',
-    stats: [
-      { icon: Award, text: 'Research Fellow' },
-      { icon: Star, text: '8+ Years Experience' },
-      { icon: Globe2, text: 'Eastern European Expert' }
-    ],
-    bio: 'Elena joined our team to strengthen our expertise in Eastern European art, particularly Russian paintings and religious icons. Her doctoral research focused on authentication methods for religious art from the 15th-19th centuries.',
-  },
-  {
-    name: 'James Chen',
-    title: 'Asian Art Specialist',
-    specialties: ['Chinese Ceramics', 'Japanese Prints'],
-    image: 'https://ik.imagekit.io/appraisily/Appraisers/james.png?tr=w-400,h-400,q-75',
-    credentials: ['MA in Asian Art Studies'],
-    quote: 'Specialized knowledge of Asian art markets and authentication techniques.',
-    stats: [
-      { icon: Award, text: 'Certified Expert' },
-      { icon: Star, text: '15+ Years Experience' },
-      { icon: Globe2, text: 'Asian Art Specialist' }
-    ],
-    bio: 'James brings unparalleled expertise in Asian art to our team. His specialties include Chinese ceramics, Japanese woodblock prints, and Southeast Asian artifacts. He has assisted major collectors and museums with acquisitions and valuation.',
   }
 ];
 
@@ -189,18 +161,6 @@ export default function Experts() {
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-16 flex justify-center">
-          <a
-            href="https://appraisily.com/experts"
-            className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors"
-          >
-            See All Experts
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
         </div>
 
         <div className="mt-16 flex justify-center">

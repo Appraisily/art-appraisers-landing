@@ -16,6 +16,7 @@ interface LazyVideoProps {
   preload?: 'auto' | 'metadata' | 'none';
   threshold?: number;
   rootMargin?: string;
+  disableMobileAutoplay?: boolean;
 }
 
 export default function LazyVideo({
@@ -33,14 +34,30 @@ export default function LazyVideo({
   onError,
   preload = 'metadata',
   threshold = 0.1,
-  rootMargin = '100px 0px'
+  rootMargin = '100px 0px',
+  disableMobileAutoplay = false
 }: LazyVideoProps) {
   const [isInView, setIsInView] = useState(false);
   const [canAutoPlay, setCanAutoPlay] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+      setIsMobile(mobileRegex.test(userAgent));
+    };
+    
+    checkMobile();
+    
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Comprobar si el navegador soporta autoplay
   useEffect(() => {
@@ -109,6 +126,9 @@ export default function LazyVideo({
 
   // Intentar reproducir el video cuando está en vista
   useEffect(() => {
+    // Skip autoplay if it's mobile and disableMobileAutoplay is true
+    if (isMobile && disableMobileAutoplay) return;
+    
     if (isInView && videoRef.current && autoPlay && canAutoPlay && !hasError) {
       const playPromise = videoRef.current.play();
       
@@ -119,7 +139,7 @@ export default function LazyVideo({
         });
       }
     }
-  }, [isInView, autoPlay, canAutoPlay, hasError]);
+  }, [isInView, autoPlay, canAutoPlay, hasError, isMobile, disableMobileAutoplay]);
 
   // Handlers para eventos de video
   const handleCanPlay = () => {
@@ -131,6 +151,9 @@ export default function LazyVideo({
     setHasError(true);
     if (onError) onError();
   };
+
+  // Determine if video should autoplay based on all conditions
+  const shouldAutoPlay = isInView && autoPlay && canAutoPlay && !(isMobile && disableMobileAutoplay);
 
   return (
     <div
@@ -165,7 +188,7 @@ export default function LazyVideo({
             playsInline={playsInline}
             muted={muted}
             loop={loop}
-            autoPlay={isInView && autoPlay && canAutoPlay}
+            autoPlay={shouldAutoPlay}
             onCanPlay={handleCanPlay}
             onError={handleError}
           >

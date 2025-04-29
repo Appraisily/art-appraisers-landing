@@ -2,6 +2,20 @@ import React, { useState } from 'react';
 import { Award, Shield, FileCheck, Clock, Users, ArrowRight, X } from 'lucide-react';
 import LazyVideo from '../core/media/LazyVideo';
 
+// TypeScript interfaces
+interface Feature {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+  benefit: string;
+  learnMore: string;
+}
+
+interface FeatureModalProps {
+  feature: Feature;
+  onClose: () => void;
+}
+
 // Feature data with expanded information
 const features = [
   {
@@ -37,7 +51,7 @@ const features = [
     title: 'Category Specialists',
     description: 'Experts in every art category from Old Masters to Contemporary Works',
     benefit: 'Always matched with the perfect expert',
-    learnMore: 'We maintain a network of specialists across 20+ art categories and periods. Your item will be matched with an appraiser who specializes specifically in your artwork's style, period, and medium.'
+    learnMore: "We maintain a network of specialists across 20+ art categories and periods. Your item will be matched with an appraiser who specializes specifically in your artwork's style, period, and medium."
   }
 ];
 
@@ -48,10 +62,10 @@ const testimonialSnippets = [
 ];
 
 export default function Features() {
-  const [activeModal, setActiveModal] = useState(null);
+  const [activeModal, setActiveModal] = useState<number | null>(null);
 
   // Modal component for "Learn More" functionality
-  const FeatureModal = ({ feature, onClose }) => (
+  const FeatureModal = ({ feature, onClose }: FeatureModalProps) => (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="relative bg-white w-full max-w-md rounded-xl shadow-2xl p-6 animate-fadeIn">
         <button 
