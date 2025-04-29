@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Award, Shield, FileCheck, Clock, Users, ArrowRight, X } from 'lucide-react';
 import LazyVideo from '../core/media/LazyVideo';
-import { Container, Section } from '../core/Container';
 import { Card, CardHeader, CardTitle, CardContent } from '../core/Card';
 import Button from '../core/Button';
 import Badge from '../core/Badge';
 import { cn } from '../../utils/cn';
+import { Box, containerClasses, spacingClasses, backgroundClasses } from '../core/layout';
 
 // TypeScript interfaces
 interface Feature {
@@ -105,8 +105,8 @@ export default function Features() {
   // Modal component for "Learn More" functionality
   const FeatureModal = ({ feature, onClose }: FeatureModalProps) => (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <Card className="relative w-full max-w-md animate-fadeIn">
-        <CardHeader>
+      <Box variant="card" shadow="lg" rounded="lg" className="relative w-full max-w-md animate-fadeIn">
+        <Box padding="lg" spacing="md">
           <button 
             onClick={onClose}
             className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100"
@@ -114,16 +114,17 @@ export default function Features() {
           >
             <X size={20} />
           </button>
-          <div className="flex items-center gap-3 mb-1">
-            <div className="rounded-lg bg-blue-600 p-3 flex-shrink-0">
-              <feature.icon className="h-6 w-6 text-white" />
+          
+          <Box variant="flex" spacing="md" className="items-center">
+            <div className="rounded-lg bg-gray-100 p-3 flex-shrink-0">
+              <feature.icon className="h-6 w-6 text-gray-700" />
             </div>
-            <CardTitle>{feature.title}</CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-gray-600 mb-4">{feature.learnMore}</p>
-          <div className="mt-4">
+            <h3 className="text-xl font-semibold text-gray-900">{feature.title}</h3>
+          </Box>
+          
+          <p className="text-gray-600">{feature.learnMore}</p>
+          
+          <Box className="mt-4">
             <Button
               variant="primary"
               fullWidth
@@ -131,17 +132,18 @@ export default function Features() {
             >
               Got it
             </Button>
-          </div>
-        </CardContent>
-      </Card>
+          </Box>
+        </Box>
+      </Box>
     </div>
   );
 
   return (
-    <Section
-      className="relative bg-white overflow-hidden py-24"
-      aria-labelledby="features-heading"
+    <Box 
+      variant="section"
+      className="bg-white relative overflow-hidden"
       ref={sectionRef}
+      aria-labelledby="features-heading"
     >
       {/* Background Video Layer */}
       <div className="absolute inset-0 z-0">
@@ -162,10 +164,10 @@ export default function Features() {
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 z-0" />
 
-      <Container className="relative z-10">
-        <div className="relative mx-auto max-w-3xl text-center mb-12">
+      <Box variant="content" className="relative z-10">
+        <Box direction="col" spacing="md" className="max-w-3xl mx-auto text-center mb-12">
           <div 
-            className="absolute -inset-x-4 -inset-y-2 bg-blue-600/10 blur-2xl rounded-3xl" 
+            className="absolute -inset-x-4 -inset-y-2 bg-gray-100 blur-2xl rounded-3xl" 
             aria-hidden="true"
           />
           <h2 
@@ -174,74 +176,75 @@ export default function Features() {
           >
             Why Our Certified Appraisers Deliver Unmatched Value
           </h2>
-          <p className="relative text-lg leading-8 text-gray-700 font-medium">
+          <p className="relative text-lg leading-8 text-gray-600 font-medium">
             Museum-grade analysis, 24–48h turnaround, and reports accepted by top institutions
           </p>
-        </div>
+        </Box>
 
         {/* Social proof above feature grid */}
-        <div className="flex flex-wrap justify-center gap-6 mt-8 mb-12">
+        <Box variant="flex" className="flex-wrap justify-center gap-6 mt-8 mb-12">
           {testimonialSnippets.map((testimonial, index) => (
-            <Badge 
+            <span 
               key={index}
-              variant="outline"
-              className="py-1.5 px-3 text-sm"
+              className="inline-flex items-center rounded-full font-medium border border-gray-200 bg-white text-gray-700 py-1.5 px-3 text-sm"
             >
               <span className="text-gray-700 italic mr-1">"{testimonial.quote}"</span>
               <span className="text-gray-500 text-xs">– {testimonial.author}</span>
-            </Badge>
+            </span>
           ))}
-        </div>
+        </Box>
 
-        <div className="mx-auto mt-12 max-w-2xl lg:max-w-none">
-          <ul 
-            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+        <Box className="mx-auto mt-12 max-w-2xl lg:max-w-none">
+          <Box 
+            variant="grid"
+            className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
             role="list"
             aria-labelledby="features-heading"
           >
             {features.map((feature, index) => (
               <li key={feature.title}>
-                <Card 
-                  variant="feature" 
-                  className="h-full flex flex-col group"
+                <Box 
+                  variant="card" 
+                  padding="md" 
+                  spacing="md" 
+                  className="h-full flex flex-col group hover:shadow-md transition-shadow duration-200"
                 >
-                  <div className="flex items-center gap-3 mb-3">
+                  <Box variant="flex" spacing="md" className="items-center">
                     <div 
-                      className="rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 p-2.5 flex-shrink-0 shadow-md"
+                      className="rounded-lg bg-gray-100 p-2.5 flex-shrink-0"
                       aria-hidden="true"
                     >
-                      <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white drop-shadow-sm" />
+                      <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-gray-700" />
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
-                  </div>
+                  </Box>
                   
-                  {/* Benefit text - highlighted */}
-                  <Badge variant="primary" className="inline-block mb-3 bg-blue-50">
+                  {/* Benefit text - simplified */}
+                  <span className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 ring-1 ring-inset ring-gray-300/30 mb-3">
                     {feature.benefit}
-                  </Badge>
+                  </span>
                   
                   {/* Description */}
                   <p className="text-sm leading-6 text-gray-600 flex-grow">{feature.description}</p>
                   
                   {/* Learn More interaction */}
-                  <Button 
-                    variant="text"
+                  <button 
                     onClick={() => setActiveModal(index)}
-                    className="mt-4 text-xs justify-start"
-                    endIcon={<ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />}
+                    className="mt-4 text-xs font-medium text-gray-700 hover:text-gray-900 inline-flex items-center justify-start"
                     aria-label={`Learn more about ${feature.title}`}
                   >
                     Learn More
-                  </Button>
-                </Card>
+                    <ArrowRight size={12} className="ml-1 transition-transform group-hover:translate-x-0.5" />
+                  </button>
+                </Box>
               </li>
             ))}
-          </ul>
+          </Box>
           
           {/* Primary and secondary CTAs */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-12">
+          <Box variant="flex" direction="col" className="sm:flex-row justify-center items-center gap-4 mt-12">
             <Button 
-              variant="highConversion"
+              variant="primary"
               as="a"
               href="#start-appraisal"
               fullWidth
@@ -262,9 +265,9 @@ export default function Features() {
             >
               See Our Experts
             </Button>
-          </div>
-        </div>
-      </Container>
+          </Box>
+        </Box>
+      </Box>
 
       {/* Feature modals */}
       {activeModal !== null && (
@@ -273,6 +276,6 @@ export default function Features() {
           onClose={() => setActiveModal(null)} 
         />
       )}
-    </Section>
+    </Box>
   );
 }
