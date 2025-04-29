@@ -1,6 +1,7 @@
 import React from 'react';
 import { Upload, Search, TrendingUp, FileText, Clock, ArrowRight } from 'lucide-react';
 import LazyImage from '../core/media/LazyImage';
+import LottieAnimation from '../core/media/LottieAnimation';
 import { Container, Section } from '../core/Container';
 import Button from '../core/Button';
 import Badge from '../core/Badge';
@@ -117,18 +118,27 @@ export default function Process() {
                 </Card>
               </div>
 
-              {/* Step Image */}
+              {/* Step Image or Lottie Animation */}
               <div className="mt-8 lg:mt-0 lg:w-1/2">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl bg-gray-100 group">
-                  <LazyImage
-                    src={step.image}
-                    alt={step.imageAlt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    width={1456}
-                    height={816}
-                    placeholderColor="#f9fafb"
-                    blurAmount={10}
-                  />
+                  {(index === 1 || index === 3) ? (
+                    <LottieAnimation 
+                      src={`/lotties/step${index + 1}.json`}
+                      className="w-full h-full"
+                      loop={true}
+                      autoplay={true}
+                    />
+                  ) : (
+                    <LazyImage
+                      src={step.image}
+                      alt={step.imageAlt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      width={1456}
+                      height={816}
+                      placeholderColor="#f9fafb"
+                      blurAmount={10}
+                    />
+                  )}
                 </div>
               </div>
             </div>
