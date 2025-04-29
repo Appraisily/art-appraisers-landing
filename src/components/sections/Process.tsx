@@ -1,6 +1,7 @@
 import React from 'react';
 import { Upload, Search, TrendingUp, FileText, Clock, ArrowRight } from 'lucide-react';
 import LazyImage from '../core/media/LazyImage';
+import LottieAnimation from '../core/media/LottieAnimation';
 
 const steps = [
   {
@@ -11,7 +12,8 @@ const steps = [
     iconClass: 'bg-blue-100',
     iconTextClass: 'text-blue-600',
     badgeClass: 'bg-blue-50 text-blue-700',
-    image: 'https://ik.imagekit.io/appraisily/WebPage/step1.png',
+    type: 'image',
+    source: 'https://ik.imagekit.io/appraisily/WebPage/step1.png',
     imageAlt: 'Submit your artwork to your dedicated appraiser'
   },
   {
@@ -22,7 +24,8 @@ const steps = [
     iconClass: 'bg-indigo-100',
     iconTextClass: 'text-indigo-600',
     badgeClass: 'bg-indigo-50 text-indigo-700',
-    image: 'https://ik.imagekit.io/appraisily/WebPage/step2.png',
+    type: 'lottie',
+    source: '/lotties/step2.json',
     imageAlt: 'Experts analyzing and authenticating artwork'
   },
   {
@@ -33,7 +36,8 @@ const steps = [
     iconClass: 'bg-purple-100',
     iconTextClass: 'text-purple-600',
     badgeClass: 'bg-purple-50 text-purple-700',
-    image: 'https://ik.imagekit.io/appraisily/WebPage/step3.png',
+    type: 'image',
+    source: 'https://ik.imagekit.io/appraisily/WebPage/lab_photo.png?updatedAt=1741034482319',
     imageAlt: 'Appraiser conducting market valuation'
   },
   {
@@ -44,7 +48,8 @@ const steps = [
     iconClass: 'bg-green-100',
     iconTextClass: 'text-green-600',
     badgeClass: 'bg-green-50 text-green-700',
-    image: 'https://ik.imagekit.io/appraisily/WebPage/step4.png',
+    type: 'lottie',
+    source: '/lotties/step4.json',
     imageAlt: 'Detailed expert appraisal report'
   }
 ];
@@ -105,18 +110,27 @@ export default function Process() {
                   </div>
                 </div>
 
-                {/* Step Image */}
+                {/* Step Image or Lottie Animation */}
                 <div className="mt-8 lg:mt-0 lg:w-1/2">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl bg-gray-100 group">
-                    <LazyImage
-                      src={step.image}
-                      alt={step.imageAlt}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      width={1456}
-                      height={816}
-                      placeholderColor="#f9fafb"
-                      blurAmount={10}
-                    />
+                    {step.type === 'image' ? (
+                      <LazyImage
+                        src={step.source}
+                        alt={step.imageAlt}
+                        className={`w-full h-full ${step.type === 'image' && step.source.includes('lab_photo') ? 'object-contain' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
+                        width={1456}
+                        height={816}
+                        placeholderColor="#f9fafb"
+                        loadingEffect="blur"
+                      />
+                    ) : (
+                      <LottieAnimation
+                        src={step.source}
+                        className="w-full h-full"
+                        loop={true}
+                        autoplay={true}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
