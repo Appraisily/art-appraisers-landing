@@ -30,15 +30,20 @@ export default function LazyImage({
   const [error, setError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  // Configuración del placeholder
+  // Calculate aspect ratio for placeholder
   const aspectRatio = (height / width) * 100;
   const placeholderStyle = {
     backgroundColor: placeholderColor,
     paddingBottom: `${aspectRatio}%`,
   };
 
-  // Efecto para observer intersection
+  // Intersection Observer to load images only when in viewport
   useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      setIsInView(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -46,7 +51,7 @@ export default function LazyImage({
           observer.disconnect();
         }
       },
-      { threshold: threshold }
+      { threshold: threshold, rootMargin: '100px' }
     );
 
     if (imgRef.current) {
@@ -58,20 +63,20 @@ export default function LazyImage({
     };
   }, [threshold]);
 
-  // Manejador de carga de imagen
+  // Image load handler
   const handleImageLoad = () => {
     setIsLoaded(true);
     if (onLoad) onLoad();
   };
 
-  // Manejador de error de imagen
+  // Image error handler
   const handleImageError = () => {
     setError(true);
     if (onError) onError();
   };
 
-  // Configurar clases para efectos de carga
-  let imageClasses = className;
+  // Apply loading effect classes
+  let imageClasses = className || '';
   if (loadingEffect === 'fade' && !isLoaded) {
     imageClasses += ' opacity-0';
   } else if (loadingEffect === 'fade' && isLoaded) {
@@ -84,12 +89,12 @@ export default function LazyImage({
 
   return (
     <div 
-      className="relative overflow-hidden"
-      style={{ width: `${width}px`, height: `${height}px` }}
+      className="relative overflow-hidden w-full h-full"
+      style={{ maxWidth: `${width}px` }}
     >
-      {!isLoaded && (
+      {!isLoaded && !error && (
         <div 
-          className="absolute inset-0 bg-gray-100" 
+          className="absolute inset-0 bg-gray-100 animate-pulse" 
           style={placeholderStyle}
         />
       )}
@@ -97,7 +102,7 @@ export default function LazyImage({
       {error ? (
         <div 
           className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500"
-          style={{ width: `${width}px`, height: `${height}px` }}
+          style={{ aspectRatio: `${width} / ${height}` }}
         >
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -115,7 +120,13 @@ export default function LazyImage({
           decoding="async"
           onLoad={handleImageLoad}
           onError={handleImageError}
-          style={{ display: isLoaded ? 'block' : 'block', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ 
+            display: isLoaded ? 'block' : 'block', 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover',
+            aspectRatio: `${width} / ${height}`
+          }}
         />
       )}
     </div>

@@ -168,7 +168,7 @@ export default function ValuerAnalytics() {
           </Badge>
           
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
-            Why Our Certified Appraisers Deliver Unmatched Value
+            Advanced Analytics & Market Data
           </h2>
           
           <p className="text-lg leading-8 text-gray-600">

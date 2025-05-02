@@ -39,12 +39,12 @@ const AskExpertModal: React.FC<AskExpertModalProps> = ({ onClose, appraiser }) =
     <Card className="relative w-full max-w-md">
       <CardHeader>
         <CardTitle>Ask {appraiser} About This Case</CardTitle>
-        <button 
-          onClick={onClose}
+          <button 
+            onClick={onClose}
           className="absolute top-3 right-3 text-gray-400 hover:text-gray-500"
-        >
-          <X className="h-5 w-5" />
-        </button>
+          >
+            <X className="h-5 w-5" />
+          </button>
       </CardHeader>
       <CardContent>
         <p className="text-gray-600 mb-6">
@@ -106,17 +106,17 @@ export default function SuccessStories() {
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
       
       <Container>
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 lg:mx-0 lg:max-w-none lg:grid-cols-2 items-center">
-          {/* Content Column */}
-          <div>
-            <div className="relative">
-              <div className="absolute -inset-x-4 -inset-y-2 bg-gradient-to-r from-blue-600/5 to-blue-500/5 blur-lg rounded-3xl" />
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 lg:mx-0 lg:max-w-none lg:grid-cols-2 items-center">
+            {/* Content Column */}
+            <div>
               <div className="relative">
+              <div className="absolute -inset-x-4 -inset-y-2 bg-gradient-to-r from-blue-600/5 to-blue-500/5 blur-lg rounded-3xl" />
+                <div className="relative">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-8">
-                  Success Stories: Real Cases, Real Experts
-                </h2>
-                
-                {/* Featured Success Story */}
+                    Success Stories: Real Cases, Real Experts
+                  </h2>
+                  
+                  {/* Featured Success Story */}
                 <Card className="hover:shadow-lg transition-all duration-200">
                   <CardContent className="p-8">
                     <div className="flex items-center justify-between mb-6">
@@ -159,7 +159,7 @@ export default function SuccessStories() {
                       className="mt-6 text-sm"
                       startIcon={<MessageCircle className="h-5 w-5" />}
                     >
-                      Ask {appraiserName.split(' ')[0]} How They Did It →
+                        Ask {appraiserName.split(' ')[0]} How They Did It →
                     </Button>
                     
                     {/* Sample Report Button */}
@@ -170,37 +170,37 @@ export default function SuccessStories() {
                       startIcon={<FileText className="h-5 w-5" />}
                       endIcon={<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />}
                     >
-                      See what's included in our detailed reports
+                        See what's included in our detailed reports
                     </Button>
                   </CardContent>
                 </Card>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Sample Report Column */}
-          <div className="relative">
+            {/* Sample Report Column */}
+            <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-blue-500/10 rounded-3xl blur-2xl" />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-white p-4 shadow-lg ring-1 ring-gray-200">
-              <img
-                src="https://ik.imagekit.io/appraisily/WebPage/report.jpg?updatedAt=1731365708557"
-                alt="Sample appraisal report preview"
-                className="h-full w-full object-cover rounded-lg"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent rounded-2xl" />
-              <div className="absolute bottom-8 left-8 right-8">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-white p-4 shadow-lg ring-1 ring-gray-200">
+                <img
+                  src="https://ik.imagekit.io/appraisily/WebPage/report.jpg?updatedAt=1731365708557"
+                  alt="Sample appraisal report preview"
+                  className="h-full w-full object-cover rounded-lg"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent rounded-2xl" />
+                <div className="absolute bottom-8 left-8 right-8">
                 <p className="text-lg font-medium text-white mb-4">
-                  Example of a professional appraisal report from our certified experts
-                </p>
+                    Example of a professional appraisal report from our certified experts
+                  </p>
                 <Button
                   variant="secondary"
-                  onClick={() => setShowPDF(true)}
+                    onClick={() => setShowPDF(true)}
                   className="bg-white/90 backdrop-blur-sm hover:bg-white text-gray-900 group"
                   startIcon={<FileText className="h-4 w-4" />}
                   endIcon={<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />}
-                >
-                  View Sample Report
+                  >
+                    View Sample Report
                 </Button>
               </div>
             </div>
