@@ -77,7 +77,7 @@ export default function MainHero() {
         {/* Main content container */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Repositioned logo - better aligned with content */}
-          <div className="flex justify-end mb-2 md:mb-4">
+          <div className="flex justify-center sm:justify-end mb-3 md:mb-4">
             <Logo variant="dark" size="sm" />
           </div>
 
@@ -88,12 +88,12 @@ export default function MainHero() {
             <div className="flex flex-col">
               {/* Headline and description - improved hierarchy */}
               <div className="mb-5 md:mb-6 max-w-[600px]">
-                <div className="inline-flex items-center mb-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">
+                <div className="inline-flex items-center mb-3 px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">
                   <Clock className="h-4 w-4 mr-1.5" />
                   Know the True Worth of Your Art in 24-48 Hours
                 </div>
                 
-                <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-3 mt-3">
+                <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-[1.2] mb-4 mt-3">
                   Instant Confidence in Your Collection
                 </h1>
                 
@@ -104,18 +104,18 @@ export default function MainHero() {
               
               {/* Key benefits list - reorganized for better visibility */}
               <div className="mb-6 max-w-xl">
-                <div className="grid grid-cols-1 md:grid-cols-1 gap-x-4 gap-y-4">
+                <div className="flex flex-col space-y-3">
                   {keyBenefits.map((benefit, index) => (
                     <div key={index} className="flex items-center">
                       {benefit.icon}
-                      <span className="ml-2 text-gray-800 text-sm md:text-base">{benefit.text}</span>
+                      <span className="ml-2.5 text-gray-800">{benefit.text}</span>
                     </div>
                   ))}
                 </div>
               </div>
               
-              {/* CTA buttons - improved visibility */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 md:mb-8 max-w-md">
+              {/* CTA buttons - improved visibility and mobile display */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-6 md:mb-8 max-w-md">
                 <a
                   href="https://appraisily.com/start"
                   id="start-appraisal-nav"
@@ -142,47 +142,47 @@ export default function MainHero() {
               </div>
               
               {/* Trust badge bar - improved visibility for mobile */}
-              <div className="flex flex-col gap-4 mb-6">
-                {/* Social proof */}
-                <div className="flex items-center bg-white/70 backdrop-blur-sm border border-gray-100 rounded-lg p-4 shadow-sm max-w-lg">
-                  {/* Expert faces */}
-                  <div className="flex -space-x-2 mr-3">
+              <div className="flex flex-col gap-5 mb-6">
+                {/* Social proof - fixed alignment of profile images */}
+                <div className="flex flex-col sm:flex-row sm:items-center bg-white/70 backdrop-blur-sm border border-gray-100 rounded-lg p-4 shadow-sm max-w-lg">
+                  {/* Expert faces - fixed alignment with proper spacing */}
+                  <div className="flex -space-x-2 mb-3 sm:mb-0 sm:mr-4 justify-center sm:justify-start">
                     {experts.slice(0, 3).map((expert, index) => (
                       <img
                         key={expert.name}
                         src={expert.image}
                         alt={expert.name}
-                        className="h-9 w-9 rounded-full border-2 border-white object-cover shadow-sm"
+                        className="h-10 w-10 rounded-full border-2 border-white object-cover shadow-sm"
                         loading={index === 0 ? "eager" : "lazy"}
-                        width={36}
-                        height={36}
+                        width={40}
+                        height={40}
                       />
                     ))}
-                    <div className="flex items-center justify-center h-9 w-9 rounded-full border-2 border-white bg-gray-100 text-gray-600 text-xs font-medium">
+                    <div className="flex items-center justify-center h-10 w-10 rounded-full border-2 border-white bg-gray-100 text-gray-600 text-xs font-medium">
                       +10
                     </div>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-700">
+                  <p className="text-sm sm:text-base text-gray-700 text-center sm:text-left">
                     <span className="font-semibold">5,000+ collectors worldwide</span> trust our certified appraisal services
                   </p>
                 </div>
                 
-                {/* Testimonial - increased font size */}
-                <div className="bg-white/70 backdrop-blur-sm border border-gray-100 rounded-lg p-4 shadow-sm max-w-lg">
-                  <p className="text-sm sm:text-base text-gray-700 italic mb-2">
+                {/* Testimonial - increased font size and improved mobile layout */}
+                <div className="bg-white/70 backdrop-blur-sm border border-gray-100 rounded-lg p-5 shadow-sm max-w-lg">
+                  <p className="text-base sm:text-lg text-gray-700 italic mb-3">
                     "The expert knew exactly what to look for and delivered a comprehensive report within 24 hours."
                   </p>
-                  <p className="text-sm text-gray-600 font-medium">— Michael R., Estate Manager</p>
+                  <p className="text-sm sm:text-base text-gray-600 font-medium">— Michael R., Estate Manager</p>
                 </div>
               </div>
             </div>
             
             {/* Right column - Expert card and stats - improved visibility and display on mobile */}
-            <div className="md:block relative mt-2 lg:mt-0">
+            <div className="md:block relative mt-4 lg:mt-0">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-blue-500/5 rounded-2xl blur-3xl opacity-40"></div>
               <div className="relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-xl shadow-md overflow-hidden">
                 <div className="p-5 lg:p-6">
-                  {/* Featured expert - larger image and improved text sizing */}
+                  {/* Featured expert - improved layout and spacing for mobile */}
                   <dl>
                     <div className="mb-5 flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-100 transition-colors duration-200 shadow-sm">
                       <img
@@ -213,7 +213,7 @@ export default function MainHero() {
                       </div>
                     </div>
 
-                    {/* Stats grid - improved spacing and visibility */}
+                    {/* Stats grid - improved spacing and visibility for mobile */}
                     <div className="grid grid-cols-2 gap-3">
                       <div className="text-center p-3.5 bg-white/80 rounded-lg border border-gray-100 shadow-sm">
                         <dt className="text-sm text-gray-600 mb-1">Artworks Appraised</dt>
@@ -240,10 +240,10 @@ export default function MainHero() {
         </div>
       </div>
       
-      {/* Trust badges bar - improved for mobile display and updated with specific badges */}
+      {/* Trust badges bar - improved for mobile display */}
       <div className="border-t border-gray-200 bg-white py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center md:justify-between gap-x-6 gap-y-3 text-sm">
+          <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-y-2 sm:gap-x-6 text-sm">
             <div className="flex items-center gap-1.5">
               <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
               <span className="text-gray-600">USPAP Certified</span>

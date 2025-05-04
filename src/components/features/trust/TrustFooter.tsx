@@ -42,40 +42,94 @@ const credentials = [
 
 export default function TrustFooter() {
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const starsRef = useRef<HTMLDivElement>(null);
+  const mountainsRef = useRef<HTMLDivElement>(null);
+  const cityRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const handleScroll = () => {
-      if (parallaxRef.current) {
-        const scrollPosition = window.scrollY;
-        // Apply parallax effect to background image - slow down the background scroll
-        parallaxRef.current.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+      if (!parallaxRef.current) return;
+      
+      const scrollPosition = window.scrollY;
+      const parallaxElement = parallaxRef.current;
+      const offset = parallaxElement.offsetTop;
+      const elementHeight = parallaxElement.offsetHeight;
+      
+      // Check if the element is in the viewport
+      if (scrollPosition > offset - window.innerHeight && scrollPosition < offset + elementHeight) {
+        // Calculate how far we've scrolled into the section
+        const scrollIntoElement = scrollPosition - (offset - window.innerHeight);
+        const percent = scrollIntoElement / (elementHeight + window.innerHeight);
+        const scale = 1 + (percent * 0.05); // Subtle scale effect
+        
+        // Apply different parallax speeds to different elements
+        if (starsRef.current) {
+          starsRef.current.style.transform = `translateY(${scrollIntoElement * 0.03}px)`;
+        }
+        
+        if (mountainsRef.current) {
+          mountainsRef.current.style.transform = `translateY(${scrollIntoElement * 0.08}px)`;
+        }
+        
+        if (cityRef.current) {
+          cityRef.current.style.transform = `translateY(${scrollIntoElement * 0.12}px)`;
+        }
       }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call to set positions
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="relative py-24 sm:py-32 overflow-hidden">
-      {/* Parallax Background */}
-      <div 
-        ref={parallaxRef}
-        className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat"
-        style={{
-          backgroundImage: 'url("https://ik.imagekit.io/appraisily/WebPage/art-gallery-blur.jpg")', 
-          filter: 'brightness(0.3) saturate(0.7)'
-        }}
-      />
-      
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-blue-950/80 backdrop-blur-sm" />
-      
-      {/* Glowing Orbs */}
+    <div 
+      ref={parallaxRef}
+      className="relative py-24 sm:py-32 overflow-hidden"
+      style={{ minHeight: '640px' }}
+    >
+      {/* Parallax Background Layers */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-4 top-1/4 h-40 w-40 rounded-full bg-blue-600/30 blur-3xl animate-[pulse_8s_ease-in-out_infinite]" />
-        <div className="absolute right-10 top-1/3 h-32 w-32 rounded-full bg-blue-500/20 blur-3xl animate-[pulse_10s_ease-in-out_infinite]" />
-        <div className="absolute left-1/3 bottom-1/4 h-48 w-48 rounded-full bg-blue-700/20 blur-3xl animate-[pulse_12s_ease-in-out_infinite]" />
+        {/* Stars/Sky Layer - Moves slowest */}
+        <div 
+          ref={starsRef}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url("https://ik.imagekit.io/appraisily/WebPage/background_city.png")',
+            backgroundPosition: 'center top',
+            opacity: 0.9,
+            transform: 'scale(1.1)' // Slightly larger to avoid edge gaps during parallax
+          }}
+        />
+        
+        {/* Dark Overlay for better text contrast */}
+        <div className="absolute inset-0 bg-blue-950/60" />
+        
+        {/* Subtle glow effects for depth */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -left-20 top-1/4 h-64 w-64 rounded-full bg-blue-400/20 blur-[100px] animate-[pulse_15s_ease-in-out_infinite]" />
+          <div className="absolute right-40 bottom-1/3 h-48 w-48 rounded-full bg-indigo-500/10 blur-[80px] animate-[pulse_20s_ease-in-out_infinite]" />
+          <div className="absolute left-1/3 top-1/4 h-72 w-72 rounded-full bg-blue-500/10 blur-[120px] animate-[pulse_25s_ease-in-out_infinite]" />
+        </div>
+        
+        {/* Stars/sparkles overlay */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 50 }).map((_, i) => (
+            <div 
+              key={i}
+              className="absolute bg-white rounded-full animate-[pulse_3s_ease-in-out_infinite]"
+              style={{
+                width: Math.random() * 2 + 1 + 'px',
+                height: Math.random() * 2 + 1 + 'px',
+                top: Math.random() * 100 + '%',
+                left: Math.random() * 100 + '%',
+                opacity: Math.random() * 0.5 + 0.1,
+                animationDelay: Math.random() * 5 + 's'
+              }}
+            />
+          ))}
+        </div>
       </div>
       
       <div className="relative">

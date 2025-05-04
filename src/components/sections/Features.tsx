@@ -106,29 +106,15 @@ export default function Features() {
             ))}
           </ul>
           
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-12">
+          {/* CTA button */}
+          <div className="flex justify-center mt-10">
             <Button 
               variant="primary"
               as="a"
               href="#start-appraisal"
-              fullWidth
-              size="lg" 
+              className="bg-gray-900 hover:bg-gray-800 py-3 px-6 text-base"
             >
               Find My Expert Appraiser
-            </Button>
-            <Button
-              variant="text"
-              as="a" 
-              href="#experts"
-              className="group"
-              endIcon={
-                <svg className="w-5 h-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              }
-            >
-              See Our Experts
             </Button>
           </div>
         </div>

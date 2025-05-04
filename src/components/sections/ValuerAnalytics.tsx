@@ -160,10 +160,8 @@ const searchQueries = {
   ]
 };
 
-export default function ValuerAnalytics() {
-  const [showAll, setShowAll] = useState(false);
-  const [showDaliDetails, setShowDaliDetails] = useState(false);
-  const visibleSteps = showAll ? analyticsSteps : analyticsSteps.slice(0, 4);
+// Primera sección - ValueSnapshot
+export function ValueSnapshotSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   
@@ -235,7 +233,7 @@ export default function ValuerAnalytics() {
         </div>
 
         {/* 3-Column Value Snapshot */}
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
           {valueSnapshots.map((snapshot, index) => (
             <Card 
               key={index} 
@@ -257,180 +255,109 @@ export default function ValuerAnalytics() {
             </Card>
           ))}
         </div>
+      </Container>
+    </Section>
+  );
+}
 
-        {/* How It Works Section */}
-        <div className="mb-20">
-          <h3 className="text-2xl font-bold text-center text-white mb-10">How It Works</h3>
+// Segunda sección - HowItWorks con fondo oscuro y contenido colapsable
+export function HowItWorksSection() {
+  const [showDaliDetails, setShowDaliDetails] = useState(false);
+  const [expandedSteps, setExpandedSteps] = useState<number[]>([]);
+
+  const toggleExpand = (index: number) => {
+    if (expandedSteps.includes(index)) {
+      setExpandedSteps(expandedSteps.filter(i => i !== index));
+    } else {
+      setExpandedSteps([...expandedSteps, index]);
+    }
+  };
+
+  return (
+    <Section className="relative py-16 overflow-hidden bg-gray-900 text-white">
+      {/* Background Pattern Layer - sutil pero visible */}
+      <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] opacity-5 z-0" />
+      
+      <Container className="relative z-10">
+        {/* How It Works Section - versión simplificada */}
+        <div className="mb-16 max-w-3xl mx-auto">
+          <h3 className="text-2xl font-bold text-center text-white mb-8">How It Works</h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="space-y-4">
             {howItWorksSteps.map((step, index) => (
-              <Card 
+              <div 
                 key={step.title} 
-                variant="feature" 
-                className="border-gray-700 bg-gray-800/50 backdrop-blur-sm text-white hover:bg-gray-800 transition-colors duration-200"
+                className="bg-gray-800/70 backdrop-blur-sm border border-gray-700 rounded-lg overflow-hidden"
               >
-                <div className="flex flex-col items-start">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-white font-bold">
+                <div className="p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-8 w-8 mt-0.5 items-center justify-center rounded-full bg-gray-700 text-white font-bold flex-shrink-0">
                       {index + 1}
                     </div>
-                    <h4 className="text-lg font-semibold text-white">{step.title}</h4>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-white">{step.title}</h4>
+                      <p className="text-gray-300 mt-1 text-sm">{step.description}</p>
+                      
+                      {/* Contenido expandible */}
+                      {expandedSteps.includes(index) && (
+                        <div className="mt-3 text-sm text-gray-400 pl-1 border-l-2 border-gray-700">
+                          <p className="mb-2">
+                            {index === 0 && "Our proprietary algorithms analyze your images and description to extract the most relevant search terms. We build specialized keyword combinations that auction databases understand."}
+                            {index === 1 && "Using our market intelligence database, we search across all major auction houses and private sales records. We identify both exact matches and similar pieces that provide market context."}
+                            {index === 2 && "Our art experts review every potential match and assign relevance scores based on medium, condition, style, provenance, and other factors. Only the most relevant comparables are included."}
+                            {index === 3 && "You receive a professional appraisal report with a clear valuation range supported by market evidence. We include a confidence score so you understand the strength of the valuation."}
+                          </p>
+                        </div>
+                      )}
+                      
+                      {/* Botón "Read More/Less" */}
+                      <button 
+                        onClick={() => toggleExpand(index)} 
+                        className="mt-2 text-blue-400 hover:text-blue-300 text-xs flex items-center gap-1"
+                      >
+                        {expandedSteps.includes(index) ? (
+                          <>
+                            Show less
+                            <ChevronUp className="h-3 w-3" />
+                          </>
+                        ) : (
+                          <>
+                            Read more
+                            <ChevronDown className="h-3 w-3" />
+                          </>
+                        )}
+                      </button>
+                    </div>
                   </div>
-                  <p className="text-gray-300">{step.description}</p>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
-          
-          <div className="mt-10 flex justify-center">
-            <Button
-              variant="outline"
-              as="a"
-              href="#dali-case-study"
-              className="border-gray-600 text-white hover:bg-gray-700 inline-flex items-center gap-2"
-            >
-              See a Sample Analysis
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </div>
         </div>
         
-        {/* Dalí Case Study */}
-        <div id="dali-case-study" className="mb-20">
-          <div className="bg-gray-800 border border-gray-700 rounded-xl overflow-hidden">
-            <div className="p-6 border-b border-gray-700">
-              <h3 className="text-xl font-bold text-white mb-2">Example: Salvador Dalí Landscape</h3>
-              <div className="space-y-2">
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-gray-300">15 hyper-specific search phrases generated in seconds</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-gray-300">153 sales reviewed; top item matched at 70 / 100 relevance</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-gray-300">Final valuation delivered: $2,200 (vs. owner's $800 expectation)</p>
-                </div>
-              </div>
-              
-              <button 
-                onClick={() => setShowDaliDetails(!showDaliDetails)}
-                className="mt-4 text-blue-300 hover:text-blue-200 flex items-center gap-1 text-sm font-medium"
-              >
-                {showDaliDetails ? "Hide full data set" : "Expand to view the full data set"}
-                {showDaliDetails ? <ChevronsUp className="h-4 w-4" /> : <ChevronsDown className="h-4 w-4" />}
-              </button>
-            </div>
-            
-            {showDaliDetails && (
-              <div className="p-6 bg-gray-800/70 border-t border-gray-700">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="text-lg font-semibold text-white mb-4">Extracted Search Queries by Specificity</h4>
-                    <div className="space-y-4">
-                      <div>
-                        <div className="flex items-center mb-2">
-                          <div className="h-2 w-2 rounded-full bg-blue-400 mr-2"></div>
-                          <h5 className="font-medium text-white">Very Specific (5)</h5>
-                        </div>
-                        <ul className="pl-4 text-sm text-gray-300 space-y-1">
-                          {searchQueries.verySpecific.map((query, i) => (
-                            <li key={i} className="list-disc">{query}</li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <div className="flex items-center mb-2">
-                          <div className="h-2 w-2 rounded-full bg-blue-300 mr-2"></div>
-                          <h5 className="font-medium text-white">Specific (10)</h5>
-                        </div>
-                        <ul className="pl-4 text-sm text-gray-300 space-y-1">
-                          {searchQueries.specific.map((query, i) => (
-                            <li key={i} className="list-disc">{query}</li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <div className="flex items-center mb-2">
-                          <div className="h-2 w-2 rounded-full bg-blue-200 mr-2"></div>
-                          <h5 className="font-medium text-white">Moderate (5)</h5>
-                        </div>
-                        <ul className="pl-4 text-sm text-gray-300 space-y-1">
-                          {searchQueries.moderate.map((query, i) => (
-                            <li key={i} className="list-disc">{query}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-lg font-semibold text-white mb-4">Top Comparable Sales with Relevance Scores</h4>
-                    <div className="space-y-3">
-                      {daliComparables.map((item, i) => (
-                        <div 
-                          key={i} 
-                          className="flex items-center p-3 rounded-lg border border-gray-700 bg-gray-800/80 hover:bg-gray-700 transition-colors"
-                        >
-                          <div 
-                            className={cn(
-                              "h-10 w-10 rounded-full flex items-center justify-center mr-3 font-semibold text-white",
-                              item.score >= 70 ? "bg-blue-600" : "bg-blue-900"
-                            )}
-                          >
-                            {item.score}
-                          </div>
-                          <div className="overflow-hidden">
-                            <p className="truncate text-white">{item.title}</p>
-                            <p className="text-sm text-gray-400">Relevance Score: {item.score}/100</p>
-                          </div>
-                        </div>
-                      ))}
-                      <div className="text-center text-sm text-gray-400 mt-4">
-                        From a total of 153 analyzed items
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        
-        {/* Why This Matters For You */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center text-white mb-8">Why This Matters For You</h3>
-          
-          <div className="max-w-3xl mx-auto">
-            <ul className="space-y-4">
-              {keyBenefits.map((benefit, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 mt-0.5 flex-shrink-0">
-                    <CheckCircle className="h-3.5 w-3.5 text-white" />
-                  </div>
-                  <p className="text-lg text-white">{benefit}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div className="mt-12 flex justify-center">
-            <Button
-              variant="primary"
-              as="a"
-              href="https://appraisily.com/start"
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 font-semibold text-lg"
-            >
-              Start My Appraisal—Takes 5 Min
-            </Button>
-          </div>
+        {/* CTA directamente después de "How It Works" */}
+        <div className="mb-16 flex justify-center">
+          <Button
+            variant="primary"
+            as="a"
+            href="https://appraisily.com/start"
+            className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 text-base font-semibold"
+          >
+            Start My Appraisal—Takes 5 Min
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
         </div>
       </Container>
     </Section>
+  );
+}
+
+// Componente principal que combina ambas secciones
+export default function ValuerAnalytics() {
+  return (
+    <>
+      <ValueSnapshotSection />
+      <HowItWorksSection />
+    </>
   );
 } 
