@@ -74,68 +74,65 @@ const cases = [
 
 export default function RecentAppraisals() {
   return (
-    <div className="relative bg-gray-50 py-24 sm:py-32 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
-      
+    <div className="relative bg-blue-50 py-16 sm:py-24 overflow-hidden">
       <div className="relative">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Recent Appraisals
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-4 text-lg leading-8 text-gray-600">
               See how our expert appraisers provide detailed analysis and valuation for a variety of artworks
             </p>
           </div>
 
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {cases.map((case_) => (
               <a
                 key={case_.id}
                 href={case_.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 hover:shadow-lg transition-all duration-200"
+                className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-200 hover:shadow-lg transition-all duration-200"
               >
                 <div className="relative flex-shrink-0 overflow-hidden">
                   <img
-                    className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     src={getImageUrl(case_.image)}
                     alt={case_.title}
                     loading="lazy"
                     width={window.innerWidth <= 768 ? "400" : "800"}
                     height={window.innerWidth <= 768 ? "300" : "600"}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/75 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex items-center justify-between text-white">
-                      <div className="flex items-center gap-2">
-                        <History className="h-4 w-4 text-white/80" />
-                        <span className="text-sm text-white/80">Initial: {case_.initialEstimate}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <TrendingUp className="h-4 w-4 text-primary" />
-                        <span className="text-sm font-semibold">Final: {case_.finalValue}</span>
-                      </div>
+                </div>
+                
+                <div className="flex flex-1 flex-col p-5">
+                  {/* Value comparison - moved outside the image */}
+                  <div className="flex items-center justify-between mb-3 text-sm border-b border-gray-100 pb-3">
+                    <div className="flex items-center gap-1.5">
+                      <History className="h-4 w-4 text-gray-500" />
+                      <span className="text-gray-700">Initial: <span className="font-medium">{case_.initialEstimate}</span></span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <TrendingUp className="h-4 w-4 text-blue-600" />
+                      <span className="text-gray-900 font-semibold">Final: <span className="text-blue-600">{case_.finalValue}</span></span>
                     </div>
                   </div>
-                </div>
-                <div className="flex flex-1 flex-col justify-between p-6">
+                  
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-xl font-semibold text-gray-900 group-hover:text-primary transition-colors">
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                         {case_.title}
                       </h3>
                       <ArrowRight className="h-5 w-5 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div className="mt-2 flex items-center">
-                      <User className="h-4 w-4 text-primary mr-2" />
-                      <span className="text-sm font-medium text-primary">
-                        Appraiser: {case_.appraiser}
+                      <User className="h-4 w-4 text-amber-500 mr-1.5" />
+                      <span className="text-sm font-medium text-gray-700">
+                        Appraiser: <span className="text-blue-600">{case_.appraiser}</span>
                       </span>
                     </div>
-                    <p className="mt-3 text-gray-600 line-clamp-3">{case_.description}</p>
+                    <p className="mt-3 text-sm text-gray-600 line-clamp-3">{case_.description}</p>
                   </div>
                 </div>
               </a>
@@ -145,7 +142,7 @@ export default function RecentAppraisals() {
           <div className="mt-16 flex justify-center">
             <a
               href="https://appraisily.com/start"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg font-semibold text-white shadow-md hover:bg-primary/90 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200"
+              className="inline-flex items-center gap-2 rounded-lg bg-amber-500 px-6 py-3 text-base font-semibold text-white shadow-md hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 transition-all duration-200"
             >
               Get Your Artwork Appraised
               <DollarSign className="h-5 w-5" />

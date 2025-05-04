@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Shield, Award, Building2, Scale, FileCheck, Globe2 } from 'lucide-react';
 
 const credentials = [
@@ -41,16 +41,41 @@ const credentials = [
 ];
 
 export default function TrustFooter() {
+  const parallaxRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (parallaxRef.current) {
+        const scrollPosition = window.scrollY;
+        // Apply parallax effect to background image - slow down the background scroll
+        parallaxRef.current.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="relative bg-gradient-to-b from-gray-900 to-blue-900 py-24 sm:py-32 overflow-hidden">
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#1d4ed8_1px,transparent_1px)] opacity-10 [background-size:16px_16px]" />
+    <div className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Parallax Background */}
+      <div 
+        ref={parallaxRef}
+        className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat"
+        style={{
+          backgroundImage: 'url("https://ik.imagekit.io/appraisily/WebPage/art-gallery-blur.jpg")', 
+          filter: 'brightness(0.3) saturate(0.7)'
+        }}
+      />
       
-      {/* Floating Orbs */}
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-blue-950/80 backdrop-blur-sm" />
+      
+      {/* Glowing Orbs */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-4 top-1/4 h-32 w-32 rounded-full bg-primary/30 blur-xl" />
-        <div className="absolute right-10 top-1/3 h-24 w-24 rounded-full bg-blue-500/20 blur-xl" />
-        <div className="absolute left-1/3 bottom-1/4 h-40 w-40 rounded-full bg-primary/20 blur-xl" />
+        <div className="absolute -left-4 top-1/4 h-40 w-40 rounded-full bg-blue-600/30 blur-3xl animate-[pulse_8s_ease-in-out_infinite]" />
+        <div className="absolute right-10 top-1/3 h-32 w-32 rounded-full bg-blue-500/20 blur-3xl animate-[pulse_10s_ease-in-out_infinite]" />
+        <div className="absolute left-1/3 bottom-1/4 h-48 w-48 rounded-full bg-blue-700/20 blur-3xl animate-[pulse_12s_ease-in-out_infinite]" />
       </div>
       
       <div className="relative">
@@ -69,15 +94,15 @@ export default function TrustFooter() {
               {credentials.map((credential) => (
                 <div
                   key={credential.title}
-                  className="group relative overflow-hidden rounded-2xl bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.06] transition-all duration-300"
+                  className="group relative overflow-hidden rounded-2xl bg-white/[0.08] backdrop-blur-md hover:bg-white/[0.12] transition-all duration-300"
                 >
                   {/* Gradient Border */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/50 to-primary/50 [mask-image:linear-gradient(black,black)_content-box,linear-gradient(black,black)] p-[1px]" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/50 to-blue-600/50 [mask-image:linear-gradient(black,black)_content-box,linear-gradient(black,black)] p-[1px]" />
 
                   <div className="relative p-8">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-primary shadow-lg">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg">
                           <credential.icon className="h-6 w-6 text-white" />
                         </div>
                       </div>
@@ -105,7 +130,7 @@ export default function TrustFooter() {
 
             {/* CTA Section */}
             <div className="mt-16">
-              <div className="relative rounded-2xl bg-white/[0.03] backdrop-blur-sm p-6 sm:p-8">
+              <div className="relative rounded-2xl bg-white/[0.08] backdrop-blur-md p-6 sm:p-8">
                 <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
                   <Award className="h-6 w-6 text-blue-400" />
                   <span className="text-blue-100 sm:flex-1">
@@ -113,7 +138,7 @@ export default function TrustFooter() {
                   </span>
                   <a
                     href="https://appraisily.com/start"
-                    className="w-full sm:w-auto rounded-xl bg-blue-500 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-all duration-200"
+                    className="w-full sm:w-auto rounded-xl bg-amber-500 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 transition-all duration-200"
                   >
                     Connect with Your Appraiser
                   </a>

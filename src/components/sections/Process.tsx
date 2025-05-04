@@ -10,49 +10,49 @@ import { cn } from '../../utils/cn';
 
 const steps = [
   {
-    title: 'Submit Your Artwork to Your Dedicated Appraiser',
-    description: 'Upload high-quality images and documentation to your assigned expert.',
+    title: 'Share Photos & Story',
+    description: '5 min',
     icon: Upload,
-    timeline: 'Immediate',
-    iconClass: 'bg-blue-100',
-    iconTextClass: 'text-blue-600',
-    badgeClass: 'bg-blue-50 text-blue-700',
+    timeline: 'Step 1',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
+    badgeClass: 'bg-gray-100 text-gray-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step1.png',
-    imageAlt: 'Submit your artwork to your dedicated appraiser',
+    imageAlt: 'Share photos and story of your artwork',
     useStaticImage: true
   },
   {
-    title: 'Our Experts Analyze & Authenticate',
-    description: 'Your appraiser examines your items using advanced analytical tools and expertise.',
+    title: 'Expert Review & Authentication',
+    description: 'same day',
     icon: Search,
-    timeline: 'Minutes',
-    iconClass: 'bg-indigo-100',
-    iconTextClass: 'text-indigo-600',
-    badgeClass: 'bg-indigo-50 text-indigo-700',
+    timeline: 'Step 2',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
+    badgeClass: 'bg-gray-100 text-gray-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/lab_photo.png',
     imageAlt: 'Experts analyzing and authenticating artwork',
     useStaticImage: true
   },
   {
-    title: 'Appraiser Conducts Market Valuation',
-    description: 'Your expert evaluates current market trends and historical significance of your item.',
+    title: 'Market Analysis & Valuation',
+    description: 'within 12 h',
     icon: TrendingUp,
-    timeline: '12 Hours',
-    iconClass: 'bg-purple-100',
-    iconTextClass: 'text-purple-600',
-    badgeClass: 'bg-purple-50 text-purple-700',
+    timeline: 'Step 3',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
+    badgeClass: 'bg-gray-100 text-gray-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step3.png?updatedAt=1745922349843&tr=w-800,h-600',
     imageAlt: 'Appraiser conducting market valuation',
     useStaticImage: true
   },
   {
-    title: 'Receive Your Detailed Expert Report',
-    description: 'Get your comprehensive appraisal report with professional certification.',
+    title: 'Receive Your Digital Report',
+    description: '24-48 h total',
     icon: FileText,
-    timeline: '24 Hours',
-    iconClass: 'bg-green-100',
-    iconTextClass: 'text-green-600',
-    badgeClass: 'bg-green-50 text-green-700',
+    timeline: 'Step 4',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
+    badgeClass: 'bg-gray-100 text-gray-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step4.png?updatedAt=1745922349843&tr=w-800,h-600',
     imageAlt: 'Detailed expert appraisal report',
     useStaticImage: true
@@ -61,20 +61,20 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="w-full relative overflow-hidden py-16 md:py-24 bg-gradient-to-b from-white to-blue-50">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30" />
+    <section className="w-full relative overflow-hidden py-16 md:py-24 bg-white">
+      {/* Background Pattern - subtle gray */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <span className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium bg-blue-100 text-blue-700 mb-6">
-            <Clock className="h-4 w-4 mr-2 text-blue-600 animate-pulse" />
+          <span className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium bg-gray-100 text-gray-700 mb-6">
+            <Clock className="h-4 w-4 mr-2 text-blue-600" />
             24-48 Hour Turnaround
           </span>
           
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-4">
-            Fast & Efficient, Appraiser-Led Process
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">
+            From Upload to Report in Two Business Days
           </h2>
           
           <p className="text-lg leading-8 text-gray-600 font-medium">
@@ -84,8 +84,8 @@ export default function Process() {
 
         {/* Process Steps */}
         <div className="relative mt-16 space-y-24">
-          {/* Connecting line through all steps */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-indigo-200 to-purple-200 hidden md:block" />
+          {/* Connecting line through all steps - changed to gray */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 hidden md:block" />
           
           {steps.map((step, index) => (
             <div 
@@ -98,22 +98,19 @@ export default function Process() {
               )}
             >
               {/* Step number indicator on the timeline */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-blue-500 z-10 flex items-center justify-center text-blue-600 font-bold text-lg hidden md:flex">
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-gray-400 z-10 flex items-center justify-center text-gray-700 font-bold text-lg hidden md:flex">
                 {index + 1}
               </div>
               
               {/* Step Content */}
               <div className="w-full md:w-1/2 relative z-10">
-                <div className="bg-white shadow-lg rounded-2xl p-6 border border-gray-200 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="bg-white shadow-md rounded-2xl p-6 border border-gray-200 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className={cn(`flex h-14 w-14 items-center justify-center rounded-xl`, step.iconClass)}>
                       <step.icon className={cn(`h-7 w-7`, step.iconTextClass)} />
                     </div>
                     
                     <div className="flex flex-col space-y-1">
-                      <span className={cn("inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium", step.badgeClass)}>
-                        Step {index + 1}
-                      </span>
                       <span className={cn("inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium", step.badgeClass)}>
                         {step.timeline}
                       </span>
@@ -127,7 +124,7 @@ export default function Process() {
 
               {/* Step Image */}
               <div className="w-full md:w-1/2">
-                <div className="relative overflow-hidden rounded-2xl shadow-xl bg-gray-100 aspect-[4/3] group">
+                <div className="relative overflow-hidden rounded-2xl shadow-md bg-gray-100 aspect-[4/3] group">
                   {step.useStaticImage ? (
                     // Direct img tag for static images from ImageKit
                     <img 
@@ -158,21 +155,21 @@ export default function Process() {
                     />
                   )}
                   
-                  {/* Elegant overlay with gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {/* Elegant overlay with gradient - more subtle */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               </div>
             </div>
           ))}
         </div>
         
-        {/* CTA Button */}
+        {/* CTA Button - Updated with neutral colors and blue accent */}
         <div className="mt-20 flex justify-center">
           <a 
             href="https://appraisily.com/start"
-            className="inline-flex items-center justify-center font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 w-full text-lg px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-600 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center justify-center font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 w-full max-w-md text-lg px-6 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-900 focus:ring-blue-600 shadow-md hover:shadow-lg transition-all duration-300"
           >
-            Start with Your Appraiser
+            Start My 5-Minute Submission
             <ArrowRight className="h-5 w-5 ml-2" />
           </a>
         </div>

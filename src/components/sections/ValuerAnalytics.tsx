@@ -6,7 +6,9 @@ import Button from '../core/Button';
 import LazyImage from '../core/media/LazyImage';
 import { 
   Search, Database, Brain, BarChart3, Clock, Sparkles, 
-  LineChart, ArrowRight, ChevronDown, ChevronUp 
+  LineChart, ArrowRight, ChevronDown, ChevronUp, FileSearch, 
+  BadgeCheck, TrendingUp, Coffee, FileText, Globe, Award,
+  CheckCircle, ChevronRight, AlertCircle, ChevronsDown, ChevronsUp
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
@@ -62,6 +64,68 @@ const analyticsSteps = [
   },
 ];
 
+// Four-step process explanation
+const howItWorksSteps = [
+  {
+    title: 'We Turn Your Photos Into Smart Search Terms',
+    description: 'Our system reads your description and auto-builds 25+ laser-targeted keywords.',
+    icon: Search,
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
+  },
+  {
+    title: 'We Scan the Global Market—Top-Down',
+    description: 'From exact matches to broader look-alikes, every relevant sale is captured.',
+    icon: Globe,
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
+  },
+  {
+    title: 'We Hand-Pick the Best Comparables',
+    description: 'AI ranks each result for closeness to your piece; only the strongest make the cut.',
+    icon: Award,
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
+  },
+  {
+    title: 'You Receive a Crystal-Clear Price Window',
+    description: 'See where your artwork lands on today's market curve—complete with confidence scores.',
+    icon: FileText,
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
+  },
+];
+
+// Value snapshots data
+const valueSnapshots = [
+  {
+    title: '3 M+',
+    subtitle: 'Records Searched Every Time',
+    description: 'We sift through global auction houses so you don't have to.',
+    icon: Database,
+  },
+  {
+    title: '153',
+    subtitle: 'Closest Comparables Found in <60 sec',
+    description: 'No guesswork—just hard evidence.',
+    icon: Clock,
+  },
+  {
+    title: '98 %',
+    subtitle: 'Report Acceptance Rate',
+    description: 'Insurers, courts, and the IRS take our data at face value.',
+    icon: BadgeCheck,
+  },
+];
+
+// Why this matters benefits
+const keyBenefits = [
+  'Save Days of Manual Research',
+  'Know the Real-World Sale Price Before You List or Insure',
+  'Feel Secure—Data Accepted by All Major Institutions',
+  'Make Faster, Better-Informed Decisions',
+];
+
 // Example comparable sales data for the Dali example
 const daliComparables = [
   { score: 70, title: "SALVADOR DALI OIL ON CANVAS..." },
@@ -98,6 +162,7 @@ const searchQueries = {
 
 export default function ValuerAnalytics() {
   const [showAll, setShowAll] = useState(false);
+  const [showDaliDetails, setShowDaliDetails] = useState(false);
   const visibleSteps = showAll ? analyticsSteps : analyticsSteps.slice(0, 4);
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -135,7 +200,7 @@ export default function ValuerAnalytics() {
   
   return (
     <Section 
-      className="bg-white relative py-24 overflow-hidden" 
+      className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 text-white" 
       ref={sectionRef}
     >
       {/* Background Video Layer */}
@@ -155,213 +220,213 @@ export default function ValuerAnalytics() {
       </div>
       
       {/* Background Pattern Layer */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-5 z-0" />
       
       <Container className="relative z-10">
+        {/* Main headline and subheadline */}
         <div className="mx-auto max-w-3xl text-center mb-16">
-          <Badge 
-            variant="outline"
-            className="mb-6 py-2 px-4 inline-flex items-center justify-center gap-2 bg-white"
-            icon={<Database className="h-5 w-5" />}
-          >
-            <span className="font-semibold">3+ Million Auction Records</span>
-          </Badge>
-          
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
-            Advanced Analytics & Market Data
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6">
+            Millions of Auction Results—Analyzed for You in Minutes
           </h2>
           
-          <p className="text-lg leading-8 text-gray-600">
-            Museum-grade analysis, 24-48h turnaround, and reports accepted by top institutions
+          <p className="text-xl leading-8 text-gray-300 font-medium">
+            Skip the endless research. Our Valuer Agent™ pinpoints market-true prices while you finish your coffee.
           </p>
         </div>
 
-        {/* Analytics Process */}
-        <div className="mt-16 space-y-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Advanced Valuation Algorithm</h3>
-              <p className="text-gray-600 mb-6">
-                Valuer Agent delivers comprehensive market analysis for art, antiques, and collectibles using our proprietary valuation algorithm and sophisticated data processing technology. Our enhanced analytics service provides precise valuation insights based on real auction market data.
-              </p>
-              <div className="bg-gray-100 rounded-lg p-4 border-l-4 border-gray-900">
-                <p className="font-medium text-gray-700">
-                  Our system accomplishes in minutes what would take days of manual research, saving you valuable time while delivering more accurate, comprehensive results.
-                </p>
+        {/* 3-Column Value Snapshot */}
+        <div className="grid md:grid-cols-3 gap-6 mb-20">
+          {valueSnapshots.map((snapshot, index) => (
+            <Card 
+              key={index} 
+              variant="feature" 
+              className="border-gray-700 bg-gray-800/50 backdrop-blur-sm text-white hover:bg-gray-800 transition-colors duration-200"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-700">
+                  <snapshot.icon className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <div className="flex items-baseline gap-1">
+                    <h3 className="text-2xl font-bold text-white">{snapshot.title}</h3>
+                    <p className="text-sm text-gray-400">{snapshot.subtitle}</p>
+                  </div>
+                  <p className="mt-2 text-gray-300">{snapshot.description}</p>
+                </div>
               </div>
-            </div>
-            <div className="relative aspect-video overflow-hidden rounded-2xl shadow-md border border-gray-200">
-              <LazyImage
-                src="https://via.placeholder.com/800x400?text=Valuer+Agent+Analytics"
-                alt="Valuer Agent Analytics"
-                className="w-full h-full object-cover"
-                width={800}
-                height={400}
-                placeholderColor="#f9fafb"
-              />
-            </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* How It Works Section */}
+        <div className="mb-20">
+          <h3 className="text-2xl font-bold text-center text-white mb-10">How It Works</h3>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {howItWorksSteps.map((step, index) => (
+              <Card 
+                key={step.title} 
+                variant="feature" 
+                className="border-gray-700 bg-gray-800/50 backdrop-blur-sm text-white hover:bg-gray-800 transition-colors duration-200"
+              >
+                <div className="flex flex-col items-start">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-white font-bold">
+                      {index + 1}
+                    </div>
+                    <h4 className="text-lg font-semibold text-white">{step.title}</h4>
+                  </div>
+                  <p className="text-gray-300">{step.description}</p>
+                </div>
+              </Card>
+            ))}
           </div>
           
-          <div className="my-16">
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Our Proprietary 7-Step Analytics Process</h3>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              {visibleSteps.map((step, index) => (
-                <Card 
-                  key={step.title} 
-                  variant="feature" 
-                  className="border-gray-200 hover:border-gray-300 transition-colors duration-200"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className={cn(`flex h-12 w-12 items-center justify-center rounded-full`, step.iconClass)}>
-                      <step.icon className={cn(`h-6 w-6`, step.iconTextClass)} />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge variant="outline" className="bg-white text-gray-600">
-                          Step {index + 1}
-                        </Badge>
-                      </div>
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h4>
-                      <p className="text-gray-600">{step.description}</p>
-                    </div>
-                  </div>
-                </Card>
-              ))}
+          <div className="mt-10 flex justify-center">
+            <Button
+              variant="outline"
+              as="a"
+              href="#dali-case-study"
+              className="border-gray-600 text-white hover:bg-gray-700 inline-flex items-center gap-2"
+            >
+              See a Sample Analysis
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+        
+        {/* Dalí Case Study */}
+        <div id="dali-case-study" className="mb-20">
+          <div className="bg-gray-800 border border-gray-700 rounded-xl overflow-hidden">
+            <div className="p-6 border-b border-gray-700">
+              <h3 className="text-xl font-bold text-white mb-2">Example: Salvador Dalí Landscape</h3>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <p className="text-gray-300">15 hyper-specific search phrases generated in seconds</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <p className="text-gray-300">153 sales reviewed; top item matched at 70 / 100 relevance</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <p className="text-gray-300">Final valuation delivered: $2,200 (vs. owner's $800 expectation)</p>
+                </div>
+              </div>
+              
+              <button 
+                onClick={() => setShowDaliDetails(!showDaliDetails)}
+                className="mt-4 text-blue-300 hover:text-blue-200 flex items-center gap-1 text-sm font-medium"
+              >
+                {showDaliDetails ? "Hide full data set" : "Expand to view the full data set"}
+                {showDaliDetails ? <ChevronsUp className="h-4 w-4" /> : <ChevronsDown className="h-4 w-4" />}
+              </button>
             </div>
             
-            {analyticsSteps.length > 4 && (
-              <div className="mt-8 text-center">
-                <Button
-                  variant="text"
-                  onClick={() => setShowAll(!showAll)}
-                  endIcon={showAll ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
-                >
-                  {showAll ? 'Show Less' : 'Show All 7 Steps'}
-                </Button>
+            {showDaliDetails && (
+              <div className="p-6 bg-gray-800/70 border-t border-gray-700">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-4">Extracted Search Queries by Specificity</h4>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex items-center mb-2">
+                          <div className="h-2 w-2 rounded-full bg-blue-400 mr-2"></div>
+                          <h5 className="font-medium text-white">Very Specific (5)</h5>
+                        </div>
+                        <ul className="pl-4 text-sm text-gray-300 space-y-1">
+                          {searchQueries.verySpecific.map((query, i) => (
+                            <li key={i} className="list-disc">{query}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <div className="flex items-center mb-2">
+                          <div className="h-2 w-2 rounded-full bg-blue-300 mr-2"></div>
+                          <h5 className="font-medium text-white">Specific (10)</h5>
+                        </div>
+                        <ul className="pl-4 text-sm text-gray-300 space-y-1">
+                          {searchQueries.specific.map((query, i) => (
+                            <li key={i} className="list-disc">{query}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <div className="flex items-center mb-2">
+                          <div className="h-2 w-2 rounded-full bg-blue-200 mr-2"></div>
+                          <h5 className="font-medium text-white">Moderate (5)</h5>
+                        </div>
+                        <ul className="pl-4 text-sm text-gray-300 space-y-1">
+                          {searchQueries.moderate.map((query, i) => (
+                            <li key={i} className="list-disc">{query}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-4">Top Comparable Sales with Relevance Scores</h4>
+                    <div className="space-y-3">
+                      {daliComparables.map((item, i) => (
+                        <div 
+                          key={i} 
+                          className="flex items-center p-3 rounded-lg border border-gray-700 bg-gray-800/80 hover:bg-gray-700 transition-colors"
+                        >
+                          <div 
+                            className={cn(
+                              "h-10 w-10 rounded-full flex items-center justify-center mr-3 font-semibold text-white",
+                              item.score >= 70 ? "bg-blue-600" : "bg-blue-900"
+                            )}
+                          >
+                            {item.score}
+                          </div>
+                          <div className="overflow-hidden">
+                            <p className="truncate text-white">{item.title}</p>
+                            <p className="text-sm text-gray-400">Relevance Score: {item.score}/100</p>
+                          </div>
+                        </div>
+                      ))}
+                      <div className="text-center text-sm text-gray-400 mt-4">
+                        From a total of 153 analyzed items
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
+        </div>
+        
+        {/* Why This Matters For You */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-center text-white mb-8">Why This Matters For You</h3>
           
-          {/* Example Output Section */}
-          <div className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
-            <div className="p-6 bg-gray-900 text-white">
-              <h3 className="text-xl font-bold mb-1">Valuer Agent in Action</h3>
-              <p className="opacity-90">See how our algorithm analyzed a Salvador Dali artwork</p>
-            </div>
-            
-            <div className="p-6">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Extracted Search Queries by Specificity</h4>
-                  <div className="space-y-4">
-                    <div>
-                      <div className="flex items-center mb-2">
-                        <div className="h-2 w-2 rounded-full bg-gray-900 mr-2"></div>
-                        <h5 className="font-medium text-gray-900">Very Specific (5)</h5>
-                      </div>
-                      <ul className="pl-4 text-sm text-gray-600 space-y-1">
-                        {searchQueries.verySpecific.map((query, i) => (
-                          <li key={i} className="list-disc">{query}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <div className="flex items-center mb-2">
-                        <div className="h-2 w-2 rounded-full bg-gray-700 mr-2"></div>
-                        <h5 className="font-medium text-gray-900">Specific (10)</h5>
-                      </div>
-                      <ul className="pl-4 text-sm text-gray-600 space-y-1">
-                        {searchQueries.specific.map((query, i) => (
-                          <li key={i} className="list-disc">{query}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <div className="flex items-center mb-2">
-                        <div className="h-2 w-2 rounded-full bg-gray-500 mr-2"></div>
-                        <h5 className="font-medium text-gray-900">Moderate (5)</h5>
-                      </div>
-                      <ul className="pl-4 text-sm text-gray-600 space-y-1">
-                        {searchQueries.moderate.map((query, i) => (
-                          <li key={i} className="list-disc">{query}</li>
-                        ))}
-                      </ul>
-                    </div>
+          <div className="max-w-3xl mx-auto">
+            <ul className="space-y-4">
+              {keyBenefits.map((benefit, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 mt-0.5 flex-shrink-0">
+                    <CheckCircle className="h-3.5 w-3.5 text-white" />
                   </div>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Top Comparable Sales with Relevance Scores</h4>
-                  <div className="space-y-3">
-                    {daliComparables.map((item, i) => (
-                      <div 
-                        key={i} 
-                        className="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
-                      >
-                        <div 
-                          className={cn(
-                            "h-10 w-10 rounded-full flex items-center justify-center mr-3 font-semibold text-white",
-                            item.score >= 70 ? "bg-gray-900" : "bg-gray-600"
-                          )}
-                        >
-                          {item.score}
-                        </div>
-                        <div className="overflow-hidden">
-                          <p className="truncate text-gray-800">{item.title}</p>
-                          <p className="text-sm text-gray-500">Relevance Score: {item.score}/100</p>
-                        </div>
-                      </div>
-                    ))}
-                    <div className="text-center text-sm text-gray-500 mt-4">
-                      From a total of 153 analyzed items
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Benefits Summary */}
-          <div className="mt-16">
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Customer Benefits Our Process Delivers</h3>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card variant="feature" className="border-gray-200">
-                <CardTitle>Time Efficiency</CardTitle>
-                <CardContent className="pt-4">
-                  <p className="text-gray-600">Our algorithm performs millions of searches in minutes, saving you days of research time while providing more comprehensive results.</p>
-                </CardContent>
-              </Card>
-              
-              <Card variant="feature" className="border-gray-200">
-                <CardTitle>Accurate Identification</CardTitle>
-                <CardContent className="pt-4">
-                  <p className="text-gray-600">Advanced pattern recognition ensures your item's style, period, and artistic idioms are correctly identified for accurate valuation.</p>
-                </CardContent>
-              </Card>
-              
-              <Card variant="feature" className="border-gray-200">
-                <CardTitle>Institutional Acceptance</CardTitle>
-                <CardContent className="pt-4">
-                  <p className="text-gray-600">Our reports are accepted by major institutions, insurance companies, and auction houses due to their thoroughness and accuracy.</p>
-                </CardContent>
-              </Card>
-            </div>
+                  <p className="text-lg text-white">{benefit}</p>
+                </li>
+              ))}
+            </ul>
           </div>
           
           <div className="mt-12 flex justify-center">
             <Button
-              variant="highConversion"
+              variant="primary"
               as="a"
               href="https://appraisily.com/start"
               size="lg"
-              endIcon={<ArrowRight className="h-5 w-5" />}
-              className="hover:scale-105"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 font-semibold text-lg"
             >
-              Get Your Expert Appraisal
+              Start My Appraisal—Takes 5 Min
             </Button>
           </div>
         </div>

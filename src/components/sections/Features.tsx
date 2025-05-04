@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Award, Shield, FileCheck, Clock, Users, ArrowRight, X } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Award, Shield, FileCheck, Clock } from 'lucide-react';
 import Button from '../core/Button';
 import { cn } from '../../utils/cn';
 import MultiVideoBackground from '../video/MultiVideoBackground';
@@ -9,13 +9,6 @@ interface Feature {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
-  benefit: string;
-  learnMore: string;
-}
-
-interface FeatureModalProps {
-  feature: Feature;
-  onClose: () => void;
 }
 
 // Video URLs for the background
@@ -27,91 +20,33 @@ const videoUrls = [
   'https://ik.imagekit.io/appraisily/Videos/hero5.mp4?updatedAt=1731840454419'
 ];
 
-// Feature data with expanded information
+// Feature data with updated information
 const features = [
   {
-    icon: Award,
-    title: 'Certified Experts',
-    description: 'Hand-picked, ISA-&-AAA-vetted appraisers for museum-grade accuracy',
-    benefit: 'Get valuations you can truly trust',
-    learnMore: 'Our appraisers have an average of 15+ years of experience in their specialty fields. Each expert undergoes rigorous credential verification through leading professional associations.'
-  },
-  {
     icon: Shield,
-    title: 'USPAP Compliant',
-    description: 'Reports that meet strict industry standards required by institutions',
-    benefit: 'Ensure your appraisal is accepted everywhere',
-    learnMore: 'USPAP (Uniform Standards of Professional Appraisal Practice) compliance means your appraisal report will be accepted by insurance companies, the IRS, courts, and financial institutions.'
-  },
-  {
-    icon: FileCheck,
-    title: 'Legal Documentation',
-    description: 'Comprehensive reports accepted by insurance, IRS, and courts',
-    benefit: 'Use one report for all your needs',
-    learnMore: 'Our detailed reports include all necessary elements for legal and financial purposes: provenance research, condition assessment, market analysis, and comparable sales data.'
+    title: 'Guaranteed Acceptance',
+    description: 'Compliant with every major institution and insurer.'
   },
   {
     icon: Clock,
-    title: '24-48h Turnaround',
-    description: 'Get your legally admissible valuation in as little as two business days',
-    benefit: 'No more waiting weeks for results',
-    learnMore: 'Our streamlined digital process lets experts focus on what matters - accurately appraising your artwork, not administrative tasks. Most clients receive their reports within 36 hours.'
+    title: 'Lightning-Fast',
+    description: 'No more 6-week waits; our experts deliver in two days.'
   },
   {
-    icon: Users,
-    title: 'Category Specialists',
-    description: 'Experts in every art category from Old Masters to Contemporary Works',
-    benefit: 'Always matched with the perfect expert',
-    learnMore: "We maintain a network of specialists across 20+ art categories and periods. Your item will be matched with an appraiser who specializes specifically in your artwork's style, period, and medium."
+    icon: FileCheck,
+    title: 'Court-Ready Clarity',
+    description: 'Documentation written for lawyers, agents, and tax pros.'
+  },
+  {
+    icon: Award,
+    title: 'Expert-Led, Not AI-Only',
+    description: 'Real appraisers validate every detail so you sleep easy.'
   }
 ];
 
-// Testimonial snippets for social proof
-const testimonialSnippets = [
-  { quote: "Incredible turnaround and detail!", author: "Sarah T., Collector" },
-  { quote: "The expert knew exactly what to look for.", author: "Michael R., Estate Manager" }
-];
-
 export default function Features() {
-  const [activeModal, setActiveModal] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   
-  // Modal component for "Learn More" functionality
-  const FeatureModal = ({ feature, onClose }: FeatureModalProps) => (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="relative w-full max-w-md bg-white rounded-xl shadow-lg border border-gray-200 animate-fadeIn">
-        <div className="p-6 space-y-4">
-          <button 
-            onClick={onClose}
-            className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100"
-            aria-label="Close modal"
-          >
-            <X size={20} />
-          </button>
-          
-          <div className="flex items-center space-x-4">
-            <div className="rounded-lg bg-gray-100 p-3 flex-shrink-0">
-              <feature.icon className="h-6 w-6 text-gray-700" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900">{feature.title}</h3>
-          </div>
-          
-          <p className="text-gray-600">{feature.learnMore}</p>
-          
-          <div className="mt-4">
-            <Button
-              variant="primary"
-              fullWidth
-              onClick={onClose}
-            >
-              Got it
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
     <section 
       className="w-full relative overflow-hidden py-12 sm:py-16 md:py-24 bg-white"
@@ -141,30 +76,17 @@ export default function Features() {
             id="features-heading"
             className="relative text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6"
           >
-            Why Our Certified Appraisers Deliver Unmatched Value
+            Why Collectors Choose Us
           </h2>
           <p className="relative text-lg leading-8 text-gray-600 font-medium">
-            Museum-grade analysis, 24–48h turnaround, and reports accepted by top institutions
+            The Appraisal That Opens Doors—Not Questions
           </p>
-        </div>
-
-        {/* Social proof testimonials */}
-        <div className="flex flex-wrap justify-center gap-6 mt-8 mb-12">
-          {testimonialSnippets.map((testimonial, index) => (
-            <span 
-              key={index}
-              className="inline-flex items-center rounded-full font-medium border border-gray-200 bg-white text-gray-700 py-1.5 px-3 text-sm"
-            >
-              <span className="text-gray-700 italic mr-1">"{testimonial.quote}"</span>
-              <span className="text-gray-500 text-xs">– {testimonial.author}</span>
-            </span>
-          ))}
         </div>
 
         {/* Features grid */}
         <div className="mx-auto mt-12 max-w-2xl lg:max-w-none">
-          <ul className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-            {features.map((feature, index) => (
+          <ul className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature) => (
               <li key={feature.title}>
                 <div className="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden p-4 h-full flex flex-col group hover:shadow-md transition-shadow duration-200 space-y-4">
                   <div className="flex items-center space-x-4">
@@ -177,23 +99,8 @@ export default function Features() {
                     <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
                   </div>
                   
-                  {/* Benefit tag */}
-                  <span className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 ring-1 ring-inset ring-gray-300/30 mb-3">
-                    {feature.benefit}
-                  </span>
-                  
                   {/* Description */}
                   <p className="text-sm leading-6 text-gray-600 flex-grow">{feature.description}</p>
-                  
-                  {/* Learn More button */}
-                  <button 
-                    onClick={() => setActiveModal(index)}
-                    className="mt-4 text-xs font-medium text-gray-700 hover:text-gray-900 inline-flex items-center justify-start"
-                    aria-label={`Learn more about ${feature.title}`}
-                  >
-                    Learn More
-                    <ArrowRight size={12} className="ml-1 transition-transform group-hover:translate-x-0.5" />
-                  </button>
                 </div>
               </li>
             ))}
@@ -226,14 +133,6 @@ export default function Features() {
           </div>
         </div>
       </div>
-
-      {/* Feature modals */}
-      {activeModal !== null && (
-        <FeatureModal 
-          feature={features[activeModal]} 
-          onClose={() => setActiveModal(null)} 
-        />
-      )}
     </section>
   );
 }

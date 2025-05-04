@@ -15,7 +15,6 @@ import Process from '../components/sections/Process';
 import ValuerAnalytics from '../components/sections/ValuerAnalytics';
 import RecentAppraisals from '../components/sections/RecentAppraisals';
 import SuccessStories from '../components/sections/SuccessStories';
-import WhyChooseUs from '../components/features/value/WhyChooseUs';
 import Services from '../components/features/services/Services';
 import Experts from '../components/features/experts/Experts';
 import TrustFooter from '../components/features/trust/TrustFooter';
@@ -77,10 +76,6 @@ export default function ArtAppraiser() {
         
         <LazyComponent threshold={0.1} rootMargin="100px">
           <SuccessStories />
-        </LazyComponent>
-        
-        <LazyComponent threshold={0.1} rootMargin="100px">
-          <WhyChooseUs />
         </LazyComponent>
         
         <LazyComponent threshold={0.1} rootMargin="100px">
