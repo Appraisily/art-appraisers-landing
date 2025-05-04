@@ -253,7 +253,7 @@ export default function Experts() {
                   
                   <div className="mt-10">
                     <a
-                      href={`https://appraisily.com/start?expert=${selectedExpert.name.toLowerCase().replace(' ', '-')}`}
+                      href="https://appraisily.com/start"
                       className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-base font-semibold text-white shadow-md hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200"
                     >
                       Request an Appraisal from {selectedExpert.name.split(' ')[0]}

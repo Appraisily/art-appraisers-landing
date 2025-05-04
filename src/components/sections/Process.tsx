@@ -19,19 +19,21 @@ const steps = [
     badgeClass: 'bg-gray-100 text-gray-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step1.png',
     imageAlt: 'Share photos and story of your artwork',
-    useStaticImage: true
+    useStaticImage: true,
+    additionalText: 'Upload photos of your artwork from all angles and share any details you know about the piece.'
   },
   {
     title: 'Expert Review & Authentication',
     description: 'same day',
     icon: Search,
     timeline: 'Step 2',
-    iconClass: 'bg-blue-100',
-    iconTextClass: 'text-blue-700',
-    badgeClass: 'bg-blue-100 text-blue-700',
+    iconClass: 'bg-gray-100',
+    iconTextClass: 'text-gray-700',
+    badgeClass: 'bg-gray-100 text-gray-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/lab_photo.png',
     imageAlt: 'Experts analyzing and authenticating artwork',
-    useStaticImage: true
+    useStaticImage: true,
+    additionalText: 'Our experts examine your artwork, identify the object, and authenticate its origin and period.'
   },
   {
     title: 'Market Analysis & Valuation',
@@ -43,7 +45,8 @@ const steps = [
     badgeClass: 'bg-gray-100 text-gray-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step3.png?updatedAt=1745922349843&tr=w-800,h-600',
     imageAlt: 'Appraiser conducting market valuation',
-    useStaticImage: true
+    useStaticImage: true,
+    additionalText: 'We research comparable sales and analyze current market conditions to determine accurate value.'
   },
   {
     title: 'Receive Your Digital Report',
@@ -55,7 +58,8 @@ const steps = [
     badgeClass: 'bg-gray-100 text-gray-700',
     image: 'https://ik.imagekit.io/appraisily/WebPage/step4.png?updatedAt=1745922349843&tr=w-800,h-600',
     imageAlt: 'Detailed expert appraisal report',
-    useStaticImage: true
+    useStaticImage: true,
+    additionalText: 'You receive a comprehensive appraisal report with detailed market analysis and valuation.'
   }
 ];
 
@@ -67,8 +71,8 @@ export default function Process() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center mb-16">
-          <span className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium bg-gray-100 text-gray-700 mb-6">
+        <div className="mx-auto max-w-2xl text-center mb-12 md:mb-16">
+          <span className="inline-flex items-center rounded-full px-4 py-1.5 text-base font-medium bg-gray-100 text-gray-700 mb-6">
             <Clock className="h-4 w-4 mr-2 text-blue-600" />
             24-48 Hour Turnaround
           </span>
@@ -82,55 +86,55 @@ export default function Process() {
           </p>
         </div>
 
-        {/* Process Steps */}
-        <div className="relative mt-16 space-y-20 md:space-y-24">
-          {/* Connecting line through all steps - changed to gray */}
+        {/* Process Steps - Improved mobile layout */}
+        <div className="relative mt-16 space-y-16 md:space-y-24">
+          {/* Connecting line through all steps - only visible on desktop */}
           <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 hidden md:block" />
           
           {steps.map((step, index) => (
             <div 
               key={step.title}
               className={cn(
-                'relative flex flex-col items-center md:items-stretch gap-8 md:gap-8',
+                'relative flex flex-col md:items-stretch gap-6 md:gap-8',
+                // Apply right content alignment for even steps only on desktop
                 index % 2 === 0 
-                  ? 'md:flex-row' 
-                  : 'md:flex-row-reverse',
+                  ? 'md:flex-row items-center' 
+                  : 'md:flex-row-reverse items-center',
               )}
             >
-              {/* Step number indicator on the timeline - visible on both mobile and desktop now */}
+              {/* Step number indicator - improved for mobile */}
               <div className={cn(
                 "absolute left-1/2 transform -translate-x-1/2 rounded-full bg-white border-4 z-10 flex items-center justify-center text-gray-700 font-bold",
-                index === 0 || index === 1 ? "w-14 h-14 md:w-16 md:h-16 text-lg md:text-xl border-gray-600" : "w-12 h-12 md:w-14 md:h-14 text-base md:text-lg border-gray-400",
-                // Position the step indicator correctly for mobile
-                "md:relative md:top-auto top-[-7px]"
+                "w-16 h-16 md:w-18 md:h-18 text-xl md:text-2xl border-gray-600",
+                // Position for mobile (top of the content) vs desktop (on the line)
+                "top-[-8px] md:top-1/2 md:-translate-y-1/2"
               )}>
                 {index + 1}
               </div>
               
-              {/* Step Content */}
-              <div className="w-full md:w-5/12 relative z-10 mt-10 md:mt-0">
+              {/* Step Content Card - Improved mobile layout */}
+              <div className="w-full md:w-5/12 relative z-10 mt-14 md:mt-0">
                 <div className={cn(
-                  "bg-white shadow-md rounded-2xl p-5 md:p-6 border border-gray-200 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1",
-                  index === 1 ? "bg-blue-50/30" : "",
-                  index === 0 ? "md:p-8" : ""
+                  "bg-white shadow-md rounded-2xl p-6 md:p-7 border border-gray-200 transform transition-all duration-300 hover:shadow-lg",
+                  "mx-auto max-w-md"
                 )}>
                   <div className="flex items-center space-x-4 mb-4">
                     <div className={cn(
                       "flex items-center justify-center rounded-xl", 
                       step.iconClass,
-                      index === 0 ? "h-14 w-14 md:h-16 md:w-16" : "h-12 w-12 md:h-14 md:w-14"
+                      "h-14 w-14 md:h-16 md:w-16"
                     )}>
                       <step.icon className={cn(
                         step.iconTextClass,
-                        index === 0 ? "h-7 w-7 md:h-8 md:w-8" : "h-6 w-6 md:h-7 md:w-7"
+                        "h-7 w-7 md:h-8 md:w-8"
                       )} />
                     </div>
                     
                     <div className="flex flex-col space-y-1">
                       <span className={cn(
-                        "inline-flex items-center px-2.5 py-1 rounded-full font-medium", 
+                        "inline-flex items-center px-3 py-1.5 rounded-full font-medium", 
                         step.badgeClass,
-                        "text-sm md:text-base"
+                        "text-base md:text-lg"
                       )}>
                         {step.timeline}
                       </span>
@@ -138,30 +142,28 @@ export default function Process() {
                   </div>
                   
                   <h3 className={cn(
-                    "font-bold text-gray-900 mt-4",
-                    index === 0 || index === 1 ? "text-xl md:text-2xl" : "text-lg md:text-xl"
+                    "font-bold text-gray-900 mt-4 mb-1.5",
+                    "text-xl md:text-2xl"
                   )}>
                     {step.title}
                   </h3>
                   <p className={cn(
-                    "text-gray-600 mt-2",
-                    index === 0 || index === 1 ? "text-base md:text-lg" : "text-sm md:text-base"
+                    "text-gray-600 mb-3",
+                    "text-lg md:text-xl font-medium"
                   )}>
                     {step.description}
                   </p>
                   
-                  {/* Additional description text for Step 2 to better utilize space */}
-                  {index === 1 && (
-                    <p className="text-gray-700 mt-3 text-sm md:text-base">
-                      Our experts carefully examine your artwork, identify the object, and authenticate its origin, style, and period using advanced techniques.
-                    </p>
-                  )}
+                  {/* Additional description text for all steps */}
+                  <p className="text-gray-700 text-base md:text-lg">
+                    {step.additionalText}
+                  </p>
                 </div>
               </div>
 
-              {/* Step Image - Wider for better balance */}
-              <div className="w-full md:w-7/12">
-                <div className="relative overflow-hidden rounded-2xl shadow-md bg-gray-100 aspect-[4/3] group">
+              {/* Step Image - Improved mobile layout */}
+              <div className="w-full md:w-7/12 mt-4 md:mt-0">
+                <div className="relative overflow-hidden rounded-2xl shadow-md bg-gray-100 aspect-[4/3] group mx-auto max-w-md md:max-w-none">
                   {step.useStaticImage ? (
                     // Direct img tag for static images from ImageKit
                     <img 
@@ -192,14 +194,12 @@ export default function Process() {
                     />
                   )}
                   
-                  {/* Caption overlay for step 2 to provide more context */}
-                  {index === 1 && (
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm p-3 md:p-4 text-white">
-                      <p className="text-sm md:text-base font-medium">
-                        Professional examination by certified art historians
-                      </p>
-                    </div>
-                  )}
+                  {/* Caption overlay for all steps */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm p-3 md:p-4 text-white">
+                    <p className="text-base md:text-lg font-medium">
+                      {step.imageAlt}
+                    </p>
+                  </div>
                   
                   {/* Elegant overlay with gradient - more subtle */}
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -213,10 +213,10 @@ export default function Process() {
         <div className="mt-20 flex justify-center">
           <a 
             href="https://appraisily.com/start"
-            className="inline-flex items-center justify-center font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 w-full max-w-md text-lg px-6 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-900 focus:ring-blue-600 shadow-md hover:shadow-lg transition-all duration-300"
+            className="inline-flex items-center justify-center font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 w-full max-w-md text-xl px-8 py-4 rounded-lg bg-gray-800 text-white hover:bg-gray-900 focus:ring-blue-600 shadow-md hover:shadow-lg transition-all duration-300"
           >
             Start My 5-Minute Submission
-            <ArrowRight className="h-5 w-5 ml-2" />
+            <ArrowRight className="h-6 w-6 ml-2" />
           </a>
         </div>
       </div>

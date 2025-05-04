@@ -111,7 +111,7 @@ export default function Features() {
             <Button 
               variant="primary"
               as="a"
-              href="#start-appraisal"
+              href="https://appraisily.com/start"
               className="bg-gray-900 hover:bg-gray-800 py-3 px-6 text-base"
             >
               Find My Expert Appraiser
