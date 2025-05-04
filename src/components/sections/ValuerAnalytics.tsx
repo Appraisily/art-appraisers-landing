@@ -89,7 +89,7 @@ const howItWorksSteps = [
   },
   {
     title: 'You Receive a Crystal-Clear Price Window',
-    description: 'See where your artwork lands on today's market curve—complete with confidence scores.',
+    description: 'See where your artwork lands on today\'s market curve—complete with confidence scores.',
     icon: FileText,
     iconClass: 'bg-gray-100',
     iconTextClass: 'text-gray-700',
@@ -101,7 +101,7 @@ const valueSnapshots = [
   {
     title: '3 M+',
     subtitle: 'Records Searched Every Time',
-    description: 'We sift through global auction houses so you don't have to.',
+    description: 'We sift through global auction houses so you don\'t have to.',
     icon: Database,
   },
   {
