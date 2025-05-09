@@ -101,16 +101,15 @@ export default function SuccessStories() {
   const appraiserName = "Andrés Gómez";
 
   return (
-    <Section className="bg-gray-50">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
+    <Section className="bg-white">
+      {/* Removed dot pattern background */}
       
       <Container>
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 lg:mx-0 lg:max-w-none lg:grid-cols-2 items-center">
             {/* Content Column */}
             <div>
               <div className="relative">
-              <div className="absolute -inset-x-4 -inset-y-2 bg-gradient-to-r from-blue-600/5 to-blue-500/5 blur-lg rounded-3xl" />
+              <div className="absolute -inset-x-4 -inset-y-2 bg-gradient-to-r from-gray-200/20 to-gray-100/20 blur-lg rounded-3xl" />
                 <div className="relative">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-8">
                     Success Stories: Real Cases, Real Experts
@@ -128,7 +127,7 @@ export default function SuccessStories() {
                         </div>
                         <span className="text-sm font-medium text-gray-600">Verified Review</span>
                       </div>
-                      <Badge variant="primary">
+                      <Badge variant="outline" className="bg-gray-100 text-gray-800 border-gray-200">
                         Appraiser: {appraiserName}
                       </Badge>
                     </div>
@@ -141,46 +140,42 @@ export default function SuccessStories() {
                       Among Mark's cherished heirlooms was a striking original painting. With {appraiserName}'s expert analysis, the artist was identified as 'Tinus de Jongh (Dutch, 1885–1942)', and the artwork was appraised between $1,500 and $2,000. Ultimately, it was sold for $1,800.
                     </p>
                     
-                    <blockquote className="mt-6 border-l-4 border-blue-600 pl-4 italic text-gray-600">
+                    <blockquote className="mt-6 border-l-4 border-gray-800 pl-4 italic text-gray-600">
                       "Thanks to this incredible service. I had no idea the painting held such value. The $20 online art appraisal report was an absolute bargain, and I'll definitely use Appraisily again."
                     </blockquote>
                     
                     <div className="mt-6 flex items-center justify-between">
                       <p className="text-sm font-medium text-gray-900">- Mark S.</p>
-                      <Badge variant="accent">
-                        Verified Purchase
-                      </Badge>
+                      <Badge variant="outline" className="bg-amber-50 text-amber-800 border-amber-200">Verified Purchase</Badge>
                     </div>
                     
-                    {/* Ask Appraiser Button */}
                     <Button
-                      variant="text"
+                      variant="link"
                       onClick={() => setShowAskModal(true)}
-                      className="mt-6 text-sm"
                       startIcon={<MessageCircle className="h-5 w-5" />}
+                      className="text-gray-600 hover:text-gray-800 hover:underline mt-6 text-sm"
                     >
-                        Ask {appraiserName.split(' ')[0]} How They Did It →
+                      Ask {appraiserName} How They Did It →
                     </Button>
                     
-                    {/* Sample Report Button */}
                     <Button
-                      variant="text"
+                      variant="link"
                       onClick={() => setShowPDF(true)}
-                      className="mt-4 text-sm group"
                       startIcon={<FileText className="h-5 w-5" />}
-                      endIcon={<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />}
+                      endIcon={<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />}
+                      className="text-gray-600 hover:text-gray-800 hover:underline mt-4 text-sm group"
                     >
-                        See what's included in our detailed reports
+                      See what's included in our detailed reports
                     </Button>
                   </CardContent>
                 </Card>
                 </div>
               </div>
             </div>
-
-            {/* Sample Report Column */}
+            
+            {/* Report Column */}
             <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-blue-500/10 rounded-3xl blur-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-200/20 to-gray-100/20 rounded-3xl blur-2xl" />
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-white p-4 shadow-lg ring-1 ring-gray-200">
                 <img
                   src="https://ik.imagekit.io/appraisily/WebPage/report.jpg?updatedAt=1731365708557"

@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Shield, Award, Building2, Scale, FileCheck, Globe2 } from 'lucide-react';
+import Button from '../../core/Button';
+import { cn } from '../../../utils/cn';
 
 const credentials = [
   {
@@ -190,12 +192,17 @@ export default function TrustFooter() {
                   <span className="text-blue-100 sm:flex-1">
                     Get your professional appraisal from certified experts
                   </span>
-                  <a
+                  <Button
+                    variant="primary"
+                    as="a"
                     href="https://appraisily.com/start"
-                    className="w-full sm:w-auto rounded-xl bg-amber-500 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 transition-all duration-200"
+                    className={cn(
+                      "w-full sm:w-auto rounded-xl px-6 py-3 text-base font-semibold text-white shadow-sm transition-all duration-200",
+                      "bg-gray-900 hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-700"
+                    )}
                   >
                     Connect with Your Appraiser
-                  </a>
+                  </Button>
                 </div>
               </div>
             </div>

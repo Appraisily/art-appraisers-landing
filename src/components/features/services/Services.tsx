@@ -171,8 +171,9 @@ const Services: React.FC = () => {
     <div className="bg-white py-24 sm:py-32" id="services">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Choose Your Appraisal Service
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl drop-shadow-sm relative">
+            <span className="relative z-10">Choose Your Appraisal Service</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-gray-900/5 via-gray-900/10 to-gray-900/5 blur-lg -z-10 scale-110 rounded-full opacity-50"></span>
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Our certified appraisers tailor each report to your needs. Select the service that best fits your requirements.
@@ -180,55 +181,79 @@ const Services: React.FC = () => {
         </div>
         
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {services.map((service) => (
-            <div 
-              key={service.title} 
-              className="flex flex-col border border-gray-100 rounded-2xl p-8 bg-white shadow-sm hover:shadow-lg transition-all duration-200"
-            >
-              <div className="mb-6">
-                <service.icon className="h-8 w-8 text-gray-800" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
-              <p className="mt-4 text-gray-600 flex-grow">{service.description}</p>
-              <ul className="mt-6 space-y-3">
-                {service.features && service.features.map((feature) => (
-                  <li key={feature.text} className="flex items-start gap-2">
-                    <feature.icon className="h-5 w-5 text-gray-700 mt-1" />
-                    <span className="text-gray-700">{feature.text}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8 flex flex-col gap-3">
-                {service.action && service.action.videoId && (
-                  <button
-                    onClick={() => setVideoModal({
-                      isOpen: true,
-                      videoId: service.action.videoId,
-                      title: service.action.title
-                    })}
-                    className="group rounded-md bg-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-800 hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800 transition-all duration-200"
+          {services.map((service, index) => {
+            // Different subtle border color for each card
+            const borderColors = [
+              "before:border-blue-200/40", 
+              "before:border-emerald-200/40", 
+              "before:border-amber-200/40"
+            ];
+            
+            // Different subtle glow colors for each card
+            const glowColors = [
+              "after:shadow-[0_0_30px_rgba(59,130,246,0.1)]", 
+              "after:shadow-[0_0_30px_rgba(16,185,129,0.1)]", 
+              "after:shadow-[0_0_30px_rgba(245,158,11,0.1)]"
+            ];
+            
+            return (
+              <div 
+                key={service.title} 
+                className={`
+                  relative flex flex-col rounded-2xl p-8 bg-white shadow-sm 
+                  hover:shadow-lg transition-all duration-300
+                  before:absolute before:inset-0 before:rounded-2xl before:border before:border-gray-100 
+                  before:transition-all before:duration-300 before:z-10 
+                  after:absolute after:inset-0 after:rounded-2xl after:z-0 after:opacity-0 
+                  hover:before:border-2 hover:after:opacity-100
+                  ${borderColors[index % 3]} ${glowColors[index % 3]}
+                `}
+              >
+                <div className="mb-6 relative z-20">
+                  <service.icon className="h-8 w-8 text-gray-800" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 relative z-20">{service.title}</h3>
+                <p className="mt-4 text-gray-600 flex-grow relative z-20">{service.description}</p>
+                <ul className="mt-6 space-y-3 relative z-20">
+                  {service.features && service.features.map((feature) => (
+                    <li key={feature.text} className="flex items-start gap-2">
+                      <feature.icon className="h-5 w-5 text-gray-700 mt-1" />
+                      <span className="text-gray-700">{feature.text}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-col gap-3 relative z-20">
+                  {service.action && service.action.videoId && (
+                    <button
+                      onClick={() => setVideoModal({
+                        isOpen: true,
+                        videoId: service.action.videoId,
+                        title: service.action.title
+                      })}
+                      className="group rounded-md bg-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-800 hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800 transition-all duration-200"
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <Play className="h-4 w-4" />
+                        Watch Service Overview
+                      </span>
+                    </button>
+                  )}
+                  <a
+                    href="https://appraisily.com/start"
+                    className="rounded-md bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 transition-all duration-200 text-center"
                   >
-                    <span className="flex items-center justify-center gap-2">
-                      <Play className="h-4 w-4" />
-                      Watch Service Overview
-                    </span>
+                    Select This Service
+                  </a>
+                  <button
+                    onClick={() => setChatModalOpen(true)}
+                    className="text-gray-600 hover:text-gray-900 text-sm font-medium mt-2 transition-colors"
+                  >
+                    Not sure? Talk to an Appraiser
                   </button>
-                )}
-                <a
-                  href="https://appraisily.com/start"
-                  className="rounded-md bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 transition-all duration-200 text-center"
-                >
-                  Select This Service
-                </a>
-                <button
-                  onClick={() => setChatModalOpen(true)}
-                  className="text-gray-600 hover:text-gray-900 text-sm font-medium mt-2 transition-colors"
-                >
-                  Not sure? Talk to an Appraiser
-                </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

@@ -49,9 +49,9 @@ const experts: ExpertFace[] = [
 
 // Key benefits for conversion - updated with client's exact wording
 const keyBenefits = [
-  { icon: <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />, text: "24-48 h turnaround, guaranteed" },
-  { icon: <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />, text: "Certified experts with 15+ yrs experience" },
-  { icon: <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />, text: "5,000+ collectors served in 50+ countries" },
+  { icon: <CheckCircle className="h-5 w-5 text-gray-800 flex-shrink-0" />, text: "24-48 h turnaround, guaranteed" },
+  { icon: <CheckCircle className="h-5 w-5 text-gray-800 flex-shrink-0" />, text: "Certified experts with 15+ yrs experience" },
+  { icon: <CheckCircle className="h-5 w-5 text-gray-800 flex-shrink-0" />, text: "5,000+ collectors served in 50+ countries" },
 ];
 
 export default function MainHero() {
@@ -66,31 +66,21 @@ export default function MainHero() {
     <section className="w-full relative">
       {/* Main hero content */}
       <div className="relative z-0 pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-12 md:pb-16 lg:pt-14 lg:pb-20 overflow-hidden">
-        {/* Enhanced background with dot grid and waves */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white"></div>
+        {/* Simplified single background layer */}
+        <div 
+          className="absolute inset-0 z-0" 
+          style={{
+            background: 'linear-gradient(120deg, #EFF6FF 0%, #FFFFFF 50%, #F9FAFB 100%)',
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+              linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+              linear-gradient(rgba(59, 130, 246, 0.05) 2px, transparent 2px),
+              linear-gradient(to right, rgba(59, 130, 246, 0.05) 2px, transparent 2px)
+            `,
+            backgroundSize: '30px 30px, 30px 30px, 90px 90px, 90px 90px'
+          }}
+        ></div>
         
-        {/* Enhanced background patterns */}
-        <div className="absolute inset-0 pattern-bg">
-          {/* Grid pattern overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f610_1px,transparent_1px),linear-gradient(to_bottom,#3b82f610_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-          
-          {/* Diagonal lines pattern - very subtle */}
-          <div className="absolute inset-0 opacity-5" style={{ 
-            backgroundImage: 'repeating-linear-gradient(45deg, #3b82f6, #3b82f6 1px, transparent 1px, transparent 10px)' 
-          }}></div>
-        </div>
-        
-        {/* Wave patterns and gradient elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Wave element top */}
-          <div className="absolute top-0 left-0 right-0 h-40 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMTI4MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0iIzNiODJmNjEwIj48cGF0aCBkPSJNMTI4MCAxNDBWMFM5OTMuNDYgMTQwIDY0MCAxMzkgMCAwIDAgMHYxNDB6Ii8+PC9nPjwvc3ZnPg==')] bg-top bg-no-repeat opacity-10"></div>
-          
-          {/* Gradient blobs */}
-          <div className="absolute -left-4 top-1/4 h-64 w-64 rounded-full bg-gradient-to-br from-blue-600/15 to-purple-600/15 blur-3xl animate-[pulse_6s_ease-in-out_infinite]"></div>
-          <div className="absolute right-0 top-1/3 h-48 w-48 rounded-full bg-gradient-to-r from-blue-400/15 to-cyan-400/15 blur-3xl animate-[pulse_8s_ease-in-out_infinite]"></div>
-          <div className="absolute left-1/3 bottom-1/4 h-72 w-72 rounded-full bg-gradient-to-tr from-blue-500/15 to-indigo-500/10 blur-3xl animate-[pulse_7s_ease-in-out_infinite]"></div>
-        </div>
-
         {/* Main content container */}
         <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 relative z-10">
           {/* Repositioned logo - better aligned with content */}
@@ -105,7 +95,7 @@ export default function MainHero() {
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               {/* Headline and description - improved hierarchy and spacing */}
               <div className="mb-7 md:mb-7 max-w-[600px]">
-                <div className="inline-flex items-center mb-4 px-4 py-1.5 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">
+                <div className="inline-flex items-center mb-4 px-4 py-1.5 rounded-full bg-gray-100 text-gray-800 text-sm font-semibold">
                   <Clock className="h-4 w-4 mr-1.5" />
                   Know the True Worth of Your Art in 24-48 Hours
                 </div>
@@ -139,8 +129,8 @@ export default function MainHero() {
                   className={cn(
                     "inline-flex items-center justify-center font-medium transition-all duration-200",
                     "py-3.5 px-6 text-base font-semibold shadow-md",
-                    "bg-blue-600 hover:bg-blue-700 text-white rounded-lg",
-                    "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 w-full"
+                    "bg-gray-900 hover:bg-gray-800 text-white rounded-lg",
+                    "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 w-full"
                   )}
                 >
                   Get My Appraisal Now
@@ -159,7 +149,7 @@ export default function MainHero() {
               </div>
               
               {/* Trust badge bar - moved to bottom of left column */}
-              <div className="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-lg p-4 shadow-sm w-full sm:max-w-lg">
+              <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm w-full sm:max-w-lg">
                 {/* Expert faces - fixed alignment with proper spacing */}
                 <div className="flex flex-col sm:flex-row items-center text-center sm:text-left gap-3 sm:gap-0">
                   <div className="flex -space-x-2 sm:mr-4">
@@ -187,8 +177,8 @@ export default function MainHero() {
             
             {/* Right column - Expert card and stats - improved visibility and display on mobile */}
             <div className="md:block relative mt-8 lg:mt-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-blue-500/5 rounded-2xl blur-3xl opacity-40"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-xl shadow-md overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-600/5 to-gray-500/5 rounded-2xl blur-3xl opacity-40"></div>
+              <div className="relative bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden">
                 <div className="p-5 lg:p-6">
                   {/* Featured expert - LARGER image with overlay text */}
                   <div className="mb-6">
@@ -207,12 +197,12 @@ export default function MainHero() {
                       {/* Text overlay positioned at bottom */}
                       <div className="absolute bottom-0 left-0 w-full p-4 text-white">
                         <h3 className="text-xl font-semibold">{experts[0].name}</h3>
-                        <p className="text-blue-100 text-sm mb-2">{experts[0].role}</p>
+                        <p className="text-gray-200 text-sm mb-2">{experts[0].role}</p>
                         
                         <Badge 
                           variant="accent"
                           icon={<Award className="h-3.5 w-3.5 text-amber-500" />}
-                          className="text-sm font-medium px-2.5 py-1 bg-white/20 backdrop-blur-sm border border-white/30"
+                          className="text-sm font-medium px-2.5 py-1 bg-black/40 backdrop-blur-sm border border-white/20"
                         >
                           Certified Expert
                         </Badge>
@@ -222,26 +212,26 @@ export default function MainHero() {
 
                   {/* Stats grid - more compact display */}
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="text-center p-3 bg-white/80 rounded-lg border border-gray-100 shadow-sm">
+                    <div className="text-center p-3 bg-white rounded-lg border border-gray-200 shadow-sm">
                       <dt className="text-xs text-gray-600">Artworks Appraised</dt>
                       <dd className="text-xl font-bold text-gray-900">15K+</dd>
                     </div>
-                    <div className="text-center p-3 bg-white/80 rounded-lg border border-gray-100 shadow-sm">
+                    <div className="text-center p-3 bg-white rounded-lg border border-gray-200 shadow-sm">
                       <dt className="text-xs text-gray-600">Client Satisfaction</dt>
                       <dd className="text-xl font-bold text-gray-900">98%</dd>
                     </div>
-                    <div className="text-center p-3 bg-white/80 rounded-lg border border-gray-100 shadow-sm">
+                    <div className="text-center p-3 bg-white rounded-lg border border-gray-200 shadow-sm">
                       <dt className="text-xs text-gray-600">Countries Served</dt>
                       <dd className="text-xl font-bold text-gray-900">50+</dd>
                     </div>
-                    <div className="text-center p-3 bg-white/80 rounded-lg border border-gray-100 shadow-sm">
+                    <div className="text-center p-3 bg-white rounded-lg border border-gray-200 shadow-sm">
                       <dt className="text-xs text-gray-600">Avg. Turnaround</dt>
                       <dd className="text-xl font-bold text-gray-900">24h</dd>
                     </div>
                   </div>
                   
                   {/* Testimonial - moved from left to right column for better balance */}
-                  <div className="mt-5 p-4 bg-white/80 border border-gray-100 rounded-lg shadow-sm">
+                  <div className="mt-5 p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
                     <p className="text-sm text-gray-700 italic mb-2">
                       "The expert knew exactly what to look for and delivered a comprehensive report within 24 hours."
                     </p>
@@ -259,15 +249,15 @@ export default function MainHero() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-y-2 sm:gap-x-6 text-sm">
             <div className="flex items-center gap-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-800"></div>
               <span className="text-gray-600">USPAP Certified</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-800"></div>
               <span className="text-gray-600">ISA & AAA Accredited</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-800"></div>
               <span className="text-gray-600">98% Client Satisfaction</span>
             </div>
           </div>

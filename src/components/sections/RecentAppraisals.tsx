@@ -3,14 +3,25 @@ import { DollarSign, ArrowRight, TrendingUp, History, User } from 'lucide-react'
 import { cn } from '../../utils/cn';
 import Button from '../core/Button';
 
-// CSS to ensure text is selectable
+// CSS to ensure text is selectable - strengthened selectors for better text selection
 const selectableTextStyles = `
   .recent-appraisals-section,
-  .recent-appraisals-section * {
-    user-select: auto !important;
-    -webkit-user-select: auto !important;
-    -moz-user-select: auto !important;
-    -ms-user-select: auto !important;
+  .recent-appraisals-section *,
+  .recent-appraisals-section h2,
+  .recent-appraisals-section p,
+  .recent-appraisals-section a,
+  .recent-appraisals-section span,
+  .recent-appraisals-section div {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    cursor: auto !important;
+  }
+  
+  .recent-appraisals-section a,
+  .recent-appraisals-section a * {
+    cursor: pointer !important;
   }
 `;
 
@@ -91,8 +102,8 @@ export default function RecentAppraisals() {
       {/* Add style tag for text selection fix */}
       <style>{selectableTextStyles}</style>
       
-      <div className="recent-appraisals-section relative bg-blue-50 py-16 sm:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white"></div>
+      <div className="recent-appraisals-section relative bg-white py-16 sm:py-24 overflow-hidden">
+        {/* Removed blue background gradient and dot pattern */}
         
         <div className="relative">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -132,22 +143,22 @@ export default function RecentAppraisals() {
                         <span className="text-gray-700 text-sm sm:text-base">Initial: <span className="font-medium">{case_.initialEstimate}</span></span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <TrendingUp className="h-4 w-4 text-blue-600" />
-                        <span className="text-gray-900 font-semibold text-sm sm:text-base">Final: <span className="text-blue-600">{case_.finalValue}</span></span>
+                        <TrendingUp className="h-4 w-4 text-gray-800" />
+                        <span className="text-gray-900 font-semibold text-sm sm:text-base">Final: <span className="text-gray-800">{case_.finalValue}</span></span>
                       </div>
                     </div>
                     
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
                           {case_.title}
                         </h3>
                         <ArrowRight className="h-5 w-5 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                       </div>
                       <div className="mt-2 flex items-center">
-                        <User className="h-4 w-4 text-amber-500 mr-1.5" />
+                        <User className="h-4 w-4 text-gray-600 mr-1.5" />
                         <span className="text-sm sm:text-base font-medium text-gray-700">
-                          Appraiser: <span className="text-blue-600">{case_.appraiser}</span>
+                          Appraiser: <span className="text-gray-900">{case_.appraiser}</span>
                         </span>
                       </div>
                       <p className="mt-3 text-sm sm:text-base text-gray-600 line-clamp-3">{case_.description}</p>
@@ -159,10 +170,9 @@ export default function RecentAppraisals() {
 
             <div className="mt-16 flex justify-center">
               <Button 
-                variant="primary"
                 as="a"
                 href="https://appraisily.com/start"
-                className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3.5 text-lg rounded-lg shadow-md hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center font-semibold"
+                className="bg-black hover:bg-gray-800 text-white px-6 py-3.5 text-lg rounded-lg shadow-md hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center font-semibold"
               >
                 Get Your Artwork Appraised
                 <DollarSign className="h-5 w-5 ml-2" />

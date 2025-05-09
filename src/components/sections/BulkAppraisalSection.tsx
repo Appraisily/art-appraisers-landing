@@ -3,7 +3,6 @@ import { Check, ArrowRight, MessageCircle, Mail } from 'lucide-react';
 import { Container, Section } from '../core/Container';
 import Button from '../core/Button';
 import Badge from '../core/Badge';
-import collectionGridImage from '../../images/collections/collection-grid.jpg';
 import { cn } from '../../utils/cn';
 
 /**
@@ -30,29 +29,28 @@ export default function BulkAppraisalSection() {
   };
 
   return (
-    <section id="bulk-appraisal" className="py-20 bg-blue-50/50 relative" aria-labelledby="bulk-appraisal-heading">
-      {/* Background pattern - more subtle and different from hero */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-30" />
+    <section id="bulk-appraisal" className="py-20 bg-gray-50/70 relative" aria-labelledby="bulk-appraisal-heading">
+      {/* Background pattern - subtle grid in black and white */}
+      <div className="absolute inset-0 bg-[radial-gradient(#333333_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
       
-      {/* Decorative elements - different from hero */}
-      <div className="absolute top-0 right-0 w-1/3 h-40 bg-gradient-to-b from-blue-100/30 to-transparent rounded-bl-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-1/4 h-32 bg-gradient-to-t from-blue-100/30 to-transparent rounded-tr-3xl"></div>
+      {/* Decorative elements - more subtle in grayscale */}
+      <div className="absolute top-0 right-0 w-1/3 h-40 bg-gradient-to-b from-gray-200/30 to-transparent rounded-bl-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-1/4 h-32 bg-gradient-to-t from-gray-200/30 to-transparent rounded-tr-3xl"></div>
       
       <Container className="relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          {/* Collection Image - Left Side */}
-          <div className="w-full md:w-1/2">
-            <div className="relative overflow-hidden rounded-2xl shadow-lg">
+          {/* Barn Collection Image - Left Side */}
+          <div className="w-full md:w-1/2 h-full">
+            <div className="relative overflow-hidden rounded-2xl shadow-lg h-full" style={{ minHeight: '500px' }}>
               <img 
-                src={collectionGridImage}
-                alt="Assorted fine art and antique pieces laid out for appraisal"
-                className="w-full aspect-[16/9] object-cover transition-transform duration-500 hover:scale-105"
-                width={800}
-                height={450}
+                src="https://ik.imagekit.io/appraisily/WebPage/barn"
+                alt="Art-filled attic space with numerous paintings and artwork in rustic setting"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                style={{ objectPosition: 'center center' }}
                 loading="lazy"
               />
               {/* Subtle Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
           
@@ -66,11 +64,11 @@ export default function BulkAppraisalSection() {
               Upload all your images once, relax, and get a complete, expert-signed appraisal report for every artwork or antique within 48 hours.
             </p>
             
-            {/* Trust Badges */}
+            {/* Trust Badges - Changed to grayscale */}
             <div className="flex flex-wrap gap-2 mt-2">
-              <Badge variant="primary">USPAP-Compliant</Badge>
-              <Badge variant="primary">ISO-Certified Valuers</Badge>
-              <Badge variant="accent">Money-Back Guarantee</Badge>
+              <Badge variant="outline">USPAP-Compliant</Badge>
+              <Badge variant="outline">ISO-Certified Valuers</Badge>
+              <Badge variant="outline">Money-Back Guarantee</Badge>
             </div>
             
             {/* Benefits Bullet List */}
@@ -83,20 +81,20 @@ export default function BulkAppraisalSection() {
                 '100 % money-back accuracy guarantee'
               ].map((benefit, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <Check className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Check className="h-5 w-5 text-gray-800 flex-shrink-0 mt-0.5" />
                   <span dangerouslySetInnerHTML={{ __html: benefit }} />
                 </li>
               ))}
             </ul>
             
-            {/* Primary CTA Button - Changed to blue */}
-            <div className="mt-8">
+            {/* CTA Buttons - Now with increased spacing and black/white styling */}
+            <div className="mt-8 flex flex-col space-y-6">
               <a 
                 href="/bulk-appraisal/upload"
                 onClick={handleBulkAppraisalClick}
                 className={cn(
                   "inline-flex items-center justify-center font-semibold rounded-lg px-6 py-3 shadow-lg",
-                  "bg-blue-600 hover:bg-blue-700 text-white transition-all duration-200"
+                  "bg-gray-900 hover:bg-gray-800 text-white transition-all duration-200"
                 )}
                 role="button"
               >
@@ -104,10 +102,10 @@ export default function BulkAppraisalSection() {
                 <ArrowRight className="ml-2 h-4.5 w-4.5" />
               </a>
               
-              {/* Secondary Link - Changed to email link */}
+              {/* Secondary Link - Now with more spacing and gray styling */}
               <a
                 href={`mailto:${expertEmailAddress}?subject=Bulk%20Appraisal%20Question`}
-                className="mt-4 text-blue-600 hover:text-blue-800 inline-flex items-center gap-2 font-medium"
+                className="text-gray-700 hover:text-gray-900 inline-flex items-center gap-2 font-medium"
               >
                 <Mail className="h-4 w-4" />
                 Talk to an expert first

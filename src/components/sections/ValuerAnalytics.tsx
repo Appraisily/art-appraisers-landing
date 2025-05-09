@@ -184,10 +184,10 @@ export function ValueSnapshotSection() {
   
   return (
     <Section 
-      className="relative py-24 overflow-hidden text-white" 
+      className="relative py-24 overflow-hidden text-white w-full" 
       ref={sectionRef}
     >
-      {/* Colorful Background Image with Parallax Effect */}
+      {/* Background with parallax effect */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -198,57 +198,57 @@ export function ValueSnapshotSection() {
       />
       
       {/* Dark overlay for better text contrast */}
-      <div className="absolute inset-0 z-0 bg-gray-900/75"></div>
+      <div className="absolute inset-0 z-0 bg-black/90"></div>
       
-      {/* Additional subtle effects */}
+      {/* Subtle patterns for depth */}
       <div className="absolute inset-0 z-1">
         {/* Enhanced dot pattern with larger, more visible dots */}
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-10 z-1" />
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-5 z-1" />
         
-        {/* Glowing accent lines - horizontal */}
-        <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"></div>
-        <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"></div>
+        {/* Subtle horizontal lines */}
+        <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-500/20 to-transparent"></div>
+        <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-500/20 to-transparent"></div>
         
         {/* Subtle grid overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] z-1"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:60px_60px] z-1"></div>
       </div>
       
-      <Container className="relative z-10">
-        {/* Main headline with enhanced glow effect */}
+      <div className="relative z-10 w-full px-6 mx-auto max-w-7xl">
+        {/* Main headline with enhanced shadow effect */}
         <div className="mx-auto max-w-3xl text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6 drop-shadow-[0_0_12px_rgba(0,0,0,0.8)]">
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6 drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]">
             Millions of Auction Results—Analyzed for You in Minutes
           </h2>
           
-          <p className="text-xl leading-8 text-blue-100 font-medium drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
+          <p className="text-xl leading-8 text-gray-200 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
             Skip the endless research. Our Valuer Agent™ pinpoints market-true prices while you finish your coffee.
           </p>
         </div>
 
-        {/* 3-Column Value Snapshot with improved card styles */}
+        {/* 3-Column Value Snapshot with elegant card styles */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {valueSnapshots.map((snapshot, index) => (
             <Card 
               key={index} 
               variant="feature" 
-              className="border border-gray-700/70 bg-gray-900/90 backdrop-blur-sm text-white hover:bg-gray-800 transition-colors duration-200 hover:border-blue-700/70 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
+              className="border border-gray-800 bg-black/70 backdrop-blur-sm text-white hover:bg-gray-900 transition-colors duration-200 hover:border-gray-700 hover:shadow-lg"
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-900 to-gray-800 shadow-inner">
-                  <snapshot.icon className="h-6 w-6 text-blue-200" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-gray-800 to-black shadow-inner">
+                  <snapshot.icon className="h-6 w-6 text-white" />
                 </div>
                 <div>
                   <div className="flex items-baseline gap-1">
                     <h3 className="text-2xl font-bold text-white">{snapshot.title}</h3>
-                    <p className="text-sm text-blue-200">{snapshot.subtitle}</p>
+                    <p className="text-sm text-gray-300">{snapshot.subtitle}</p>
                   </div>
-                  <p className="mt-2 text-gray-300">{snapshot.description}</p>
+                  <p className="mt-2 text-gray-400">{snapshot.description}</p>
                 </div>
               </div>
             </Card>
           ))}
         </div>
-      </Container>
+      </div>
     </Section>
   );
 }
@@ -348,28 +348,9 @@ export function HowItWorksSection() {
 // Componente principal que combina ambas secciones
 export default function ValuerAnalytics() {
   return (
-    <section className="relative bg-blue-800 text-white py-16 md:py-24 overflow-hidden">
-      {/* Colorful Background Image with Parallax Effect */}
-      <div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{
-          backgroundImage: `url('https://ik.imagekit.io/appraisily/WebPage/background_landing')`,
-          backgroundAttachment: 'fixed',
-          opacity: 0.12,
-        }}
-      />
-      
-      {/* Enhanced dark overlay */}
-      <div className="absolute inset-0 bg-blue-900/50 z-0"></div>
-      
-      {/* White dot pattern - add as a custom class */}
-      <div className="absolute inset-0 z-1 white-pattern-bg"></div>
-      
-      {/* Clean dark background with subtle gradient */}
-      <Container className="relative z-10">
-        <ValueSnapshotSection />
-        <HowItWorksSection />
-      </Container>
-    </section>
+    <>
+      <ValueSnapshotSection />
+      <HowItWorksSection />
+    </>
   );
 } 
