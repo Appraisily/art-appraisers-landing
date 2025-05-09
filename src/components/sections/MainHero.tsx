@@ -66,20 +66,24 @@ export default function MainHero() {
     <section className="w-full relative">
       {/* Main hero content */}
       <div className="relative z-0 pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-12 md:pb-16 lg:pt-14 lg:pb-20 overflow-hidden">
-        {/* Enhanced artistic background */}
+        {/* Enhanced artistic background with blue-white-black degradation */}
         <div 
           className="absolute inset-0 z-0" 
           style={{
-            background: 'linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 40%, #F3F4F6 100%)',
+            background: 'linear-gradient(135deg, #F0F4F8 0%, #FFFFFF 50%, #F8FAFC 100%)',
             backgroundImage: `
-              radial-gradient(circle at 25% 25%, rgba(209, 213, 219, 0.1) 1px, transparent 1px),
-              radial-gradient(circle at 75% 75%, rgba(209, 213, 219, 0.1) 1px, transparent 1px),
-              linear-gradient(rgba(209, 213, 219, 0.1) 1px, transparent 1px),
-              linear-gradient(to right, rgba(209, 213, 219, 0.1) 1px, transparent 1px),
-              linear-gradient(rgba(209, 213, 219, 0.05) 2px, transparent 2px),
-              linear-gradient(to right, rgba(209, 213, 219, 0.05) 2px, transparent 2px)
+              linear-gradient(135deg, rgba(219, 234, 254, 0.3) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(241, 245, 249, 0.2) 100%),
+              radial-gradient(circle at 20% 20%, rgba(30, 58, 138, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 80% 30%, rgba(30, 64, 175, 0.07) 0%, transparent 50%),
+              radial-gradient(circle at 50% 60%, rgba(17, 24, 39, 0.05) 0%, transparent 60%),
+              repeating-linear-gradient(to right, rgba(203, 213, 225, 0.1) 0px, rgba(203, 213, 225, 0.1) 1px, transparent 1px, transparent 30px),
+              repeating-linear-gradient(to bottom, rgba(203, 213, 225, 0.1) 0px, rgba(203, 213, 225, 0.1) 1px, transparent 1px, transparent 30px),
+              linear-gradient(to right, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+              linear-gradient(to right, rgba(17, 24, 39, 0.02) 2px, transparent 2px),
+              linear-gradient(to bottom, rgba(17, 24, 39, 0.02) 2px, transparent 2px)
             `,
-            backgroundSize: '20px 20px, 20px 20px, 30px 30px, 30px 30px, 90px 90px, 90px 90px'
+            backgroundSize: '100% 100%, 100% 100%, 100% 100%, 100% 100%, 30px 30px, 30px 30px, 90px 90px, 90px 90px, 180px 180px, 180px 180px'
           }}
         ></div>
         
