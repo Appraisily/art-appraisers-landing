@@ -151,14 +151,6 @@ const services = [
       videoId: 'polLX9YL6uo',
       title: 'Tax Deduction Appraisal Process'
     }
-  },
-  {
-    id: 'bulk-appraisal',
-    title: 'Bulk Collection Appraisals',
-    description: 'Multiple items? Get volume discounts and streamlined service for entire collections.',
-    href: '#bulk-appraisal',
-    icon: Grid,
-    featured: true
   }
 ];
 
@@ -306,21 +298,6 @@ const Services: React.FC = () => {
           </div>
         </div>
       )}
-
-      <a href="#bulk-appraisal" className="group relative flex items-start space-x-3 rounded-lg border border-gray-200 bg-white p-5 shadow-sm hover:bg-gray-50 hover:shadow-md transition-all duration-300">
-        <div className="flex-shrink-0 rounded-md bg-gray-100 p-2">
-          <Grid className="h-5 w-5 text-gray-700" />
-        </div>
-        
-        <div className="min-w-0 flex-1">
-          <h3 className="text-lg font-medium text-gray-900">Bulk Collection Appraisals</h3>
-          <p className="mt-1 text-sm text-gray-500">Multiple items? Get volume discounts and streamlined service for entire collections.</p>
-        </div>
-
-        <div className="flex-shrink-0 self-center">
-          <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-gray-700 transition-colors" />
-        </div>
-      </a>
     </div>
   );
 };

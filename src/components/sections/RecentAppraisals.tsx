@@ -1,6 +1,7 @@
 import React from 'react';
 import { DollarSign, ArrowRight, TrendingUp, History, User } from 'lucide-react';
 import { cn } from '../../utils/cn';
+import Button from '../core/Button';
 
 // CSS to ensure text is selectable
 const selectableTextStyles = `
@@ -157,13 +158,15 @@ export default function RecentAppraisals() {
             </div>
 
             <div className="mt-16 flex justify-center">
-              <a
+              <Button 
+                variant="primary"
+                as="a"
                 href="https://appraisily.com/start"
-                className="inline-flex items-center gap-2 rounded-lg bg-amber-500 px-6 py-3.5 text-lg font-semibold text-white shadow-md hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 transition-all duration-200"
+                className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3.5 text-lg rounded-lg shadow-md hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center font-semibold"
               >
                 Get Your Artwork Appraised
-                <DollarSign className="h-5 w-5" />
-              </a>
+                <DollarSign className="h-5 w-5 ml-2" />
+              </Button>
             </div>
           </div>
         </div>
