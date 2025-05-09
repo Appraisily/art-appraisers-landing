@@ -66,18 +66,20 @@ export default function MainHero() {
     <section className="w-full relative">
       {/* Main hero content */}
       <div className="relative z-0 pt-8 pb-8 sm:pt-12 sm:pb-12 md:pt-12 md:pb-16 lg:pt-14 lg:pb-20 overflow-hidden">
-        {/* Simplified single background layer */}
+        {/* Enhanced artistic background */}
         <div 
           className="absolute inset-0 z-0" 
           style={{
-            background: 'linear-gradient(120deg, #EFF6FF 0%, #FFFFFF 50%, #F9FAFB 100%)',
+            background: 'linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 40%, #F3F4F6 100%)',
             backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-              linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-              linear-gradient(rgba(59, 130, 246, 0.05) 2px, transparent 2px),
-              linear-gradient(to right, rgba(59, 130, 246, 0.05) 2px, transparent 2px)
+              radial-gradient(circle at 25% 25%, rgba(209, 213, 219, 0.1) 1px, transparent 1px),
+              radial-gradient(circle at 75% 75%, rgba(209, 213, 219, 0.1) 1px, transparent 1px),
+              linear-gradient(rgba(209, 213, 219, 0.1) 1px, transparent 1px),
+              linear-gradient(to right, rgba(209, 213, 219, 0.1) 1px, transparent 1px),
+              linear-gradient(rgba(209, 213, 219, 0.05) 2px, transparent 2px),
+              linear-gradient(to right, rgba(209, 213, 219, 0.05) 2px, transparent 2px)
             `,
-            backgroundSize: '30px 30px, 30px 30px, 90px 90px, 90px 90px'
+            backgroundSize: '20px 20px, 20px 20px, 30px 30px, 30px 30px, 90px 90px, 90px 90px'
           }}
         ></div>
         
@@ -140,7 +142,7 @@ export default function MainHero() {
                   className={cn(
                     "inline-flex items-center justify-center font-medium transition-all duration-200",
                     "py-3.5 px-6 text-base rounded-lg border border-gray-300",
-                    "bg-transparent text-gray-700 hover:bg-gray-50 w-full",
+                    "bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400 w-full shadow-sm",
                     "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                   )}
                 >
@@ -199,13 +201,10 @@ export default function MainHero() {
                         <h3 className="text-xl font-semibold">{experts[0].name}</h3>
                         <p className="text-gray-200 text-sm mb-2">{experts[0].role}</p>
                         
-                        <Badge 
-                          variant="accent"
-                          icon={<Award className="h-3.5 w-3.5 text-amber-500" />}
-                          className="text-sm font-medium px-2.5 py-1 bg-black/40 backdrop-blur-sm border border-white/20"
-                        >
+                        <span className="inline-flex items-center rounded-sm px-2.5 py-1 text-sm font-medium bg-black text-white border border-gray-800 shadow-sm">
+                          <Award className="h-3.5 w-3.5 text-white mr-1.5" />
                           Certified Expert
-                        </Badge>
+                        </span>
                       </div>
                     </div>
                   </div>

@@ -30,32 +30,29 @@ export default function BulkAppraisalSection() {
 
   return (
     <section id="bulk-appraisal" className="py-20 bg-gray-50/70 relative" aria-labelledby="bulk-appraisal-heading">
-      {/* Background pattern - subtle grid in black and white */}
-      <div className="absolute inset-0 bg-[radial-gradient(#333333_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
+      {/* Removed dot pattern since we're restricting it to the Features section */}
       
       {/* Decorative elements - more subtle in grayscale */}
       <div className="absolute top-0 right-0 w-1/3 h-40 bg-gradient-to-b from-gray-200/30 to-transparent rounded-bl-3xl"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-32 bg-gradient-to-t from-gray-200/30 to-transparent rounded-tr-3xl"></div>
       
-      <Container className="relative z-10">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          {/* Barn Collection Image - Left Side */}
-          <div className="w-full md:w-1/2 h-full">
-            <div className="relative overflow-hidden rounded-2xl shadow-lg h-full" style={{ minHeight: '500px' }}>
-              <img 
-                src="https://ik.imagekit.io/appraisily/WebPage/barn"
-                alt="Art-filled attic space with numerous paintings and artwork in rustic setting"
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                style={{ objectPosition: 'center center' }}
-                loading="lazy"
-              />
-              {/* Subtle Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
+      <div className="relative z-10">
+        <div className="flex flex-col md:flex-row">
+          {/* Full-width Barn Image as Background - Left Side */}
+          <div className="w-full md:w-1/2 relative h-auto md:h-[650px]">
+            <div 
+              className="absolute inset-0 w-full h-full" 
+              style={{
+                backgroundImage: "url('https://ik.imagekit.io/appraisily/WebPage/barn')",
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
+              }}
+            ></div>
           </div>
           
           {/* Content - Right Side */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center gap-6">
+          <div className="w-full md:w-1/2 flex flex-col justify-center gap-6 px-4 sm:px-6 lg:px-8 py-12 md:py-16">
             <h2 id="bulk-appraisal-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
               Have a Whole Collection? Let Us Appraise Everything—Fast.
             </h2>
@@ -113,7 +110,7 @@ export default function BulkAppraisalSection() {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 } 

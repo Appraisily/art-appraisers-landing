@@ -197,13 +197,15 @@ export function ValueSnapshotSection() {
         }}
       />
       
-      {/* Dark overlay for better text contrast */}
-      <div className="absolute inset-0 z-0 bg-black/90"></div>
+      {/* Dark overlay with 10% white for less darkness */}
+      <div className="absolute inset-0 z-0 bg-black/80"></div>
       
-      {/* Subtle patterns for depth */}
+      {/* White overlay for 10% lightness */}
+      <div className="absolute inset-0 z-0 bg-white/10"></div>
+      
+      {/* Subtle patterns for depth - REMOVED DOT PATTERN */}
       <div className="absolute inset-0 z-1">
-        {/* Enhanced dot pattern with larger, more visible dots */}
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-5 z-1" />
+        {/* Removed dot pattern to restrict it only to Features section */}
         
         {/* Subtle horizontal lines */}
         <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-500/20 to-transparent"></div>
@@ -216,11 +218,11 @@ export function ValueSnapshotSection() {
       <div className="relative z-10 w-full px-6 mx-auto max-w-7xl">
         {/* Main headline with enhanced shadow effect */}
         <div className="mx-auto max-w-3xl text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6 drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]">
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6 drop-shadow-[0_0_10px_rgba(0,0,0,0.9)]">
             Millions of Auction Results—Analyzed for You in Minutes
           </h2>
           
-          <p className="text-xl leading-8 text-gray-200 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+          <p className="text-xl leading-8 text-gray-200 font-medium drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
             Skip the endless research. Our Valuer Agent™ pinpoints market-true prices while you finish your coffee.
           </p>
         </div>

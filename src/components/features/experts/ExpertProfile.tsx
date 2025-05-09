@@ -50,8 +50,7 @@ export default function ExpertProfile() {
 
         <div className="mx-auto mt-16 max-w-5xl">
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-white shadow-xl ring-1 ring-gray-200">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
+            {/* Removed dot pattern background to restrict it to the Features section */}
             
             <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 p-8 lg:p-12">
               {/* Image Section */}

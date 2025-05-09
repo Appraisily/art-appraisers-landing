@@ -49,9 +49,11 @@ export default function Features() {
   
   return (
     <section 
+      id="why-collectors-choose-us"
       className="w-full relative overflow-hidden py-12 sm:py-16 md:py-24 bg-white"
       ref={sectionRef}
       aria-labelledby="features-heading"
+      style={{ isolation: 'isolate' }} // Ensure this section is isolated from others
     >
       {/* Video Background from ValueProposition */}
       <MultiVideoBackground 
@@ -62,8 +64,15 @@ export default function Features() {
         brightness={1.2}
       />
       
-      {/* Background Pattern Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 z-0" />
+      {/* Background Pattern Overlay - Contained within this section */}
+      <div 
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 z-0 pointer-events-none" 
+        style={{ 
+          clipPath: 'inset(0)',
+          contain: 'strict'
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section heading */}
