@@ -199,7 +199,7 @@ const Services: React.FC = () => {
               <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
               <p className="mt-4 text-gray-600 flex-grow">{service.description}</p>
               <ul className="mt-6 space-y-3">
-                {service.features.map((feature) => (
+                {service.features && service.features.map((feature) => (
                   <li key={feature.text} className="flex items-start gap-2">
                     <feature.icon className="h-5 w-5 text-primary mt-1" />
                     <span className="text-gray-700">{feature.text}</span>
@@ -207,19 +207,21 @@ const Services: React.FC = () => {
                 ))}
               </ul>
               <div className="mt-8 flex flex-col gap-3">
-                <button
-                  onClick={() => setVideoModal({
-                    isOpen: true,
-                    videoId: service.action.videoId,
-                    title: service.action.title
-                  })}
-                  className="group rounded-md bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary hover:bg-primary/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    <Play className="h-4 w-4" />
-                    Watch Service Overview
-                  </span>
-                </button>
+                {service.action && service.action.videoId && (
+                  <button
+                    onClick={() => setVideoModal({
+                      isOpen: true,
+                      videoId: service.action.videoId,
+                      title: service.action.title
+                    })}
+                    className="group rounded-md bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary hover:bg-primary/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200"
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <Play className="h-4 w-4" />
+                      Watch Service Overview
+                    </span>
+                  </button>
+                )}
                 <a
                   href="https://appraisily.com/start"
                   className="rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 text-center"

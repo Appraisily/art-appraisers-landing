@@ -162,34 +162,20 @@ const searchQueries = {
 
 // Primera sección - ValueSnapshot
 export function ValueSnapshotSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
   
+  // Track scroll position for parallax effect
   useEffect(() => {
-    const isElementInViewport = (el: HTMLElement) => {
-      const rect = el.getBoundingClientRect();
-      return (
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.bottom >= 0
-      );
-    };
-    
     const handleScroll = () => {
-      if (sectionRef.current && videoRef.current) {
-        if (isElementInViewport(sectionRef.current)) {
-          if (videoRef.current.paused) {
-            videoRef.current.play().catch(e => console.log("Video play failed:", e));
-          }
-        } else {
-          if (!videoRef.current.paused) {
-            videoRef.current.pause();
-          }
-        }
+      if (sectionRef.current) {
+        const offset = window.scrollY - sectionRef.current.offsetTop;
+        const clampedOffset = Math.max(0, Math.min(offset, 300));
+        setScrollPosition(clampedOffset * 0.2); // Adjust the multiplier to control scrolling speed
       }
     };
     
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -198,56 +184,63 @@ export function ValueSnapshotSection() {
   
   return (
     <Section 
-      className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 text-white" 
+      className="relative py-24 overflow-hidden text-white" 
       ref={sectionRef}
     >
-      {/* Background Video Layer */}
-      <div className="absolute inset-0 z-0">
-        <video 
-          ref={videoRef}
-          className="w-full h-full object-cover opacity-10"
-          playsInline
-          muted
-          loop
-          preload="none"
-          poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-        >
-          <source src="https://ik.imagekit.io/appraisily/Videos/hero1.mp4?updatedAt=1731837130060" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      {/* Colorful Background Image with Parallax Effect */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://ik.imagekit.io/appraisily/WebPage/background_landing')`,
+          transform: `translateY(${scrollPosition}px) scale(1.1)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      />
+      
+      {/* Dark overlay for better text contrast */}
+      <div className="absolute inset-0 z-0 bg-gray-900/75"></div>
+      
+      {/* Additional subtle effects */}
+      <div className="absolute inset-0 z-1">
+        {/* Enhanced dot pattern with larger, more visible dots */}
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-10 z-1" />
+        
+        {/* Glowing accent lines - horizontal */}
+        <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"></div>
+        <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"></div>
+        
+        {/* Subtle grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] z-1"></div>
       </div>
       
-      {/* Background Pattern Layer */}
-      <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-5 z-0" />
-      
       <Container className="relative z-10">
-        {/* Main headline and subheadline */}
+        {/* Main headline with enhanced glow effect */}
         <div className="mx-auto max-w-3xl text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6">
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6 drop-shadow-[0_0_12px_rgba(0,0,0,0.8)]">
             Millions of Auction Results—Analyzed for You in Minutes
           </h2>
           
-          <p className="text-xl leading-8 text-gray-300 font-medium">
+          <p className="text-xl leading-8 text-blue-100 font-medium drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
             Skip the endless research. Our Valuer Agent™ pinpoints market-true prices while you finish your coffee.
           </p>
         </div>
 
-        {/* 3-Column Value Snapshot */}
+        {/* 3-Column Value Snapshot with improved card styles */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {valueSnapshots.map((snapshot, index) => (
             <Card 
               key={index} 
               variant="feature" 
-              className="border-gray-700 bg-gray-800/50 backdrop-blur-sm text-white hover:bg-gray-800 transition-colors duration-200"
+              className="border border-gray-700/70 bg-gray-900/90 backdrop-blur-sm text-white hover:bg-gray-800 transition-colors duration-200 hover:border-blue-700/70 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-700">
-                  <snapshot.icon className="h-6 w-6 text-white" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-900 to-gray-800 shadow-inner">
+                  <snapshot.icon className="h-6 w-6 text-blue-200" />
                 </div>
                 <div>
                   <div className="flex items-baseline gap-1">
                     <h3 className="text-2xl font-bold text-white">{snapshot.title}</h3>
-                    <p className="text-sm text-gray-400">{snapshot.subtitle}</p>
+                    <p className="text-sm text-blue-200">{snapshot.subtitle}</p>
                   </div>
                   <p className="mt-2 text-gray-300">{snapshot.description}</p>
                 </div>
@@ -335,13 +328,13 @@ export function HowItWorksSection() {
           </div>
         </div>
         
-        {/* CTA directamente después de "How It Works" */}
+        {/* CTA directamente después de "How It Works" - Updated from amber to white/blue */}
         <div className="mb-16 flex justify-center">
           <Button
             variant="primary"
             as="a"
             href="https://appraisily.com/start"
-            className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 text-base font-semibold"
+            className="bg-white hover:bg-gray-100 text-blue-600 border border-blue-200 shadow-md px-6 py-3 text-base font-semibold rounded-lg transition-all duration-200"
           >
             Start My Appraisal—Takes 5 Min
             <ArrowRight className="h-4 w-4 ml-2" />

@@ -58,6 +58,7 @@ export const artAppraiserResources: PreloadResource[] = [
   {
     url: 'https://ik.imagekit.io/appraisily/Videos/hero4.mp4?updatedAt=1731840454419',
     type: 'fetch',
+    as: 'video',
     importance: 'low'
   }
 ];

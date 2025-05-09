@@ -1,9 +1,10 @@
 import React from 'react';
-import { Check, ArrowRight, MessageCircle } from 'lucide-react';
+import { Check, ArrowRight, MessageCircle, Mail } from 'lucide-react';
 import { Container, Section } from '../core/Container';
 import Button from '../core/Button';
 import Badge from '../core/Badge';
 import collectionGridImage from '../../images/collections/collection-grid.jpg';
+import { cn } from '../../utils/cn';
 
 /**
  * BulkAppraisalSection Component
@@ -12,17 +13,8 @@ import collectionGridImage from '../../images/collections/collection-grid.jpg';
  * This follows the specifications outlined in bulk-appraisal-section-spec.md.
  */
 export default function BulkAppraisalSection() {
-  const openContactModal = () => {
-    // This should open the existing ContactExpertModal
-    // For this implementation, we're assuming such a modal exists in the app
-    // and has a global way to be opened
-    window.dataLayer?.push({
-      event: 'cta_click',
-      cta_type: 'bulk_appraisal_expert_talk'
-    });
-    // Implementation would depend on how modals are managed in the application
-    console.log('Open contact expert modal');
-  };
+  // Email address for the "Talk to an expert" link
+  const expertEmailAddress = 'experts@appraisily.com';
 
   const handleBulkAppraisalClick = () => {
     // Track click event
@@ -38,9 +30,13 @@ export default function BulkAppraisalSection() {
   };
 
   return (
-    <section id="bulk-appraisal" className="py-24 bg-gray-50" aria-labelledby="bulk-appraisal-heading">
-      {/* Background Pattern - subtle gray (reusing patterns from other sections) */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
+    <section id="bulk-appraisal" className="py-20 bg-blue-50/50 relative" aria-labelledby="bulk-appraisal-heading">
+      {/* Background pattern - more subtle and different from hero */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-30" />
+      
+      {/* Decorative elements - different from hero */}
+      <div className="absolute top-0 right-0 w-1/3 h-40 bg-gradient-to-b from-blue-100/30 to-transparent rounded-bl-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-1/4 h-32 bg-gradient-to-t from-blue-100/30 to-transparent rounded-tr-3xl"></div>
       
       <Container className="relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
@@ -93,26 +89,29 @@ export default function BulkAppraisalSection() {
               ))}
             </ul>
             
-            {/* Primary CTA Button */}
+            {/* Primary CTA Button - Changed to blue */}
             <div className="mt-8">
               <a 
                 href="/bulk-appraisal/upload"
                 onClick={handleBulkAppraisalClick}
-                className="inline-flex items-center justify-center font-semibold rounded-lg px-6 py-3 shadow-lg bg-gradient-to-r from-amber-500 to-amber-600 text-white hover:from-amber-600 hover:to-amber-700 transition-all duration-200"
+                className={cn(
+                  "inline-flex items-center justify-center font-semibold rounded-lg px-6 py-3 shadow-lg",
+                  "bg-blue-600 hover:bg-blue-700 text-white transition-all duration-200"
+                )}
                 role="button"
               >
                 Start Bulk Appraisal
                 <ArrowRight className="ml-2 h-4.5 w-4.5" />
               </a>
               
-              {/* Secondary Link */}
-              <button
-                onClick={openContactModal}
+              {/* Secondary Link - Changed to email link */}
+              <a
+                href={`mailto:${expertEmailAddress}?subject=Bulk%20Appraisal%20Question`}
                 className="mt-4 text-blue-600 hover:text-blue-800 inline-flex items-center gap-2 font-medium"
               >
-                <MessageCircle className="h-4 w-4" />
+                <Mail className="h-4 w-4" />
                 Talk to an expert first
-              </button>
+              </a>
             </div>
           </div>
         </div>

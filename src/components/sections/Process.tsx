@@ -86,37 +86,30 @@ export default function Process() {
           </p>
         </div>
 
-        {/* Process Steps - Improved mobile layout */}
-        <div className="relative mt-16 space-y-16 md:space-y-24">
-          {/* Connecting line through all steps - only visible on desktop */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 hidden md:block" />
+        {/* Process Steps - Centered layout for all screens */}
+        <div className="relative mt-16 space-y-20 md:space-y-24">
+          {/* Connecting line through all steps - visible on all screens */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200" />
           
           {steps.map((step, index) => (
             <div 
               key={step.title}
-              className={cn(
-                'relative flex flex-col md:items-stretch gap-6 md:gap-8',
-                // Apply right content alignment for even steps only on desktop
-                index % 2 === 0 
-                  ? 'md:flex-row items-center' 
-                  : 'md:flex-row-reverse items-center',
-              )}
+              className="relative flex flex-col items-center gap-6 md:gap-8"
             >
-              {/* Step number indicator - improved for mobile */}
+              {/* Step number indicator - centered for all screens */}
               <div className={cn(
                 "absolute left-1/2 transform -translate-x-1/2 rounded-full bg-white border-4 z-10 flex items-center justify-center text-gray-700 font-bold",
                 "w-16 h-16 md:w-18 md:h-18 text-xl md:text-2xl border-gray-600",
-                // Position for mobile (top of the content) vs desktop (on the line)
-                "top-[-8px] md:top-1/2 md:-translate-y-1/2"
+                "top-[-8px]"
               )}>
                 {index + 1}
               </div>
               
-              {/* Step Content Card - Improved mobile layout */}
-              <div className="w-full md:w-5/12 relative z-10 mt-14 md:mt-0">
+              {/* Step Content Card - Centered for all screens */}
+              <div className="w-full md:w-9/12 lg:w-7/12 relative z-10 mt-14">
                 <div className={cn(
                   "bg-white shadow-md rounded-2xl p-6 md:p-7 border border-gray-200 transform transition-all duration-300 hover:shadow-lg",
-                  "mx-auto max-w-md"
+                  "mx-auto"
                 )}>
                   <div className="flex items-center space-x-4 mb-4">
                     <div className={cn(
@@ -161,17 +154,17 @@ export default function Process() {
                 </div>
               </div>
 
-              {/* Step Image - Improved mobile layout */}
-              <div className="w-full md:w-7/12 mt-4 md:mt-0">
-                <div className="relative overflow-hidden rounded-2xl shadow-md bg-gray-100 aspect-[4/3] group mx-auto max-w-md md:max-w-none">
+              {/* Step Image - Reduced to 75% of original size and centered */}
+              <div className="w-full md:w-9/12 lg:w-8/12 mt-6">
+                <div className="relative overflow-hidden rounded-2xl shadow-md bg-gray-100 aspect-[4/3] group mx-auto max-w-md md:max-w-[75%]">
                   {step.useStaticImage ? (
                     // Direct img tag for static images from ImageKit
                     <img 
                       src={step.image}
                       alt={step.imageAlt}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      width={800}
-                      height={600}
+                      width={600}
+                      height={450}
                       loading="lazy"
                     />
                   ) : (
@@ -186,8 +179,8 @@ export default function Process() {
                           src={step.image}
                           alt={step.imageAlt}
                           className="w-full h-full object-cover"
-                          width={800}
-                          height={600}
+                          width={600}
+                          height={450}
                           loading="lazy"
                         />
                       }
