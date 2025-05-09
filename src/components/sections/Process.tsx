@@ -50,7 +50,7 @@ const steps = [
   },
   {
     title: 'Receive Your Digital Report',
-    description: '24-48 h total',
+    description: 'less than 24h total',
     icon: FileText,
     timeline: 'Step 4',
     iconClass: 'bg-gray-100',
@@ -65,60 +65,87 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="w-full relative overflow-hidden py-16 md:py-24 bg-white">
-      {/* Background Pattern - subtle gray */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
+    <Box variant="section">
+      {/* Enhanced layered background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50 opacity-80"></div>
+      
+      <div className="absolute inset-0 pattern-bg"></div>
+      
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:32px_32px] opacity-40"></div>
+      
+      {/* Diagonal lines pattern - very subtle */}
+      <div className="absolute inset-0 opacity-10" style={{ 
+        backgroundImage: 'repeating-linear-gradient(45deg, #000000, #000000 1px, transparent 1px, transparent 40px)' 
+      }}></div>
+      
+      {/* Subtle gradient accents */}
+      <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-[radial-gradient(circle_at_50%_50%,#00000005_0%,transparent_70%)]"></div>
+      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-[radial-gradient(circle_at_50%_50%,#00000005_0%,transparent_70%)]"></div>
+      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[radial-gradient(circle_at_50%_50%,#00000003_0%,transparent_70%)]"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center mb-12 md:mb-16">
-          <span className="inline-flex items-center rounded-full px-4 py-1.5 text-base font-medium bg-gray-100 text-gray-700 mb-6">
-            <Clock className="h-4 w-4 mr-2 text-blue-600" />
-            24-48 Hour Turnaround
-          </span>
+        {/* Section Header with subtle highlight behind it */}
+        <div className="mx-auto max-w-2xl text-center mb-12 md:mb-16 relative">
+          <div className="absolute inset-0 -inset-x-8 -inset-y-4 bg-white/70 blur-xl rounded-3xl"></div>
           
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">
-            From Upload to Report in Two Business Days
-          </h2>
-          
-          <p className="text-lg leading-8 text-gray-600 font-medium">
-            Our certified appraisers ensure accurate and timely evaluations within 24-48 hours
-          </p>
+          <div className="relative">
+            <span className="inline-flex items-center rounded-full px-4 py-1.5 text-base font-medium bg-blue-100 text-blue-800 mb-6">
+              <Clock className="h-4 w-4 mr-2 text-blue-600" />
+              Fast Expert Evaluations
+            </span>
+            
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">
+              From Upload to Report in Less Than 24 Hours
+            </h2>
+            
+            <p className="text-lg leading-8 text-gray-600 font-medium">
+              Our certified appraisers ensure accurate and timely evaluations without compromising quality
+            </p>
+          </div>
         </div>
 
-        {/* Process Steps - Centered layout for all screens */}
-        <div className="relative mt-16 space-y-20 md:space-y-24">
-          {/* Connecting line through all steps - visible on all screens */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200" />
-          
+        {/* Process Steps - Alternating left/right layout */}
+        <div className="relative mt-20 space-y-24">
           {steps.map((step, index) => (
             <div 
               key={step.title}
-              className="relative flex flex-col items-center gap-6 md:gap-8"
+              className={cn(
+                "relative flex flex-col md:flex-row items-center gap-8 md:gap-12",
+                // Reverse order for even-indexed steps on desktop
+                index % 2 !== 0 && "md:flex-row-reverse"
+              )}
             >
-              {/* Step number indicator - centered for all screens */}
+              {/* Step number - positioned to left or right depending on layout */}
               <div className={cn(
-                "absolute left-1/2 transform -translate-x-1/2 rounded-full bg-white border-4 z-10 flex items-center justify-center text-gray-700 font-bold",
-                "w-16 h-16 md:w-18 md:h-18 text-xl md:text-2xl border-gray-600",
-                "top-[-8px]"
+                "absolute z-20 flex items-center justify-center rounded-full bg-white shadow-lg border-2 border-blue-600 text-blue-800 font-bold",
+                "w-14 h-14 md:w-16 md:h-16 text-xl",
+                "top-0 left-1/2 md:top-1/2 transform -translate-x-1/2 md:-translate-y-1/2",
+                // Position left or right depending on step index
+                index % 2 === 0 
+                  ? "md:left-auto md:right-[calc(50%-16px)] md:translate-x-1/2" 
+                  : "md:left-[calc(50%-16px)] md:-translate-x-1/2"
               )}>
                 {index + 1}
               </div>
               
-              {/* Step Content Card - Centered for all screens */}
-              <div className="w-full md:w-9/12 lg:w-7/12 relative z-10 mt-14">
+              {/* Content Column */}
+              <div className="w-full md:w-1/2 mt-10 md:mt-0">
                 <div className={cn(
-                  "bg-white shadow-md rounded-2xl p-6 md:p-7 border border-gray-200 transform transition-all duration-300 hover:shadow-lg",
-                  "mx-auto"
+                  "bg-white shadow-md rounded-2xl p-6 md:p-7 border border-gray-200 transition-all duration-300 hover:shadow-lg",
+                  // Add subtle directional indicator based on index
+                  index % 2 === 0 
+                    ? "md:mr-6 md:rounded-tr-none" 
+                    : "md:ml-6 md:rounded-tl-none"
                 )}>
                   <div className="flex items-center space-x-4 mb-4">
                     <div className={cn(
                       "flex items-center justify-center rounded-xl", 
-                      step.iconClass,
+                      "bg-blue-100",
                       "h-14 w-14 md:h-16 md:w-16"
                     )}>
                       <step.icon className={cn(
-                        step.iconTextClass,
+                        "text-blue-700",
                         "h-7 w-7 md:h-8 md:w-8"
                       )} />
                     </div>
@@ -126,7 +153,7 @@ export default function Process() {
                     <div className="flex flex-col space-y-1">
                       <span className={cn(
                         "inline-flex items-center px-3 py-1.5 rounded-full font-medium", 
-                        step.badgeClass,
+                        "bg-gray-100 text-gray-700",
                         "text-base md:text-lg"
                       )}>
                         {step.timeline}
@@ -154,9 +181,9 @@ export default function Process() {
                 </div>
               </div>
 
-              {/* Step Image - Reduced to 75% of original size and centered */}
-              <div className="w-full md:w-9/12 lg:w-8/12 mt-6">
-                <div className="relative overflow-hidden rounded-2xl shadow-md bg-gray-100 aspect-[4/3] group mx-auto max-w-md md:max-w-[75%]">
+              {/* Image Column */}
+              <div className="w-full md:w-1/2">
+                <div className="relative overflow-hidden rounded-2xl shadow-md bg-gray-100 aspect-[4/3] group">
                   {step.useStaticImage ? (
                     // Direct img tag for static images from ImageKit
                     <img 
@@ -194,25 +221,32 @@ export default function Process() {
                     </p>
                   </div>
                   
-                  {/* Elegant overlay with gradient - more subtle */}
+                  {/* Elegant overlay with gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               </div>
+              
+              {/* Connecting line between steps */}
+              {index < steps.length - 1 && (
+                <div className="absolute left-1/2 md:left-auto md:top-1/2 h-24 md:h-0.5 w-0.5 md:w-full bg-gray-200 -bottom-24 md:bottom-auto transform -translate-x-1/2 md:translate-x-0 md:-translate-y-1/2"></div>
+              )}
             </div>
           ))}
         </div>
         
-        {/* CTA Button - Updated with neutral colors and blue accent */}
+        {/* CTA Button - Updated to match "Find My Expert Appraiser" style */}
         <div className="mt-20 flex justify-center">
-          <a 
+          <Button 
+            variant="primary"
+            as="a"
             href="https://appraisily.com/start"
-            className="inline-flex items-center justify-center font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 w-full max-w-md text-xl px-8 py-4 rounded-lg bg-gray-800 text-white hover:bg-gray-900 focus:ring-blue-600 shadow-md hover:shadow-lg transition-all duration-300"
+            className="bg-gray-900 hover:bg-gray-800 text-white py-3 px-8 text-xl rounded-lg w-full max-w-md shadow-md hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center font-medium"
           >
             Start My 5-Minute Submission
             <ArrowRight className="h-6 w-6 ml-2" />
-          </a>
+          </Button>
         </div>
       </div>
-    </section>
+    </Box>
   );
 }

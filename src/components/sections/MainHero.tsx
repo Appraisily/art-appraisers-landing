@@ -69,8 +69,16 @@ export default function MainHero() {
         {/* Enhanced background with dot grid and waves */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white"></div>
         
-        {/* Dot grid pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] opacity-[0.08] [background-size:16px_16px]"></div>
+        {/* Enhanced background patterns */}
+        <div className="absolute inset-0 pattern-bg">
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f610_1px,transparent_1px),linear-gradient(to_bottom,#3b82f610_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+          
+          {/* Diagonal lines pattern - very subtle */}
+          <div className="absolute inset-0 opacity-5" style={{ 
+            backgroundImage: 'repeating-linear-gradient(45deg, #3b82f6, #3b82f6 1px, transparent 1px, transparent 10px)' 
+          }}></div>
+        </div>
         
         {/* Wave patterns and gradient elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -182,24 +190,29 @@ export default function MainHero() {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-blue-500/5 rounded-2xl blur-3xl opacity-40"></div>
               <div className="relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-xl shadow-md overflow-hidden">
                 <div className="p-5 lg:p-6">
-                  {/* Featured expert - larger picture and improved layout */}
-                  <div className="mb-6 flex flex-col items-center text-center">
-                    <img
-                      src={experts[0].image}
-                      alt={`${experts[0].name}, ${experts[0].role}`}
-                      className="h-32 w-32 rounded-lg object-cover shadow-sm mb-4"
-                      loading="eager"
-                      width={128}
-                      height={128}
-                    />
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900">{experts[0].name}</h3>
-                      <p className="text-gray-600 text-base">{experts[0].role}</p>
-                      <div className="mt-2">
+                  {/* Featured expert - LARGER image with overlay text */}
+                  <div className="mb-6">
+                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg shadow-md">
+                      <img
+                        src={experts[0].image}
+                        alt={`${experts[0].name}, ${experts[0].role}`}
+                        className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
+                        loading="eager"
+                        width={400}
+                        height={300}
+                      />
+                      {/* Gradient overlay for text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
+                      
+                      {/* Text overlay positioned at bottom */}
+                      <div className="absolute bottom-0 left-0 w-full p-4 text-white">
+                        <h3 className="text-xl font-semibold">{experts[0].name}</h3>
+                        <p className="text-blue-100 text-sm mb-2">{experts[0].role}</p>
+                        
                         <Badge 
                           variant="accent"
-                          icon={<Award className="h-3.5 w-3.5 text-blue-600" />}
-                          className="text-sm font-medium px-2.5 py-1"
+                          icon={<Award className="h-3.5 w-3.5 text-amber-500" />}
+                          className="text-sm font-medium px-2.5 py-1 bg-white/20 backdrop-blur-sm border border-white/30"
                         >
                           Certified Expert
                         </Badge>

@@ -191,17 +191,17 @@ const Services: React.FC = () => {
           {services.map((service) => (
             <div 
               key={service.title} 
-              className="flex flex-col border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-200"
+              className="flex flex-col border border-gray-100 rounded-2xl p-8 bg-white shadow-sm hover:shadow-lg transition-all duration-200"
             >
               <div className="mb-6">
-                <service.icon className="h-8 w-8 text-primary" />
+                <service.icon className="h-8 w-8 text-gray-800" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
               <p className="mt-4 text-gray-600 flex-grow">{service.description}</p>
               <ul className="mt-6 space-y-3">
                 {service.features && service.features.map((feature) => (
                   <li key={feature.text} className="flex items-start gap-2">
-                    <feature.icon className="h-5 w-5 text-primary mt-1" />
+                    <feature.icon className="h-5 w-5 text-gray-700 mt-1" />
                     <span className="text-gray-700">{feature.text}</span>
                   </li>
                 ))}
@@ -214,7 +214,7 @@ const Services: React.FC = () => {
                       videoId: service.action.videoId,
                       title: service.action.title
                     })}
-                    className="group rounded-md bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary hover:bg-primary/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200"
+                    className="group rounded-md bg-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-800 hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800 transition-all duration-200"
                   >
                     <span className="flex items-center justify-center gap-2">
                       <Play className="h-4 w-4" />
@@ -224,13 +224,13 @@ const Services: React.FC = () => {
                 )}
                 <a
                   href="https://appraisily.com/start"
-                  className="rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 text-center"
+                  className="rounded-md bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 transition-all duration-200 text-center"
                 >
                   Select This Service
                 </a>
                 <button
                   onClick={() => setChatModalOpen(true)}
-                  className="text-primary hover:text-primary/80 text-sm font-medium mt-2 transition-colors"
+                  className="text-gray-600 hover:text-gray-900 text-sm font-medium mt-2 transition-colors"
                 >
                   Not sure? Talk to an Appraiser
                 </button>
@@ -274,7 +274,7 @@ const Services: React.FC = () => {
                 <input 
                   type="text" 
                   id="name" 
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-gray-900 p-2 border"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-900 focus:ring-gray-900 text-gray-900 p-2 border"
                   placeholder="Your name" 
                 />
               </div>
@@ -283,7 +283,7 @@ const Services: React.FC = () => {
                 <input 
                   type="email" 
                   id="email" 
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-gray-900 p-2 border"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-900 focus:ring-gray-900 text-gray-900 p-2 border"
                   placeholder="Your email" 
                 />
               </div>
@@ -292,13 +292,13 @@ const Services: React.FC = () => {
                 <textarea 
                   id="message" 
                   rows={3} 
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-gray-900 p-2 border"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-900 focus:ring-gray-900 text-gray-900 p-2 border"
                   placeholder="Tell us briefly about your artwork or question" 
                 />
               </div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
               >
                 Connect with an Appraiser
               </button>
@@ -308,8 +308,8 @@ const Services: React.FC = () => {
       )}
 
       <a href="#bulk-appraisal" className="group relative flex items-start space-x-3 rounded-lg border border-gray-200 bg-white p-5 shadow-sm hover:bg-gray-50 hover:shadow-md transition-all duration-300">
-        <div className="flex-shrink-0 rounded-md bg-blue-50 p-2">
-          <Grid className="h-5 w-5 text-blue-600" />
+        <div className="flex-shrink-0 rounded-md bg-gray-100 p-2">
+          <Grid className="h-5 w-5 text-gray-700" />
         </div>
         
         <div className="min-w-0 flex-1">
@@ -318,7 +318,7 @@ const Services: React.FC = () => {
         </div>
 
         <div className="flex-shrink-0 self-center">
-          <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+          <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-gray-700 transition-colors" />
         </div>
       </a>
     </div>

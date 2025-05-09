@@ -16,3 +16,63 @@
 .animate-fade-in {
   animation: fade-in 0.2s ease-out forwards;
 }
+
+/* Pattern background that won't affect images and other content */
+.pattern-bg {
+  position: relative;
+  z-index: 0;
+}
+
+.pattern-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#3b82f6 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.05;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* White dot pattern for dark backgrounds */
+.white-pattern-bg {
+  position: relative;
+  z-index: 0;
+}
+
+.white-pattern-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  opacity: 0.1;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Gray dot pattern for light backgrounds */
+.gray-pattern-bg {
+  position: relative;
+  z-index: 0;
+}
+
+.gray-pattern-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.3;
+  z-index: -1;
+  pointer-events: none;
+}

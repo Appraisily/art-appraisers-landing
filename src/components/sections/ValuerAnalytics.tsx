@@ -268,8 +268,8 @@ export function HowItWorksSection() {
 
   return (
     <Section className="relative py-16 overflow-hidden bg-gray-900 text-white">
-      {/* Background Pattern Layer - sutil pero visible */}
-      <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] opacity-5 z-0" />
+      {/* Clean dark background with subtle gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-800/30 via-transparent to-gray-800/30 z-0"></div>
       
       <Container className="relative z-10">
         {/* How It Works Section - versión simplificada */}
@@ -328,7 +328,7 @@ export function HowItWorksSection() {
           </div>
         </div>
         
-        {/* CTA directamente después de "How It Works" - Updated from amber to white/blue */}
+        {/* CTA directamente después de "How It Works" */}
         <div className="mb-16 flex justify-center">
           <Button
             variant="primary"
@@ -348,9 +348,28 @@ export function HowItWorksSection() {
 // Componente principal que combina ambas secciones
 export default function ValuerAnalytics() {
   return (
-    <>
-      <ValueSnapshotSection />
-      <HowItWorksSection />
-    </>
+    <section className="relative bg-blue-800 text-white py-16 md:py-24 overflow-hidden">
+      {/* Colorful Background Image with Parallax Effect */}
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0"
+        style={{
+          backgroundImage: `url('https://ik.imagekit.io/appraisily/WebPage/background_landing')`,
+          backgroundAttachment: 'fixed',
+          opacity: 0.12,
+        }}
+      />
+      
+      {/* Enhanced dark overlay */}
+      <div className="absolute inset-0 bg-blue-900/50 z-0"></div>
+      
+      {/* White dot pattern - add as a custom class */}
+      <div className="absolute inset-0 z-1 white-pattern-bg"></div>
+      
+      {/* Clean dark background with subtle gradient */}
+      <Container className="relative z-10">
+        <ValueSnapshotSection />
+        <HowItWorksSection />
+      </Container>
+    </section>
   );
 } 

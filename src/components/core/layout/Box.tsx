@@ -110,6 +110,7 @@ export const Box: React.FC<BoxProps> = ({
         paddingClass,
         widthClass,
         direction === 'col' ? 'flex flex-col' : direction === 'row' ? 'flex flex-row' : '',
+        background === 'pattern' ? 'pattern-bg' : '',
         className
       )}
       {...props}

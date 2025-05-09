@@ -36,7 +36,7 @@ export const backgroundClasses = {
   primary: cn("bg-gradient-to-b from-blue-100 to-white"),
   secondary: cn("bg-white"),
   accent: cn("bg-amber-50"),
-  pattern: cn("bg-[radial-gradient(#3b82f6_1px,transparent_1px)] opacity-[0.05] [background-size:20px_20px]"),
+  pattern: cn("relative"),
   gradient: cn("bg-gradient-to-r from-blue-600/10 to-blue-500/10"),
   overlay: cn("bg-gradient-to-r from-gray-900/70 to-gray-800/60"),
   imageBg: cn("bg-cover bg-center bg-no-repeat"),
