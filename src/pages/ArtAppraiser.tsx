@@ -11,6 +11,7 @@ import LazyComponent from '../components/utility/LazyComponent';
 // Regular imports for components below the fold
 // We use regular imports since LazyComponent will handle visibility
 import Process from '../components/sections/Process';
+import BulkAppraisalSection from '../components/sections/BulkAppraisalSection';
 import ValuerAnalytics from '../components/sections/ValuerAnalytics';
 import RecentAppraisals from '../components/sections/RecentAppraisals';
 import SuccessStories from '../components/sections/SuccessStories';
@@ -22,6 +23,7 @@ import TrustFooter from '../components/features/trust/TrustFooter';
 declare global {
   interface Window {
     dataLayer?: any[];
+    gtag?: any;
   }
 }
 
@@ -43,6 +45,7 @@ export default function ArtAppraiser() {
       window.requestIdleCallback(() => {
         // Dynamic import for prefetching during idle time
         import('../components/sections/Process');
+        import('../components/sections/BulkAppraisalSection');
         import('../components/sections/ValuerAnalytics');
       }, { timeout: 2000 });
     }
@@ -62,6 +65,11 @@ export default function ArtAppraiser() {
         
         <LazyComponent threshold={0.1} rootMargin="100px">
           <Process />
+        </LazyComponent>
+        
+        {/* New Bulk Appraisal Section - added between Process and SuccessStories */}
+        <LazyComponent threshold={0.1} rootMargin="100px">
+          <BulkAppraisalSection />
         </LazyComponent>
         
         <LazyComponent threshold={0.1} rootMargin="100px">
