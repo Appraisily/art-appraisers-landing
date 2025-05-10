@@ -100,13 +100,14 @@ export default function TrustFooter() {
           style={{
             backgroundImage: 'url("https://ik.imagekit.io/appraisily/WebPage/background_city.png")',
             backgroundPosition: 'center top',
-            opacity: 0.9,
+            opacity: 0.95,
             transform: 'scale(1.1)' // Slightly larger to avoid edge gaps during parallax
           }}
         />
         
-        {/* Dark Overlay for better text contrast */}
-        <div className="absolute inset-0 bg-black/90" />
+        {/* Removed dark overlay to show the image more clearly */}
+        {/* Adding a very subtle gradient overlay for text readability instead */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
         
         {/* Subtle glow effects for depth - changed to grayscale */}
         <div className="absolute inset-0 overflow-hidden">
@@ -138,10 +139,10 @@ export default function TrustFooter() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 Global Recognition & Accreditation
               </h2>
-              <p className="mt-4 text-lg leading-8 text-gray-300">
+              <p className="mt-4 text-lg leading-8 text-gray-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                 Our appraisals are recognized by leading institutions and meet the highest global standards
               </p>
             </div>

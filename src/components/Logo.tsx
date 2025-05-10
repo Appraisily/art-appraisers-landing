@@ -3,6 +3,7 @@ import React from 'react';
 interface LogoProps {
   variant?: 'default' | 'light' | 'dark';
   size?: 'xs' | 'sm' | 'md' | 'lg';
+  className?: string;
 }
 
 const sizes = {
@@ -34,11 +35,11 @@ const textColors = {
   dark: 'text-gray-900'
 };
 
-const Logo: React.FC<LogoProps> = ({ variant = 'default', size = 'md' }) => {
+const Logo: React.FC<LogoProps> = ({ variant = 'default', size = 'md', className = '' }) => {
   const selectedSize = sizes[size];
 
   return (
-    <div className={`inline-flex items-center ${selectedSize.spacing} group`}>
+    <div className={`inline-flex items-center ${selectedSize.spacing} group ${className}`}>
       <img
         src="https://ik.imagekit.io/appraisily/WebPage/logo_new.png?tr=w-64,h-64"
         alt="Appraisily"

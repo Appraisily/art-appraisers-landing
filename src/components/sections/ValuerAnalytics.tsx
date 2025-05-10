@@ -197,11 +197,11 @@ export function ValueSnapshotSection() {
         }}
       />
       
-      {/* Dark overlay with 10% white for less darkness */}
-      <div className="absolute inset-0 z-0 bg-black/80"></div>
+      {/* Dark overlay - reduced from 80% to 40% opacity */}
+      <div className="absolute inset-0 z-0 bg-black/40"></div>
       
-      {/* White overlay for 10% lightness */}
-      <div className="absolute inset-0 z-0 bg-white/10"></div>
+      {/* White overlay - increased from 10% to 15% for better visibility */}
+      <div className="absolute inset-0 z-0 bg-white/15"></div>
       
       {/* Subtle patterns for depth - REMOVED DOT PATTERN */}
       <div className="absolute inset-0 z-1">
@@ -233,7 +233,7 @@ export function ValueSnapshotSection() {
             <Card 
               key={index} 
               variant="feature" 
-              className="border border-gray-800 bg-black/70 backdrop-blur-sm text-white hover:bg-gray-900 transition-colors duration-200 hover:border-gray-700 hover:shadow-lg"
+              className="border border-gray-800 bg-black/60 backdrop-blur-sm text-white hover:bg-gray-900 transition-colors duration-200 hover:border-gray-700 hover:shadow-lg"
             >
               <div className="flex items-start gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-gray-800 to-black shadow-inner">

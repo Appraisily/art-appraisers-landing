@@ -37,9 +37,24 @@ export default function BulkAppraisalSection() {
       <div className="absolute bottom-0 left-0 w-1/4 h-32 bg-gradient-to-t from-gray-200/30 to-transparent rounded-tr-3xl"></div>
       
       <div className="relative z-10">
-        <div className="flex flex-col md:flex-row">
-          {/* Full-width Barn Image as Background - Left Side */}
-          <div className="w-full md:w-1/2 relative h-auto md:h-[650px]">
+        {/* Mobile background image (visible only on mobile) */}
+        <div className="md:hidden absolute inset-0 w-full h-full">
+          <div 
+            className="absolute inset-0 w-full h-full" 
+            style={{
+              backgroundImage: "url('https://ik.imagekit.io/appraisily/WebPage/barn')",
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat'
+            }}
+          ></div>
+          {/* White glow overlay for better text contrast on mobile */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/60 backdrop-blur-sm"></div>
+        </div>
+
+        <div className="flex flex-col md:flex-row relative">
+          {/* Full-width Barn Image as Background - Left Side (desktop only) */}
+          <div className="hidden md:block w-full md:w-1/2 relative h-auto md:h-[650px]">
             <div 
               className="absolute inset-0 w-full h-full" 
               style={{
@@ -51,25 +66,25 @@ export default function BulkAppraisalSection() {
             ></div>
           </div>
           
-          {/* Content - Right Side */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center gap-6 px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-            <h2 id="bulk-appraisal-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+          {/* Content - Right Side on desktop, overlaid on image for mobile */}
+          <div className="w-full md:w-1/2 flex flex-col justify-center gap-6 px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
+            <h2 id="bulk-appraisal-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight md:leading-tight relative">
               Have a Whole Collection? Let Us Appraise Everything—Fast.
             </h2>
             
-            <p className="mt-4 text-lg text-gray-700 max-w-xl">
+            <p className="mt-4 text-lg text-gray-700 max-w-xl relative">
               Upload all your images once, relax, and get a complete, expert-signed appraisal report for every artwork or antique within 48 hours.
             </p>
             
             {/* Trust Badges - Changed to grayscale */}
-            <div className="flex flex-wrap gap-2 mt-2">
+            <div className="flex flex-wrap gap-2 mt-2 relative">
               <Badge variant="outline">USPAP-Compliant</Badge>
               <Badge variant="outline">ISO-Certified Valuers</Badge>
               <Badge variant="outline">Money-Back Guarantee</Badge>
             </div>
             
             {/* Benefits Bullet List */}
-            <ul className="mt-6 space-y-3 text-base text-gray-700">
+            <ul className="mt-6 space-y-3 text-base text-gray-700 relative">
               {[
                 'Save up to <strong>20 %</strong> on multi-item appraisals',
                 'Individual descriptions, condition notes, and valuations',
@@ -85,12 +100,12 @@ export default function BulkAppraisalSection() {
             </ul>
             
             {/* CTA Buttons - Now with increased spacing and black/white styling */}
-            <div className="mt-8 flex flex-col space-y-6">
+            <div className="mt-8 flex flex-col space-y-6 relative">
               <a 
                 href="/bulk-appraisal/upload"
                 onClick={handleBulkAppraisalClick}
                 className={cn(
-                  "inline-flex items-center justify-center font-semibold rounded-lg px-6 py-3 shadow-lg",
+                  "inline-flex items-center justify-center font-semibold rounded-lg px-6 py-3.5 sm:py-3 shadow-lg",
                   "bg-gray-900 hover:bg-gray-800 text-white transition-all duration-200"
                 )}
                 role="button"

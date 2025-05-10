@@ -172,8 +172,10 @@ const Services: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl drop-shadow-sm relative">
-            <span className="relative z-10">Choose Your Appraisal Service</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-gray-900/5 via-gray-900/10 to-gray-900/5 blur-lg -z-10 scale-110 rounded-full opacity-50"></span>
+            <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 via-blue-600 to-violet-800">
+              Choose Your Appraisal Service
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-blue-500/15 to-indigo-500/10 blur-xl -z-10 scale-110 rounded-full opacity-70"></span>
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Our certified appraisers tailor each report to your needs. Select the service that best fits your requirements.
@@ -182,19 +184,23 @@ const Services: React.FC = () => {
         
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {services.map((service, index) => {
-            // Different subtle border color for each card
-            const borderColors = [
-              "before:border-blue-200/40", 
-              "before:border-emerald-200/40", 
-              "before:border-amber-200/40"
+            const cornerGradients = [
+              {
+                topLeft: "before:bg-gradient-to-br before:from-blue-500/20 before:via-blue-400/10 before:to-transparent before:rounded-tl-2xl",
+                bottomRight: "after:bg-gradient-to-tl after:from-indigo-500/20 after:via-indigo-400/10 after:to-transparent after:rounded-br-2xl"
+              },
+              {
+                topRight: "before:bg-gradient-to-bl before:from-violet-500/20 before:via-violet-400/10 before:to-transparent before:rounded-tr-2xl",
+                bottomLeft: "after:bg-gradient-to-tr after:from-purple-500/20 after:via-purple-400/10 after:to-transparent after:rounded-bl-2xl"
+              },
+              {
+                topLeft: "before:bg-gradient-to-br before:from-indigo-500/20 before:via-indigo-400/10 before:to-transparent before:rounded-tl-2xl",
+                bottomRight: "after:bg-gradient-to-tl after:from-blue-500/20 after:via-blue-400/10 after:to-transparent after:rounded-br-2xl"
+              }
             ];
             
-            // Different subtle glow colors for each card
-            const glowColors = [
-              "after:shadow-[0_0_30px_rgba(59,130,246,0.1)]", 
-              "after:shadow-[0_0_30px_rgba(16,185,129,0.1)]", 
-              "after:shadow-[0_0_30px_rgba(245,158,11,0.1)]"
-            ];
+            const currentGradient = cornerGradients[index % 3];
+            const cornerClasses = Object.values(currentGradient).join(' ');
             
             return (
               <div 
@@ -202,13 +208,13 @@ const Services: React.FC = () => {
                 className={`
                   relative flex flex-col rounded-2xl p-8 bg-white shadow-sm 
                   hover:shadow-lg transition-all duration-300
-                  before:absolute before:inset-0 before:rounded-2xl before:border before:border-gray-100 
-                  before:transition-all before:duration-300 before:z-10 
-                  after:absolute after:inset-0 after:rounded-2xl after:z-0 after:opacity-0 
-                  hover:before:border-2 hover:after:opacity-100
-                  ${borderColors[index % 3]} ${glowColors[index % 3]}
+                  before:absolute before:inset-0 before:z-10 
+                  after:absolute after:inset-0 after:z-10
+                  ${cornerClasses}
                 `}
               >
+                <div className="absolute inset-0 rounded-2xl border border-gray-100 z-[5]"></div>
+                
                 <div className="mb-6 relative z-20">
                   <service.icon className="h-8 w-8 text-gray-800" />
                 </div>
