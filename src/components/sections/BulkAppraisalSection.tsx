@@ -19,13 +19,11 @@ export default function BulkAppraisalSection() {
     // Track click event
     window.dataLayer?.push({
       event: 'cta_click',
-      cta_type: 'bulk_appraisal'
+      cta_type: 'bulk_appraisal',
+      event_action: 'bulk_appraisal_click'
     });
     
-    // Analytics event
-    if (window.gtag) {
-      window.gtag('event', 'bulk_appraisal_click');
-    }
+    // Analytics event - Removing direct gtag call, using dataLayer instead
   };
 
   return (
@@ -45,8 +43,11 @@ export default function BulkAppraisalSection() {
               backgroundImage: "url('https://ik.imagekit.io/appraisily/WebPage/barn')",
               backgroundPosition: 'center',
               backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
+              backgroundRepeat: 'no-repeat',
+              backgroundFallback: '#f9fafb'
             }}
+            role="img"
+            aria-label="Collection of artwork in a gallery setting"
           ></div>
           {/* White glow overlay for better text contrast on mobile */}
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/60 backdrop-blur-sm"></div>
@@ -61,8 +62,11 @@ export default function BulkAppraisalSection() {
                 backgroundImage: "url('https://ik.imagekit.io/appraisily/WebPage/barn')",
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
+                backgroundRepeat: 'no-repeat',
+                backgroundFallback: '#f9fafb'
               }}
+              role="img"
+              aria-label="Collection of artwork in a gallery setting"
             ></div>
           </div>
           

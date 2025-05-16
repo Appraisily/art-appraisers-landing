@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="rgb(37 99 235)">
     
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'nonce-RANDOMNONCE' https://www.googletagmanager.com;
+      style-src 'self' 'nonce-RANDOMNONCE' https://fonts.googleapis.com;
+      img-src 'self' https://ik.imagekit.io https://placehold.co data:;
+      font-src 'self' https://fonts.gstatic.com;
+      connect-src 'self' https://www.googletagmanager.com https://analytics.google.com https://ik.imagekit.io;
+      object-src 'none';
+      base-uri 'self';
+      frame-src https://www.googletagmanager.com;
+      form-action 'self';
+      manifest-src 'self';
+      media-src 'self' https://ik.imagekit.io;
+      worker-src 'self' blob:;
+    ">
+    
     <!-- SEO and Meta Tags -->
     <title>Professional Art Appraisal | Art Valuation Services</title>
     <meta name="description" content="Professional art and antiques appraisal services. Artwork valuation by certified experts in 24-48 hours. Reports compatible with IRS and insurance requirements.">
@@ -47,10 +64,11 @@
       rel="preload" 
       as="style" 
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      nonce="RANDOMNONCE"
     >
     
     <!-- Inline Critical CSS -->
-    <style>
+    <style nonce="RANDOMNONCE">
       /* CSS crítico para evitar FOUC (Flash of Unstyled Content) */
       :root {
         --color-primary: rgb(37 99 235);
@@ -138,10 +156,18 @@
           left: 100%;
         }
       }
+      
+      /* GTM noscript iframe styles */
+      .gtm-iframe {
+        display: none;
+        visibility: hidden;
+        height: 0;
+        width: 0;
+      }
     </style>
     
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <script nonce="RANDOMNONCE">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -150,8 +176,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSLHDGM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSLHDGM" class="gtm-iframe"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
     <!-- Initial content to improve LCP -->
@@ -166,7 +191,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" nonce="RANDOMNONCE"></script>
     
     <!-- Message for browsers without JavaScript -->
     <noscript>
